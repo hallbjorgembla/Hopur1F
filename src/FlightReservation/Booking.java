@@ -1,5 +1,4 @@
-package model;
-
+package FlightReservation;
 import java.util.List;
 
 public class Booking {

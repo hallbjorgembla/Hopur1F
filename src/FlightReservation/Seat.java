@@ -1,4 +1,4 @@
-package model;
+package FlightReservation;
 
 public class Seat {
     private int seatID;
