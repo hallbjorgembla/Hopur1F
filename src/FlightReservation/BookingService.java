@@ -1,4 +1,4 @@
-package controller;
+package FlightReservation;
 
 public class BookingService {
     BookingDBManager bookingDBManager;
