@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+// Þett a er main skjalið okkar
 public class Main extends Application {
 
     @Override
