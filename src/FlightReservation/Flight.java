@@ -17,7 +17,7 @@ public class Flight {
     private double priceFirstClass;
     private double priceEconomy;
 
-    public Flight(int flightID, String flightNumber, String flightDeparture, String flightDestination, LocalDateTime departureTime, LocalDateTime arrivalTime, double flightTime, int totalNumberOfSeats, List<Seat> seats, List<Seat> availableSeats, double priceFirstClass, double priceEconomy) {
+    public Flight(int flightID, String flightNumber, String flightDeparture, String flightDestination, LocalDateTime departureTime, LocalDateTime arrivalTime, double flightTime, int totalNumberOfSeats, double priceFirstClass, double priceEconomy) {
         this.flightID = flightID;
         this.flightNumber = flightNumber;
         this.flightDeparture = flightDeparture;
@@ -26,8 +26,6 @@ public class Flight {
         this.arrivalTime = arrivalTime;
         this.flightTime = flightTime;
         this.totalNumberOfSeats = totalNumberOfSeats;
-        this.seats = seats;
-        this.availableSeats = availableSeats;
         this.priceFirstClass = priceFirstClass;
         this.priceEconomy = priceEconomy;
     }
