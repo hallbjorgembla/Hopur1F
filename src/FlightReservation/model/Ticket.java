@@ -1,4 +1,8 @@
-package FlightReservation;
+package FlightReservation.model;
+
+import FlightReservation.model.Flight;
+import FlightReservation.model.Passenger;
+import FlightReservation.model.Seat;
 
 public class Ticket {
     private int ticketID;
