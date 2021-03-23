@@ -1,8 +1,12 @@
-package FlightReservation;
+package test;
 
-import java.lang.reflect.Array;
+import FlightReservation.controller.SearchServiceInterface;
+import FlightReservation.model.Flight;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Optional;
 
 public class SearchServiceMockObject implements SearchServiceInterface {
@@ -58,14 +62,56 @@ public class SearchServiceMockObject implements SearchServiceInterface {
         // TODO: implement method
     }
 
+    public ArrayList<Flight> sortByPrice(ArrayList<Flight> flights){
+        Collections.sort(flights, new Comparator<Flight>() {
+            @Override
+            public int compare(Flight o1, Flight o2) {
+                return o1.getPriceEconomy() > o2.getPriceEconomy() ? 1: o1.getPriceEconomy() < o2.getPriceEconomy() ? -1: 0;
+            }
+        });
+        System.out.println(flights);
+        return flights;
+    }
+
+    public ArrayList<Flight> sortByDepartureTime(ArrayList<Flight> flights){
+        Collections.sort(flights, new Comparator<Flight>() {
+            @Override
+            public int compare(Flight o1, Flight o2) {
+                LocalDateTime time1 = o1.getDepartureTime();
+                LocalDateTime time2 = o2.getDepartureTime();
+
+                return time1.isBefore(time2) ? -1: time1.isEqual(time2) ? 0 : 1;
+            }
+        });
+        return flights;
+    }
+    public ArrayList<Flight> sortByArrivalTime(ArrayList<Flight> flights){
+        Collections.sort(flights, new Comparator<Flight>() {
+            @Override
+            public int compare(Flight o1, Flight o2) {
+                LocalDateTime time1 = o1.getArrivalTime();
+                LocalDateTime time2 = o2.getArrivalTime();
+
+                return time1.isBefore(time2) ? -1: time1.isEqual(time2) ? 0 : 1;
+            }
+        });
+        return flights;
+    }
+
+    public ArrayList<Flight> findAll(){
+        return makeFlights();
+    }
+
+
+
     // Skilar lista af 5 flugum
     public ArrayList<Flight> makeFlights() {
         ArrayList<Flight> flights = new ArrayList<>();
-        flights.add(new Flight(1, "Flug 1", "Reykjavík", "Akureyri", LocalDateTime.of(2021, 6, 10, 10, 30), LocalDateTime.of(2021, 6, 10, 10, 30).plusHours(2), 2, 100, 10000, 20000));
-        flights.add(new Flight(2, "Flug 2", "Akureyri", "Reykjavík", LocalDateTime.of(2021, 6, 10, 15, 30), LocalDateTime.of(2021, 6, 10, 15, 30).plusHours(2), 2, 100, 12500, 25000));
-        flights.add(new Flight(3, "Flug 3", "Reykjavík", "Egilsstaðir", LocalDateTime.of(2021, 6, 15, 10, 0), LocalDateTime.of(2021, 6, 15, 10, 0).plusHours(3), 3, 50, 14000, 28000));
-        flights.add(new Flight(4, "Flug 4", "Reykjavík", "Egilsstaðir", LocalDateTime.of(2021, 6, 15, 18, 30), LocalDateTime.of(2021, 6, 15, 18, 30).plusHours(3), 3, 50, 12000, 24000));
-        flights.add(new Flight(5, "Flug 5", "Egilsstaðir", "Reykjavík", LocalDateTime.of(2021, 6, 15, 15, 0), LocalDateTime.of(2021, 6, 15, 15, 0).plusHours(3), 3, 50, 10000, 20000));
+        flights.add(new Flight(1, "Flug 1", "Reykjavík", "Akureyri", LocalDateTime.of(2021, 6, 10, 10, 30), 2, 100, 20000, 10000));
+        flights.add(new Flight(2, "Flug 2", "Akureyri", "Reykjavík", LocalDateTime.of(2021, 6, 10, 15, 30), 2, 100, 25000, 12500));
+        flights.add(new Flight(3, "Flug 3", "Reykjavík", "Egilsstaðir", LocalDateTime.of(2021, 6, 15, 10, 0), 3, 50, 28000, 14000));
+        flights.add(new Flight(4, "Flug 4", "Reykjavík", "Egilsstaðir", LocalDateTime.of(2021, 6, 15, 18, 30), 3, 50, 24000, 12000));
+        flights.add(new Flight(5, "Flug 5", "Egilsstaðir", "Reykjavík", LocalDateTime.of(2021, 6, 15, 15, 0), 3, 50, 20000, 10000));
         return flights;
     }
 }

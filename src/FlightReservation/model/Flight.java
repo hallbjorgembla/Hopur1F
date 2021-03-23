@@ -1,4 +1,4 @@
-package FlightReservation;
+package FlightReservation.model;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,13 +17,13 @@ public class Flight {
     private double priceFirstClass;
     private double priceEconomy;
 
-    public Flight(int flightID, String flightNumber, String flightDeparture, String flightDestination, LocalDateTime departureTime, LocalDateTime arrivalTime, double flightTime, int totalNumberOfSeats, double priceFirstClass, double priceEconomy) {
+    public Flight(int flightID, String flightNumber, String flightDeparture, String flightDestination, LocalDateTime departureTime, double flightTime, int totalNumberOfSeats, double priceFirstClass, double priceEconomy) {
         this.flightID = flightID;
         this.flightNumber = flightNumber;
         this.flightDeparture = flightDeparture;
         this.flightDestination = flightDestination;
         this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
+        this.arrivalTime = departureTime.plusHours((int) flightTime);
         this.flightTime = flightTime;
         this.totalNumberOfSeats = totalNumberOfSeats;
         this.priceFirstClass = priceFirstClass;

@@ -1,15 +1,13 @@
 package test;
 
-import FlightReservation.Flight;
-import FlightReservation.SearchController;
-import FlightReservation.SearchServiceInterface;
-import FlightReservation.SearchServiceMockObject;
+import FlightReservation.model.Flight;
+import FlightReservation.controller.SearchController;
+import FlightReservation.controller.SearchServiceInterface;
 import org.junit.*;
-import org.junit.Assert.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertNotNull;
@@ -68,5 +66,53 @@ public class SearchControllerTest {
         Optional<Flight> flight = searchController.findById(flightId);
         assertNotNull(flight);
         assertTrue(flight.isEmpty());
+    }
+
+    @Test
+    public void testCase5(){
+        ArrayList<Flight> flightsToSort = searchController.findAll();
+        searchController.sortByPrice(flightsToSort);
+        System.out.println(flightsToSort);
+        assertNotNull(flightsToSort);
+        double currentPrice = 0;
+        double previousPrice = 0;
+        for(Flight flight: flightsToSort){
+            currentPrice = flight.getPriceEconomy();
+            System.out.println(currentPrice);
+            assertTrue(currentPrice >= previousPrice);
+            previousPrice = currentPrice;
+        }
+    }
+
+    @Test
+    public void testCase6(){
+        ArrayList<Flight> flightsToSort = searchController.findAll();
+        searchController.sortByDepartureTime(flightsToSort);
+        System.out.println(flightsToSort);
+        assertNotNull(flightsToSort);
+        LocalDateTime current;
+        LocalDateTime previous = LocalDateTime.MIN;
+        for(Flight flight: flightsToSort){
+            current = flight.getDepartureTime();
+            System.out.println(current);
+            assertTrue(current.isAfter(previous));
+            previous = current;
+        }
+    }
+
+    @Test
+    public void testCase7(){
+        ArrayList<Flight> flightsToSort = searchController.findAll();
+        searchController.sortByArrivalTime(flightsToSort);
+        System.out.println(flightsToSort);
+        assertNotNull(flightsToSort);
+        LocalDateTime current;
+        LocalDateTime previous = LocalDateTime.MIN;
+        for(Flight flight: flightsToSort){
+            current = flight.getArrivalTime();
+            System.out.println(current);
+            assertTrue(current.isAfter(previous));
+            previous = current;
+        }
     }
 }

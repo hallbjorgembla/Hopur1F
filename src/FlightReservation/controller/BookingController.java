@@ -1,4 +1,6 @@
-package FlightReservation;
+package FlightReservation.controller;
+
+import FlightReservation.model.Booking;
 
 import java.util.List;
 
