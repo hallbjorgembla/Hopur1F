@@ -1,11 +1,10 @@
-package test;
+package testFlightReservation.controller;
 
 import FlightReservation.model.Flight;
 import FlightReservation.controller.SearchController;
 import FlightReservation.controller.SearchServiceInterface;
 import org.junit.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -27,7 +26,6 @@ public class SearchControllerTest {
     @After
     public void tearDown(){
         this.searchController = null;
-        this.searchController = null;
     }
 
     // Testing the findFlights method with legal parameters
@@ -41,7 +39,7 @@ public class SearchControllerTest {
         assertTrue(!flights.isEmpty());
     }
 
-    // Tesding the findFligth method with made up strings as Arrival/Departure city
+    // Testing the findFligth method with made up strings as Arrival/Departure city
     @Test
     public void testCase2(){
         LocalDateTime flightDate = LocalDateTime.of(2021, 6, 10, 10, 0);

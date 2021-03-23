@@ -1,6 +1,5 @@
 package FlightReservation.controller;
 
-import FlightReservation.controller.SearchServiceInterface;
 import FlightReservation.model.Flight;
 
 import java.time.LocalDateTime;
@@ -43,11 +42,11 @@ public class SearchController {
         return searchServiceInterface.findAll();
     }
 
-    /* ÞURFUM VIÐ AÐ HAFA ÞETTA HÉR?
-    public void delete(int flightId) {
+    /* ÞURFUM VIÐ AÐ HAFA ÞETTA HÉR?*/
+    public void deleteFlight(int flightId) {
         searchServiceInterface.deleteFlight(flightId);
     }
-
+    /*
     public void editFlight(int flightId, LocalDateTime newDepartureTime, LocalDateTime newArrivalTime){
         searchServiceInterface.editFlight(flightId, newDepartureTime, newArrivalTime);
     }

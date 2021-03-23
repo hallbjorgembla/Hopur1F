@@ -1,12 +1,12 @@
-package test;
+package testFlightReservation.controller;
 
+import FlightReservation.controller.Comparable;
 import FlightReservation.controller.SearchServiceInterface;
 import FlightReservation.model.Flight;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Optional;
 
 public class SearchServiceMockObject implements SearchServiceInterface {
@@ -63,38 +63,18 @@ public class SearchServiceMockObject implements SearchServiceInterface {
     }
 
     public ArrayList<Flight> sortByPrice(ArrayList<Flight> flights){
-        Collections.sort(flights, new Comparator<Flight>() {
-            @Override
-            public int compare(Flight o1, Flight o2) {
-                return o1.getPriceEconomy() > o2.getPriceEconomy() ? 1: o1.getPriceEconomy() < o2.getPriceEconomy() ? -1: 0;
-            }
-        });
+        Collections.sort(flights, Comparable::comparePrice);
         System.out.println(flights);
         return flights;
     }
 
     public ArrayList<Flight> sortByDepartureTime(ArrayList<Flight> flights){
-        Collections.sort(flights, new Comparator<Flight>() {
-            @Override
-            public int compare(Flight o1, Flight o2) {
-                LocalDateTime time1 = o1.getDepartureTime();
-                LocalDateTime time2 = o2.getDepartureTime();
-
-                return time1.isBefore(time2) ? -1: time1.isEqual(time2) ? 0 : 1;
-            }
-        });
+        Collections.sort(flights, Comparable::compareDepartureTime);
         return flights;
     }
-    public ArrayList<Flight> sortByArrivalTime(ArrayList<Flight> flights){
-        Collections.sort(flights, new Comparator<Flight>() {
-            @Override
-            public int compare(Flight o1, Flight o2) {
-                LocalDateTime time1 = o1.getArrivalTime();
-                LocalDateTime time2 = o2.getArrivalTime();
 
-                return time1.isBefore(time2) ? -1: time1.isEqual(time2) ? 0 : 1;
-            }
-        });
+    public ArrayList<Flight> sortByArrivalTime(ArrayList<Flight> flights){
+        Collections.sort(flights, Comparable::compareArrivalTime);
         return flights;
     }
 
