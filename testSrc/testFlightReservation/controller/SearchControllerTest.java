@@ -39,7 +39,8 @@ public class SearchControllerTest {
         assertTrue(!flights.isEmpty());
     }
 
-    // Testing the findFligth method with made up strings as Arrival/Departure city
+    // Testing the findFlight method with made up strings as Arrival/Departure city
+    //henda inn röngu tagi
     @Test
     public void testCase2(){
         LocalDateTime flightDate = LocalDateTime.of(2021, 6, 10, 10, 0);
@@ -58,6 +59,7 @@ public class SearchControllerTest {
         assertTrue(flight.isPresent());
     }
 
+        // prófa með röngu tagi
     @Test
     public void testCase4(){
         int flightId = 10;
