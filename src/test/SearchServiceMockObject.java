@@ -10,15 +10,19 @@ import java.util.Comparator;
 import java.util.Optional;
 
 public class SearchServiceMockObject implements SearchServiceInterface {
+    private ArrayList<Flight> flights;
 
     public SearchServiceMockObject() {
+        flights = makeFlights();
     }
 
     // Skilar lista af flugum sem passa við leitarskilyrði
     public ArrayList<Flight> findFlights(LocalDateTime flightDate, String departureCity, String arrivalCity){
+        if(departureCity.equals("")|arrivalCity.equals("")){
+            throw new IllegalArgumentException();
+        }
         ArrayList<Flight> flightResultList = new ArrayList<>();
-        ArrayList<Flight> allFlights = makeFlights();
-        for(Flight flight: allFlights){
+        for(Flight flight: flights){
             if(flight.getDepartureTime().getYear() == flightDate.getYear() &&
                     flight.getDepartureTime().getMonthValue() == flightDate.getMonthValue() &&
                     flight.getDepartureTime().getDayOfMonth() == flightDate.getDayOfMonth() &&
@@ -32,6 +36,9 @@ public class SearchServiceMockObject implements SearchServiceInterface {
 
     // Skilar flugi með ákveðið flight id eða tómum Optional hlut ef ekkert flug finnst
     public Optional<Flight> findFlightById(int flightId) {
+        if(flightId < 0) {
+            throw new IllegalArgumentException();
+        }
         ArrayList<Flight> allFlights = makeFlights();
         for(Flight flight: allFlights) {
             if(flight.getFlightID() == flightId) {
@@ -62,19 +69,19 @@ public class SearchServiceMockObject implements SearchServiceInterface {
         // TODO: implement method
     }
 
-    public ArrayList<Flight> sortByPrice(ArrayList<Flight> flights){
-        Collections.sort(flights, new Comparator<Flight>() {
+    public ArrayList<Flight> sortByPrice(ArrayList<Flight> flightList){
+        Collections.sort(flightList, new Comparator<Flight>() {
             @Override
             public int compare(Flight o1, Flight o2) {
                 return o1.getPriceEconomy() > o2.getPriceEconomy() ? 1: o1.getPriceEconomy() < o2.getPriceEconomy() ? -1: 0;
             }
         });
         System.out.println(flights);
-        return flights;
+        return flightList;
     }
 
-    public ArrayList<Flight> sortByDepartureTime(ArrayList<Flight> flights){
-        Collections.sort(flights, new Comparator<Flight>() {
+    public ArrayList<Flight> sortByDepartureTime(ArrayList<Flight> flightList){
+        Collections.sort(flightList, new Comparator<Flight>() {
             @Override
             public int compare(Flight o1, Flight o2) {
                 LocalDateTime time1 = o1.getDepartureTime();
@@ -83,10 +90,10 @@ public class SearchServiceMockObject implements SearchServiceInterface {
                 return time1.isBefore(time2) ? -1: time1.isEqual(time2) ? 0 : 1;
             }
         });
-        return flights;
+        return flightList;
     }
-    public ArrayList<Flight> sortByArrivalTime(ArrayList<Flight> flights){
-        Collections.sort(flights, new Comparator<Flight>() {
+    public ArrayList<Flight> sortByArrivalTime(ArrayList<Flight> flightList){
+        Collections.sort(flightList, new Comparator<Flight>() {
             @Override
             public int compare(Flight o1, Flight o2) {
                 LocalDateTime time1 = o1.getArrivalTime();
@@ -95,14 +102,12 @@ public class SearchServiceMockObject implements SearchServiceInterface {
                 return time1.isBefore(time2) ? -1: time1.isEqual(time2) ? 0 : 1;
             }
         });
-        return flights;
+        return flightList;
     }
 
     public ArrayList<Flight> findAll(){
-        return makeFlights();
+        return this.flights;
     }
-
-
 
     // Skilar lista af 5 flugum
     public ArrayList<Flight> makeFlights() {
