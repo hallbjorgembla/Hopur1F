@@ -1,5 +1,6 @@
 package FlightReservation.controller;
 
+import FlightReservation.controller.SearchServiceInterface;
 import FlightReservation.model.Flight;
 
 import java.time.LocalDateTime;
@@ -8,14 +9,13 @@ import java.util.Optional;
 
 public class SearchController {
     private SearchServiceInterface searchServiceInterface;
-    private ArrayList<Flight> flights;
 
     public SearchController(SearchServiceInterface searchServiceInterface) {
         this.searchServiceInterface = searchServiceInterface;
     }
 
-    public void makeFlights(){
-        this.flights = searchServiceInterface.makeFlights();
+    public ArrayList<Flight> makeFlights(){
+        return searchServiceInterface.makeFlights();
     }
 
     public ArrayList<Flight> findFlights(LocalDateTime flightDate, String departureCity, String arrivalCity){
@@ -41,19 +41,4 @@ public class SearchController {
     public ArrayList<Flight> findAll(){
         return searchServiceInterface.findAll();
     }
-
-    /* ÞURFUM VIÐ AÐ HAFA ÞETTA HÉR?*/
-    public void deleteFlight(int flightId) {
-        searchServiceInterface.deleteFlight(flightId);
-    }
-    /*
-    public void editFlight(int flightId, LocalDateTime newDepartureTime, LocalDateTime newArrivalTime){
-        searchServiceInterface.editFlight(flightId, newDepartureTime, newArrivalTime);
-    }
-
-    public void addFlight(Flight flight) {
-        searchServiceInterface.addFlight(flight);
-    }
-
-     */
 }

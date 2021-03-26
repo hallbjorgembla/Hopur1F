@@ -9,23 +9,26 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SearchControllerTest {
 
     private SearchController searchController;
     private SearchServiceInterface mockSearchServiceInterface;
+    private ArrayList<Flight> flights;
 
     @Before
     public void setUp() {
         this.mockSearchServiceInterface = new SearchServiceMockObject();
         this.searchController = new SearchController(mockSearchServiceInterface);
+        flights = searchController.findAll();
     }
 
     @After
     public void tearDown(){
         this.searchController = null;
+        this.mockSearchServiceInterface = null;
+        this.flights = null;
     }
 
     // Testing the findFlights method with legal parameters
@@ -34,85 +37,108 @@ public class SearchControllerTest {
         LocalDateTime flightDate = LocalDateTime.of(2021, 6, 10, 10, 0);
         String departureCity = "Reykjavík";
         String arrivalCity = "Akureyri";
-        ArrayList<Flight> flights = searchController.findFlights(flightDate, departureCity, arrivalCity);
+        flights = searchController.findFlights(flightDate, departureCity, arrivalCity);
         assertNotNull(flights);
         assertTrue(!flights.isEmpty());
     }
 
-    // Testing the findFlight method with made up strings as Arrival/Departure city
-    //henda inn röngu tagi
-    @Test
+    // Testing the findFlight method with the empty string, which should throw an IllegalArgumentException
+    @Test(expected = IllegalArgumentException.class)
     public void testCase2(){
         LocalDateTime flightDate = LocalDateTime.of(2021, 6, 10, 10, 0);
-        String departureCity = "Bla";
-        String arrivalCity = "BlaBla";
-        ArrayList<Flight> flights = searchController.findFlights(flightDate, departureCity, arrivalCity);
+        String departureCity = "";
+        String arrivalCity = "";
+        flights = searchController.findFlights(flightDate, departureCity, arrivalCity);
+    }
+
+    // Testing the findFlight method with nonsense strings, expecting it to return an empty list
+    @Test
+    public void testCase3(){
+        LocalDateTime flightDate = LocalDateTime.of(2021, 6, 10, 10, 0);
+        String departureCity = "blablablabla";
+        String arrivalCity = "ahhahahha";
+        flights = searchController.findFlights(flightDate, departureCity, arrivalCity);
         assertNotNull(flights);
         assertTrue(flights.isEmpty());
     }
 
+    // Testing the findFlights method with null arguments, which should throw a NullPointerException
+    @Test(expected=NullPointerException.class)
+    public void testCase4(){
+        flights = searchController.findFlights(null, null, null);
+    }
+
+    // Testing the findById method with a legal argument, expecting a non-empty Optional object
     @Test
-    public void testCase3(){
+    public void testCase5(){
         int flightId = 1;
         Optional<Flight> flight = searchController.findById(flightId);
         assertNotNull(flight);
         assertTrue(flight.isPresent());
     }
 
-        // prófa með röngu tagi
     @Test
-    public void testCase4(){
+    public void testCase6(){
         int flightId = 10;
         Optional<Flight> flight = searchController.findById(flightId);
         assertNotNull(flight);
         assertTrue(flight.isEmpty());
     }
 
+    // Testing the findById method with an illegal argument, expecting an IllegalArgumentException
+    @Test(expected = IllegalArgumentException.class)
+    public void testCase7(){
+        Optional<Flight> flight = searchController.findById(-5);
+    }
+
+    // Testing the sortByPrice method
     @Test
-    public void testCase5(){
-        ArrayList<Flight> flightsToSort = searchController.findAll();
-        searchController.sortByPrice(flightsToSort);
-        System.out.println(flightsToSort);
-        assertNotNull(flightsToSort);
-        double currentPrice = 0;
+    public void testCase8(){
+        searchController.sortByPrice(flights);
+        double currentPrice;
         double previousPrice = 0;
-        for(Flight flight: flightsToSort){
+        boolean isNotSorted = false;
+        for(Flight flight: flights){
             currentPrice = flight.getPriceEconomy();
-            System.out.println(currentPrice);
-            assertTrue(currentPrice >= previousPrice);
+            if(currentPrice < previousPrice){
+                isNotSorted = true;
+            }
             previousPrice = currentPrice;
         }
+        assertFalse(isNotSorted);
     }
 
+    // Testing the sortByDepartureTime method
     @Test
-    public void testCase6(){
-        ArrayList<Flight> flightsToSort = searchController.findAll();
-        searchController.sortByDepartureTime(flightsToSort);
-        System.out.println(flightsToSort);
-        assertNotNull(flightsToSort);
+    public void testCase9(){
+        searchController.sortByDepartureTime(flights);
         LocalDateTime current;
         LocalDateTime previous = LocalDateTime.MIN;
-        for(Flight flight: flightsToSort){
+        boolean isNotSorted = false;
+        for(Flight flight: flights){
             current = flight.getDepartureTime();
-            System.out.println(current);
-            assertTrue(current.isAfter(previous));
+            if(current.isBefore(previous)){
+                isNotSorted = true;
+            }
             previous = current;
         }
+        assertFalse(isNotSorted);
     }
 
+    // Testing the sortByArrivalTime method
     @Test
-    public void testCase7(){
-        ArrayList<Flight> flightsToSort = searchController.findAll();
-        searchController.sortByArrivalTime(flightsToSort);
-        System.out.println(flightsToSort);
-        assertNotNull(flightsToSort);
+    public void testCase10(){
+        searchController.sortByArrivalTime(flights);
         LocalDateTime current;
         LocalDateTime previous = LocalDateTime.MIN;
-        for(Flight flight: flightsToSort){
+        boolean isNotSorted = false;
+        for(Flight flight: flights){
             current = flight.getArrivalTime();
-            System.out.println(current);
-            assertTrue(current.isAfter(previous));
+            if(current.isBefore(previous)){
+                isNotSorted = true;
+            }
             previous = current;
         }
+        assertFalse(isNotSorted);
     }
 }

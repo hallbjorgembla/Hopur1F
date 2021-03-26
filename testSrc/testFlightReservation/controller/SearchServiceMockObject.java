@@ -10,15 +10,19 @@ import java.util.Collections;
 import java.util.Optional;
 
 public class SearchServiceMockObject implements SearchServiceInterface {
+    private ArrayList<Flight> flights;
 
     public SearchServiceMockObject() {
+        flights = makeFlights();
     }
 
     // Skilar lista af flugum sem passa við leitarskilyrði
     public ArrayList<Flight> findFlights(LocalDateTime flightDate, String departureCity, String arrivalCity){
+        if(departureCity.equals("")|arrivalCity.equals("")){
+            throw new IllegalArgumentException();
+        }
         ArrayList<Flight> flightResultList = new ArrayList<>();
-        ArrayList<Flight> allFlights = makeFlights();
-        for(Flight flight: allFlights){
+        for(Flight flight: flights){
             if(flight.getDepartureTime().getYear() == flightDate.getYear() &&
                     flight.getDepartureTime().getMonthValue() == flightDate.getMonthValue() &&
                     flight.getDepartureTime().getDayOfMonth() == flightDate.getDayOfMonth() &&
@@ -32,6 +36,9 @@ public class SearchServiceMockObject implements SearchServiceInterface {
 
     // Skilar flugi með ákveðið flight id eða tómum Optional hlut ef ekkert flug finnst
     public Optional<Flight> findFlightById(int flightId) {
+        if(flightId < 0) {
+            throw new IllegalArgumentException();
+        }
         ArrayList<Flight> allFlights = makeFlights();
         for(Flight flight: allFlights) {
             if(flight.getFlightID() == flightId) {
@@ -41,30 +48,9 @@ public class SearchServiceMockObject implements SearchServiceInterface {
         return Optional.empty();
     }
 
-    // Eyðir flugi - veit ekki alveg með þetta
-    public void deleteFlight(int flightId) {
-        ArrayList<Flight> allFlights = makeFlights();
-        for(Flight flight: allFlights){
-            if(flight.getFlightID() == flightId){
-                allFlights.remove(flight);
-                System.out.println("Eyði flugi nr" + flight.getFlightID());
-            }
-        }
-    }
 
-    // Breytir flugi
-    public void editFlight(int flightId, LocalDateTime newDepartureTime, LocalDateTime newArrivalTime){
-        // TODO: implement method
-    }
-
-    // Bætir við flugi
-    public void addFlight(Flight flight){
-        // TODO: implement method
-    }
-
-    public ArrayList<Flight> sortByPrice(ArrayList<Flight> flights){
+    public ArrayList<Flight> sortByPrice(ArrayList<Flight> flights) {
         Collections.sort(flights, Comparable::comparePrice);
-        System.out.println(flights);
         return flights;
     }
 
@@ -73,16 +59,15 @@ public class SearchServiceMockObject implements SearchServiceInterface {
         return flights;
     }
 
-    public ArrayList<Flight> sortByArrivalTime(ArrayList<Flight> flights){
+    public ArrayList<Flight> sortByArrivalTime(ArrayList<Flight> flights) {
         Collections.sort(flights, Comparable::compareArrivalTime);
         return flights;
     }
 
+
     public ArrayList<Flight> findAll(){
-        return makeFlights();
+        return this.flights;
     }
-
-
 
     // Skilar lista af 5 flugum
     public ArrayList<Flight> makeFlights() {
