@@ -9,14 +9,13 @@ import java.util.Optional;
 
 public class SearchController {
     private SearchServiceInterface searchServiceInterface;
-    private ArrayList<Flight> flights;
 
     public SearchController(SearchServiceInterface searchServiceInterface) {
         this.searchServiceInterface = searchServiceInterface;
     }
 
-    public void makeFlights(){
-        this.flights = searchServiceInterface.makeFlights();
+    public ArrayList<Flight> makeFlights(){
+        return searchServiceInterface.makeFlights();
     }
 
     public ArrayList<Flight> findFlights(LocalDateTime flightDate, String departureCity, String arrivalCity){
@@ -42,19 +41,4 @@ public class SearchController {
     public ArrayList<Flight> findAll(){
         return searchServiceInterface.findAll();
     }
-
-    /* ÞURFUM VIÐ AÐ HAFA ÞETTA HÉR?
-    public void delete(int flightId) {
-        searchServiceInterface.deleteFlight(flightId);
-    }
-
-    public void editFlight(int flightId, LocalDateTime newDepartureTime, LocalDateTime newArrivalTime){
-        searchServiceInterface.editFlight(flightId, newDepartureTime, newArrivalTime);
-    }
-
-    public void addFlight(Flight flight) {
-        searchServiceInterface.addFlight(flight);
-    }
-
-     */
 }
