@@ -1,4 +1,4 @@
-package test;
+package testFlightReservation.controller;
 
 import FlightReservation.model.Flight;
 import FlightReservation.controller.SearchController;
@@ -77,7 +77,6 @@ public class SearchControllerTest {
         assertTrue(flight.isPresent());
     }
 
-    // Testing the findById method with a legal argument, expecting an empty Optional object
     @Test
     public void testCase6(){
         int flightId = 10;

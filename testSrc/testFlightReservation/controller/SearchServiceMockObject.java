@@ -1,12 +1,12 @@
-package test;
+package testFlightReservation.controller;
 
+import FlightReservation.controller.Comparable;
 import FlightReservation.controller.SearchServiceInterface;
 import FlightReservation.model.Flight;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Optional;
 
 public class SearchServiceMockObject implements SearchServiceInterface {
@@ -48,62 +48,22 @@ public class SearchServiceMockObject implements SearchServiceInterface {
         return Optional.empty();
     }
 
-    // Eyðir flugi - veit ekki alveg með þetta
-    public void deleteFlight(int flightId) {
-        ArrayList<Flight> allFlights = makeFlights();
-        for(Flight flight: allFlights){
-            if(flight.getFlightID() == flightId){
-                allFlights.remove(flight);
-                System.out.println("Eyði flugi nr" + flight.getFlightID());
-            }
-        }
+
+    public ArrayList<Flight> sortByPrice(ArrayList<Flight> flights) {
+        Collections.sort(flights, Comparable::comparePrice);
+        return flights;
     }
 
-    // Breytir flugi
-    public void editFlight(int flightId, LocalDateTime newDepartureTime, LocalDateTime newArrivalTime){
-        // TODO: implement method
+    public ArrayList<Flight> sortByDepartureTime(ArrayList<Flight> flights){
+        Collections.sort(flights, Comparable::compareDepartureTime);
+        return flights;
     }
 
-    // Bætir við flugi
-    public void addFlight(Flight flight){
-        // TODO: implement method
+    public ArrayList<Flight> sortByArrivalTime(ArrayList<Flight> flights) {
+        Collections.sort(flights, Comparable::compareArrivalTime);
+        return flights;
     }
 
-    public ArrayList<Flight> sortByPrice(ArrayList<Flight> flightList){
-        Collections.sort(flightList, new Comparator<Flight>() {
-            @Override
-            public int compare(Flight o1, Flight o2) {
-                return o1.getPriceEconomy() > o2.getPriceEconomy() ? 1: o1.getPriceEconomy() < o2.getPriceEconomy() ? -1: 0;
-            }
-        });
-        System.out.println(flights);
-        return flightList;
-    }
-
-    public ArrayList<Flight> sortByDepartureTime(ArrayList<Flight> flightList){
-        Collections.sort(flightList, new Comparator<Flight>() {
-            @Override
-            public int compare(Flight o1, Flight o2) {
-                LocalDateTime time1 = o1.getDepartureTime();
-                LocalDateTime time2 = o2.getDepartureTime();
-
-                return time1.isBefore(time2) ? -1: time1.isEqual(time2) ? 0 : 1;
-            }
-        });
-        return flightList;
-    }
-    public ArrayList<Flight> sortByArrivalTime(ArrayList<Flight> flightList){
-        Collections.sort(flightList, new Comparator<Flight>() {
-            @Override
-            public int compare(Flight o1, Flight o2) {
-                LocalDateTime time1 = o1.getArrivalTime();
-                LocalDateTime time2 = o2.getArrivalTime();
-
-                return time1.isBefore(time2) ? -1: time1.isEqual(time2) ? 0 : 1;
-            }
-        });
-        return flightList;
-    }
 
     public ArrayList<Flight> findAll(){
         return this.flights;

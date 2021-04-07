@@ -1,5 +1,4 @@
 package FlightReservation.model;
-import FlightReservation.model.Ticket;
 
 import java.util.List;
 

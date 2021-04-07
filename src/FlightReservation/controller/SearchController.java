@@ -1,6 +1,5 @@
 package FlightReservation.controller;
 
-import FlightReservation.controller.SearchServiceInterface;
 import FlightReservation.model.Flight;
 
 import java.time.LocalDateTime;
