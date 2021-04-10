@@ -1,6 +1,5 @@
 package testFlightReservation.controller;
 
-import FlightReservation.controller.SearchService;
 import FlightReservation.model.Flight;
 import FlightReservation.controller.SearchController;
 import FlightReservation.controller.SearchServiceInterface;

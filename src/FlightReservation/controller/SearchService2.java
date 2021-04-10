@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class SearchService implements SearchServiceInterface {
+public class SearchService2 implements SearchServiceInterface {
     private SearchDBManager searchDBManager;
-    public SearchService() {
+    public SearchService2() {
         this.searchDBManager  = new SearchDBManager();
     }
 
