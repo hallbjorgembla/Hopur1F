@@ -126,4 +126,21 @@ public class Flight {
         this.priceEconomy = priceEconomy;
     }
 
+    @Override
+    public String toString() {
+        return "Flight{" +
+                "flightID=" + flightID +
+                ", flightNumber='" + flightNumber + '\'' +
+                ", flightDeparture='" + flightDeparture + '\'' +
+                ", flightDestination='" + flightDestination + '\'' +
+                ", departureTime=" + departureTime +
+                ", arrivalTime=" + arrivalTime +
+                ", flightTime=" + flightTime +
+                ", totalNumberOfSeats=" + totalNumberOfSeats +
+                ", seats=" + seats +
+                ", availableSeats=" + availableSeats +
+                ", priceFirstClass=" + priceFirstClass +
+                ", priceEconomy=" + priceEconomy +
+                '}';
+    }
 }

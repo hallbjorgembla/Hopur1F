@@ -4,7 +4,7 @@ DROP TABLE if exists Flights;
 DROP TABLE if exists Seats;
 DROP TABLE if exists Passengers;
 
-CREATE Table Bookings(
+CREATE TABLE Bookings(
 	bookingID INT NOT NULL PRIMARY KEY
 );
 
@@ -16,19 +16,20 @@ CREATE Table Tickets(
 
 CREATE Table Flights(
 	flightID INT NOT NULL,
-	flightNumber VARCHAR(30) NOT NULL, 
-	flightDeparture VARCHAR(30), 
-	flightDestination VARCHAR(30),	
-	departureTime LOCALDATETIME,
-	arrivalTime LOCALDATETIME,
+	flightNumber VARCHAR(30) NOT NULL,
+	flightDeparture VARCHAR(30),
+	flightDestination VARCHAR(30),
+	departureTime DATETIME,
+	arrivalTime DATETIME,
 	flightTime DOUBLE,
 	priceFirstClass DOUBLE,
 	priceEconomy DOUBLE,
+	numberOfSeats INT,
 	PRIMARY KEY(flightID, flightNumber)
 );
 
-CREATE Table Seats(
-	seatID INT NOT NULL,	
+CREATE TABLE Seats(
+	seatID INT NOT NULL,
 	seatNumber VARCHAR(30) NOT NULL,
 	seatOccupation BOOLEAN,
 	seatEconomy BOOLEAN,
@@ -40,10 +41,10 @@ CREATE Table Seats(
 	FOREIGN KEY(ticketID) REFERENCES Tickets(ticketID)
 );
 
-CREATE Table Passengers(
+CREATE TABLE Passengers(
 	passengerID INT NOT NULL,
-	name STRING,
-	passportNumber STRING NOT NULL,
+	name VARCHAR(30),
+	passportNumber VARCHAR(30) NOT NULL,
 	ticketID INT,
 	PRIMARY KEY(passengerID, passportNumber),
 	FOREIGN KEY(ticketID) REFERENCES Tickets(ticketID)
