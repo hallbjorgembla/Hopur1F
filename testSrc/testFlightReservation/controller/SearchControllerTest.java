@@ -14,21 +14,29 @@ import static org.junit.Assert.*;
 public class SearchControllerTest {
 
     private SearchController searchController;
-    private SearchServiceInterface mockSearchServiceInterface;
+    private SearchServiceInterface searchService;
     private ArrayList<Flight> flights;
 
     @Before
     public void setUp() {
-        this.mockSearchServiceInterface = new SearchServiceMockObject();
-        this.searchController = new SearchController(mockSearchServiceInterface);
+        this.searchService = new SearchServiceMockObject();
+        this.searchController = new SearchController(searchService);
         flights = searchController.findAll();
     }
 
     @After
     public void tearDown(){
         this.searchController = null;
-        this.mockSearchServiceInterface = null;
+        this.searchService = null;
         this.flights = null;
+    }
+
+    @Test
+    public void testCaseFindAll(){
+        flights = searchController.findAll();
+        for(Flight flight: flights) {
+            System.out.println(flight.toString());
+        }
     }
 
     // Testing the findFlights method with legal parameters
