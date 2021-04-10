@@ -1,6 +1,7 @@
 package FlightReservation.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Flight {
@@ -28,6 +29,13 @@ public class Flight {
         this.totalNumberOfSeats = totalNumberOfSeats;
         this.priceFirstClass = priceFirstClass;
         this.priceEconomy = priceEconomy;
+
+        this.availableSeats = new ArrayList<Seat>();
+        this.seats = new ArrayList<Seat>();
+        for(int i = 0; i < totalNumberOfSeats; i++){
+            availableSeats.add(new Seat(i, String.valueOf(i+1), false, false));
+            seats.add(new Seat(i, String.valueOf(i+1), false, false));
+        }
     }
 
     public int getFlightID() {

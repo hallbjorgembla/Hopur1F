@@ -141,4 +141,16 @@ public class SearchControllerTest {
         }
         assertFalse(isNotSorted);
     }
+
+    @Test
+    public void testCase11(){
+        ArrayList<Integer> availableSeats =  searchController.showAllAvailableSeats(flights);
+        for(var i = 0 ; i < availableSeats.size(); i++){
+            System.out.println(availableSeats.get(i));
+        }
+
+        boolean isFalse = false;
+        assertFalse(isFalse);
+
+    }
 }
