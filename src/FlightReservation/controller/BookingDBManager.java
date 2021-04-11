@@ -22,6 +22,28 @@ public class BookingDBManager {
         return conn;
     }
 
+    public ResultSet getAvailableSeatsFromFlight(int flightID){
+        Connection c;
+        ResultSet rs = null;
+        try {
+            c = getConnection();
+            PreparedStatement pStmt;
+            String sql= (
+                    "SELECT * FROM Seats WHERE " +
+                            "flightID = ? AND " +
+                            "seatOccupation = FALSE GROUP BY " +
+                                "seatID;");
+            pStmt = c.prepareStatement(sql);
+            pStmt.setInt(1, flightID);
+            rs = pStmt.executeQuery();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        return rs;
+    }
+
     public ResultSet getTicketsByBookingID(int bookingID){
         Connection c;
         ResultSet rs = null;
@@ -47,10 +69,11 @@ public class BookingDBManager {
                                 "Tickets, Passengers, Seats, Flights WHERE " +
                                     "Ticket.ticketID = Passengers.ticketID AND " +
                                     "Ticket.ticketID = Seats.ticketID AND " +
-                                    "Ticket.bookingID = " + bookingID + " AND " +
+                                    "Ticket.bookingID = ? AND " +
                                     "Seats.flightID = Flight.flightID GROUP BY" +
                                         "ticketID;");
             pStmt = c.prepareStatement(sql);
+            pStmt.setInt(1, bookingID);
             rs = pStmt.executeQuery();
 
         } catch (Exception e) {

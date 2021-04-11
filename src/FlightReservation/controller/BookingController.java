@@ -1,9 +1,6 @@
 package FlightReservation.controller;
 
-import FlightReservation.model.Booking;
-import FlightReservation.model.Passenger;
-import FlightReservation.model.Seat;
-import FlightReservation.model.Ticket;
+import FlightReservation.model.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,6 +9,7 @@ public class BookingController {
     private BookingService bookingService;
     private Booking booking;
     private ArrayList<Ticket> tickets;
+    private ArrayList<Seat> seats;
 
     public BookingController() {
         this.bookingService = new BookingService();
@@ -43,9 +41,14 @@ public class BookingController {
         bookingService.cancelBooking(booking);
     }
 
-    public Booking getBooking(Booking bookingNO) {//sýnir alla miða fyrir bókun
-        tickets = bookingService.getTickets(bookingNO.getBookingID());
-        booking = new Booking(bookingNO.getBookingID(), tickets);
+    public Booking showTicketsInBooking(Booking b) {
+        tickets = bookingService.getTickets(b.getBookingID());
+        booking = new Booking(b.getBookingID(), tickets);
         return booking;
+    }
+
+    public ArrayList<Seat> showSeatsOnFlight(Flight flight){//sýnir bara laus sæti
+        seats = bookingService.getSeats(flight.getFlightID());
+        return seats;
     }
 }

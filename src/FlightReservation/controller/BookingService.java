@@ -57,4 +57,23 @@ public class BookingService {
         }
         return ticketList;
     }
+
+    public ArrayList<Seat> getSeats(int flightID){
+        ResultSet rs = bookingDBManager.getAvailableSeatsFromFlight(flightID);
+        ArrayList<Seat>  seatList = new ArrayList<>();
+        try {
+            while(rs.next()) {
+                int seatID = rs.getInt(1);
+                String seatNumber = rs.getString(2);
+                boolean seatOccupation = rs.getBoolean(3);
+                boolean classEconomy = rs.getBoolean(4);
+                Seat s = new Seat(seatID, seatNumber, seatOccupation, classEconomy);
+                seatList.add(s);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return seatList;
+    }
 }
