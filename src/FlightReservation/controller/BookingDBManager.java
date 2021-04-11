@@ -1,5 +1,7 @@
 package FlightReservation.controller;
 
+import FlightReservation.model.Booking;
+
 import java.sql.*;
 
 public class BookingDBManager {
@@ -54,6 +56,10 @@ public class BookingDBManager {
             System.exit(0);
         }
         return rs;
+    }
+
+    public void insertToDB(Booking booking){
+
     }
 
     public String createQuery() {

@@ -13,8 +13,9 @@ public class BookingController {
     public BookingController() {
         this.bookingService = new BookingService();
     }
-    public void book(Booking bookingNO) {
-        bookingService.book(bookingNO);
+    public void book(int bookingNO, ArrayList<Ticket> tickets) {
+        booking = new Booking(bookingNO, tickets);
+        bookingService.book(booking);
     }
 
     public void cancelBooking(Booking bookingNO) {

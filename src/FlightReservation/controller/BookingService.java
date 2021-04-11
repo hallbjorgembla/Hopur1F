@@ -13,8 +13,8 @@ public class BookingService {
         this.bookingDBManager = new BookingDBManager();
     }
 
-    public void book(Booking bookingNO) {
-
+    public void book(Booking booking) {
+        bookingDBManager.insertToDB(booking);
     }
 
     public void cancelBooking(Booking bookingNO) {
