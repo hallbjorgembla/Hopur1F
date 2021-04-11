@@ -24,9 +24,29 @@ public class BookingDBManager {
         try {
             c = getConnection();
             PreparedStatement pStmt;
-            String sql1 = ("SELECT * FROM Tickets Where bookingID == " + bookingID + ";");//Finna alla miða með sömu bókunarnúmer
-            String sql2 = ("SELECT ticketID, name, seat, flight FROM ");//finna alla upplýsingar fyrir hvern miða
-            pStmt = c.prepareStatement(sql1);
+            String sql= (
+                    "SELECT ticketID, " +
+                            "passengerID, " +
+                            "name, " +
+                            "passportNumber, " +
+                            "seatID, " +
+                            "seatNumber, " +
+                            "seatOccupation, " +
+                            "classEconomy, " +
+                            "flightID, " +
+                            "flightNumber, " +
+                            "flightDeparture, " +
+                            "flightDestination, " +
+                            "departureTime, " +
+                            "arrivalTime, " +
+                            "flightTime FROM " +
+                                "Tickets, Passengers, Seats, Flights WHERE " +
+                                    "Ticket.ticketID == Passengers.ticketID AND " +
+                                    "Ticket.ticketID == Seats.ticketID AND " +
+                                    "Ticket.bookingID == " + bookingID + " AND " +
+                                    "Seats.flightID == Flight.flightID GROUP BY" +
+                                        "ticketID;");
+            pStmt = c.prepareStatement(sql);
             rs = pStmt.executeQuery();
 
         } catch (Exception e) {
