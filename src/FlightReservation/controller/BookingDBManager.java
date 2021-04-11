@@ -1,8 +1,10 @@
 package FlightReservation.controller;
 
 import FlightReservation.model.Booking;
+import FlightReservation.model.Ticket;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class BookingDBManager {
 
@@ -20,7 +22,7 @@ public class BookingDBManager {
         return conn;
     }
 
-    public ResultSet ticketsByBookingID(int bookingID){
+    public ResultSet getTicketsByBookingID(int bookingID){
         Connection c;
         ResultSet rs = null;
         try {
@@ -43,10 +45,10 @@ public class BookingDBManager {
                             "arrivalTime, " +
                             "flightTime FROM " +
                                 "Tickets, Passengers, Seats, Flights WHERE " +
-                                    "Ticket.ticketID == Passengers.ticketID AND " +
-                                    "Ticket.ticketID == Seats.ticketID AND " +
-                                    "Ticket.bookingID == " + bookingID + " AND " +
-                                    "Seats.flightID == Flight.flightID GROUP BY" +
+                                    "Ticket.ticketID = Passengers.ticketID AND " +
+                                    "Ticket.ticketID = Seats.ticketID AND " +
+                                    "Ticket.bookingID = " + bookingID + " AND " +
+                                    "Seats.flightID = Flight.flightID GROUP BY" +
                                         "ticketID;");
             pStmt = c.prepareStatement(sql);
             rs = pStmt.executeQuery();
@@ -59,6 +61,60 @@ public class BookingDBManager {
     }
 
     public void insertToDB(Booking booking){
+        Connection a;
+        try {
+            a = getConnection();
+            PreparedStatement pStmt;
+            String sql;
+
+            int bookingID = booking.getBookingID();
+            sql = "INSERT INTO Bookings (bookingID) VALUES (?)";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setInt(1, bookingID);
+            pStmt.execute();
+
+            ArrayList<Ticket> tickets = booking.getTickets();
+            for(Ticket ticket: tickets){
+
+                sql = "INSERT INTO Tickets (ticketID, bookingID) VALUES (?,?)";
+                pStmt = a.prepareStatement(sql);
+                pStmt.setInt(1, ticket.getTicketID());
+                pStmt.setInt(2, bookingID);
+                pStmt.execute();
+
+                sql = "INSERT INTO Tickets (ticketID, bookingID) VALUES (?,?)";
+                pStmt = a.prepareStatement(sql);
+                pStmt.setInt(1, ticket.getTicketID());
+                pStmt.setInt(2, bookingID);
+                pStmt.execute();
+
+                sql = "INSERT INTO Passengers (passengerID, name, passportNumber) VALUES (?,?,?)";
+                pStmt = a.prepareStatement(sql);
+                pStmt.setInt(1, ticket.getPassenger().getPassengerID());
+                pStmt.setString(2, ticket.getPassenger().getName());
+                pStmt.setString(3, ticket.getPassenger().getPassportNumber());
+                pStmt.execute();
+
+                sql = "UPDATE Seats SET seatOccupation = ? AND ticketID = ? WHERE seatID = ?";
+                pStmt = a.prepareStatement(sql);
+                pStmt.setBoolean(1, ticket.getSeat().isSeatOccupation());
+                pStmt.setInt(2, ticket.getTicketID());
+                pStmt.setInt(3, ticket.getSeat().getSeatID());
+                pStmt.execute();
+            }
+
+
+            a.close();
+
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+        System.out.println("Opened database successfully");
+    }
+
+    //sleppa??
+    public void deleteFromDB(Booking booking) {
 
     }
 

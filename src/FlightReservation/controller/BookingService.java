@@ -17,12 +17,13 @@ public class BookingService {
         bookingDBManager.insertToDB(booking);
     }
 
-    public void cancelBooking(Booking bookingNO) {
 
+    public void cancelBooking(Booking booking) {
+        bookingDBManager.deleteFromDB(booking);
     }
 
-    public ArrayList<Ticket> getTickets(int bookingID) {
-        ResultSet rs = bookingDBManager.ticketsByBookingID(bookingID);
+    public ArrayList<Ticket> getTickets(int bookingID) {//Fáum lista af miðum fyrir ákveðna bókun
+        ResultSet rs = bookingDBManager.getTicketsByBookingID(bookingID);
         ArrayList<Ticket>  ticketList = new ArrayList<>();
         try {
             while(rs.next()) {
