@@ -18,14 +18,15 @@ public class BookingDBManager {
         return conn;
     }
 
-    public ResultSet allBooking(){
+    public ResultSet ticketsByBookingID(int bookingID){
         Connection c;
         ResultSet rs = null;
         try {
             c = getConnection();
             PreparedStatement pStmt;
-            String sql = "Select * FROM Booking";//Á eftir að bæta meir
-            pStmt = c.prepareStatement(sql);
+            String sql1 = ("SELECT * FROM Tickets Where bookingID == " + bookingID + ";");//Finna alla miða með sömu bókunarnúmer
+            String sql2 = ("SELECT ticketID, name, seat, flight FROM ");//finna alla upplýsingar fyrir hvern miða
+            pStmt = c.prepareStatement(sql1);
             rs = pStmt.executeQuery();
 
         } catch (Exception e) {
