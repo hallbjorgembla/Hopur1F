@@ -37,7 +37,17 @@ public class SearchController {
         return searchServiceInterface.sortByArrivalTime(flights);
     }
 
+    public ArrayList showAllAvailableSeats(ArrayList<Flight> flights) {
+        ArrayList<Integer> availableSeats = new ArrayList<Integer>();
+
+        for(int i = 0; i < flights.size(); i++){
+            availableSeats.add(flights.get(i).getAvailableSeats().size());
+        }
+        return availableSeats;
+    }
+
     public ArrayList<Flight> findAll(){
         return searchServiceInterface.findAll();
     }
 }
+

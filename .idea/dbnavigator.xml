@@ -25,9 +25,9 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0">
-        <schema name="flightDb" object-types="function, table, procedure, view" />
-        <schema name="flightSearchDB" object-types="function, dataset trigger, index, constraint, column, table, procedure, view" />
-        <schema name="mysql" object-types="function, table, procedure, view" />
+        <schema name="flightDb" object-types="table, function, view, procedure" />
+        <schema name="flightSearchDB" object-types="constraint, index, table, dataset trigger, column, function, view, procedure" />
+        <schema name="mysql" object-types="table, function, view, procedure" />
       </connection>
     </loaded-nodes>
   </component>
