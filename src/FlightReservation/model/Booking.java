@@ -1,12 +1,12 @@
 package FlightReservation.model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Booking {
     private int bookingID;
-    private List<Ticket> tickets;
+    private ArrayList<Ticket> tickets;
 
-    public Booking(int bookingID, List<Ticket> tickets) {
+    public Booking(int bookingID, ArrayList<Ticket> tickets) {
         this.bookingID = bookingID;
         this.tickets = tickets;
     }
@@ -19,11 +19,11 @@ public class Booking {
         this.bookingID = bookingID;
     }
 
-    public List<Ticket> getTickets() {
+    public ArrayList<Ticket> getTickets() {
         return tickets;
     }
 
-    public void setTickets(List<Ticket> tickets) {
+    public void setTickets(ArrayList<Ticket> tickets) {
         this.tickets = tickets;
     }
 }
