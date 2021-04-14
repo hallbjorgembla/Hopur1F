@@ -19,25 +19,7 @@ public class SearchService implements SearchServiceInterface {
     public ArrayList<Flight> findAll() {
         ResultSet rs = searchDBManager.findAll();
         ArrayList<Flight> flightList = new ArrayList<Flight>();
-        try {
-            while (rs.next()) {
-                int flightId = rs.getInt(1);
-                String flightNumber = rs.getString(2);
-                String departureCity = rs.getString(3);
-                String arrivalCity = rs.getString(4);
-                LocalDateTime departure = rs.getTimestamp(5).toLocalDateTime();
-                //LocalDateTime arrival = rs.getTimestamp(6).toLocalDateTime();
-                double flightTime = rs.getDouble(7);
-                double priceFirstClass = rs.getDouble(8);
-                double priceEconomy = rs.getDouble(9);
-                int numberOfSeats = rs.getInt(10);
-                Flight flight = new Flight(flightId, flightNumber, departureCity, arrivalCity, departure, flightTime, numberOfSeats, priceFirstClass, priceEconomy);
-                flightList.add(flight);
-            }
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
+        resultToList(rs, flightList);
         return flightList;
     }
 
@@ -69,5 +51,26 @@ public class SearchService implements SearchServiceInterface {
     @Override
     public ArrayList<Flight> makeFlights() {
         return null;
+    }
+
+    public void resultToList(ResultSet rs, ArrayList<Flight> flightList) {
+        try {
+            while (rs.next()) {
+                int flightId = rs.getInt(1);
+                String flightNumber = rs.getString(2);
+                String departureCity = rs.getString(3);
+                String arrivalCity = rs.getString(4);
+                LocalDateTime departure = rs.getTimestamp(5).toLocalDateTime();
+                //LocalDateTime arrival = rs.getTimestamp(6).toLocalDateTime();
+                double flightTime = rs.getDouble(7);
+                double priceFirstClass = rs.getDouble(8);
+                double priceEconomy = rs.getDouble(9);
+                int numberOfSeats = rs.getInt(10);
+                Flight flight = new Flight(flightId, flightNumber, departureCity, arrivalCity, departure, flightTime, numberOfSeats, priceFirstClass, priceEconomy);
+                flightList.add(flight);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

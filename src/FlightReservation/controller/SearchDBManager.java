@@ -23,13 +23,12 @@ public class SearchDBManager {
         return connection;
     }
 
-    public ResultSet findAll(){
+    public ResultSet executeQuery(String sql){
         Connection c = null;
         ResultSet rs = null;
         try {
             c = getConnection();
             PreparedStatement preparedStatement = null;
-            String sql = "SELECT * FROM Flights";
             preparedStatement = c.prepareStatement(sql);
             rs = preparedStatement.executeQuery();
 
@@ -38,6 +37,17 @@ public class SearchDBManager {
             System.exit(0);
         }
         return rs;
+    }
+
+    public ResultSet findAll(){
+        Connection c = null;
+        ResultSet rs = null;
+        rs = executeQuery("SELECT * FROM Flights");
+        return rs;
+    }
+
+    public ResultSet findFlights(){
+        return null;
     }
 
     public String createQuery() {
