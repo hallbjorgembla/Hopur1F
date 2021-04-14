@@ -1,17 +1,8 @@
-import FlightReservation.controller.BookingController;
-import FlightReservation.controller.BookingDBManager;
-import FlightReservation.controller.BookingService;
-import FlightReservation.model.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.security.KeyStore;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.LocalDateTime;
 
 // Þetta er main skjalið okkar
 public class Main extends Application {
@@ -24,7 +15,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         launch(args);
     }
 }
