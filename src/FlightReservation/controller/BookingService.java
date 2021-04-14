@@ -22,9 +22,9 @@ public class BookingService {
         bookingDBManager.deleteFromDB(booking);
     }
 
-    public ArrayList<Ticket> getTickets(int bookingID) {//Fáum lista af miðum fyrir ákveðna bókun
-        ResultSet rs = bookingDBManager.getTicketsByBookingID(bookingID);
-        ArrayList<Ticket>  ticketList = new ArrayList<>();
+    public Ticket getTicket(int bookingID) {
+        ResultSet rs = bookingDBManager.getTicketByBookingID(bookingID);
+        Ticket ticket = null;
         try {
             while(rs.next()) {
                 int ticketID = rs.getInt(1);
@@ -48,14 +48,13 @@ public class BookingService {
                 LocalDateTime arrivalTime = rs.getTimestamp(14).toLocalDateTime();
                 double flightTime = rs.getDouble(15);
 
-                Ticket t = new Ticket(ticketID, p, s, flightID, flightNumber, flightDeparture, flightDestination, departureTime, arrivalTime, flightTime);
-                ticketList.add(t);
+                ticket = new Ticket(ticketID, p, s, flightID, flightNumber, flightDeparture, flightDestination, departureTime, arrivalTime, flightTime);
             }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        return ticketList;
+        return ticket;
     }
 
     public ArrayList<Seat> getSeats(int flightID){

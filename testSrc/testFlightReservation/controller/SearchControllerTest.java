@@ -1,6 +1,5 @@
 package testFlightReservation.controller;
 
-import FlightReservation.controller.SearchService;
 import FlightReservation.model.Flight;
 import FlightReservation.controller.SearchController;
 import FlightReservation.controller.SearchServiceInterface;
@@ -10,7 +9,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class SearchControllerTest {
 
@@ -20,7 +21,8 @@ public class SearchControllerTest {
 
     @Before
     public void setUp() {
-        this.searchService = new SearchService();
+
+        this.searchService = new SearchServiceMockObject();
         this.searchController = new SearchController(searchService);
         flights = searchController.findAll();
     }
@@ -40,16 +42,6 @@ public class SearchControllerTest {
         }
     }
 
-    @Test
-    public void testCaseFindFlights(){
-        LocalDateTime time = LocalDateTime.of(2021,6,1,12,0,0);
-        System.out.println(time.toString().substring(0,10).concat("'T'00:00:00"));
-        flights = searchController.findFlights(time, "Reykjavík", "Akureyri");
-        for(Flight flight: flights) {
-            System.out.println(flight.toString());
-        }
-    }
-
     // Testing the findFlights method with legal parameters
     @Test
     public void testCase1(){
@@ -58,7 +50,7 @@ public class SearchControllerTest {
         String arrivalCity = "Akureyri";
         flights = searchController.findFlights(flightDate, departureCity, arrivalCity);
         assertNotNull(flights);
-        assertTrue(!flights.isEmpty());
+        Assert.assertTrue(!flights.isEmpty());
     }
 
     // Testing the findFlight method with the empty string, which should throw an IllegalArgumentException
