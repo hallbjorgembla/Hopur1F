@@ -144,11 +144,6 @@ public class Flight {
                 ", departureTime=" + departureTime +
                 ", arrivalTime=" + arrivalTime +
                 ", flightTime=" + flightTime +
-                ", totalNumberOfSeats=" + totalNumberOfSeats +
-                ", seats=" + seats +
-                ", availableSeats=" + availableSeats +
-                ", priceFirstClass=" + priceFirstClass +
-                ", priceEconomy=" + priceEconomy +
                 '}';
     }
 }
