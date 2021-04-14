@@ -22,6 +22,6 @@
             <TreeTableColumn prefWidth="100.0" text="Price" />
         </columns>
       </TreeTableView>
-      <Button fx:id="fxFindBack" layoutX="52.0" layoutY="451.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="80.0" text="Back" />
+      <Button fx:id="fxFindBack" layoutX="52.0" layoutY="451.0" mnemonicParsing="false" onAction="#openStart" prefHeight="27.0" prefWidth="80.0" text="Back" />
    </children>
 </AnchorPane>

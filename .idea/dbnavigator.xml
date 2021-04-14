@@ -26,8 +26,7 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0">
-        <schema name="flightSearchDB" object-types="view, table, column" />
-        <schema name="flightsearchdb" object-types="column, index, table, procedure, constraint, function, view, dataset trigger" />
+        <schema name="flightSearchDB" object-types="view, function, constraint, table, column, index, procedure, dataset trigger" />
       </connection>
     </loaded-nodes>
   </component>
@@ -55,11 +54,159 @@
       <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
       <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
       <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
+      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
     </connection>
     <connection id="83cabbc2-125e-4012-aaba-1d904ff2aeff" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0" dataset="flightSearchDB.Flights" active-filter-id="" />
+    <filter-actions connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0" dataset="flightsearchdb.bookings" active-filter-id="" />
+    <filter-actions connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0" dataset="flightsearchdb.flights" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -69,7 +216,6 @@
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
     <mapping file-url="file://$PROJECT_DIR$/file.sql" connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0" session-id="MAIN" current-schema="flightSearchDB" />
-    <mapping file-url="file://$PROJECT_DIR$/file.sql" connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0" session-id="MAIN" current-schema="mysql" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
