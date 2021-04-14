@@ -40,17 +40,17 @@ public class SearchDBManager {
     }
 
     public ResultSet findAll(){
-        Connection c = null;
         ResultSet rs = null;
         rs = executeQuery("SELECT * FROM Flights");
         return rs;
     }
 
-    public ResultSet findFlights(){
-        return null;
-    }
-
-    public String createQuery() {
-        return null;
+    public ResultSet findFlights(LocalDateTime departureDate, String departureCity, String arrivalCity){
+        String searchString = "SELECT * FROM Flights WHERE " +
+                                "departureTime LIKE '" + departureDate.toString().substring(0, 10) + "%' AND " +
+                                "flightDeparture = '" + departureCity + "' AND " +
+                                "flightDestination = '" + arrivalCity + "'";
+        ResultSet rs = executeQuery(searchString);
+        return rs;
     }
 }

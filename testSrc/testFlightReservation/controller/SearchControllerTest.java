@@ -1,5 +1,6 @@
 package testFlightReservation.controller;
 
+import FlightReservation.controller.SearchService;
 import FlightReservation.model.Flight;
 import FlightReservation.controller.SearchController;
 import FlightReservation.controller.SearchServiceInterface;
@@ -19,7 +20,7 @@ public class SearchControllerTest {
 
     @Before
     public void setUp() {
-        this.searchService = new SearchServiceMockObject();
+        this.searchService = new SearchService();
         this.searchController = new SearchController(searchService);
         flights = searchController.findAll();
     }
@@ -34,6 +35,16 @@ public class SearchControllerTest {
     @Test
     public void testCaseFindAll(){
         flights = searchController.findAll();
+        for(Flight flight: flights) {
+            System.out.println(flight.toString());
+        }
+    }
+
+    @Test
+    public void testCaseFindFlights(){
+        LocalDateTime time = LocalDateTime.of(2021,6,1,12,0,0);
+        System.out.println(time.toString().substring(0,10).concat("'T'00:00:00"));
+        flights = searchController.findFlights(time, "Reykjavík", "Akureyri");
         for(Flight flight: flights) {
             System.out.println(flight.toString());
         }

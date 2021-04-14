@@ -2,6 +2,7 @@ package FlightReservation.controller;
 
 import FlightReservation.model.Flight;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -25,7 +26,10 @@ public class SearchService implements SearchServiceInterface {
 
     @Override
     public ArrayList<Flight> findFlights(LocalDateTime flightDate, String departureCity, String arrivalCity) {
-        return null;
+        ResultSet rs = searchDBManager.findFlights(flightDate, departureCity, arrivalCity);
+        ArrayList<Flight> flightList = new ArrayList<Flight>();
+        resultToList(rs, flightList);
+        return flightList;
     }
 
     @Override
@@ -61,7 +65,6 @@ public class SearchService implements SearchServiceInterface {
                 String departureCity = rs.getString(3);
                 String arrivalCity = rs.getString(4);
                 LocalDateTime departure = rs.getTimestamp(5).toLocalDateTime();
-                //LocalDateTime arrival = rs.getTimestamp(6).toLocalDateTime();
                 double flightTime = rs.getDouble(7);
                 double priceFirstClass = rs.getDouble(8);
                 double priceEconomy = rs.getDouble(9);
