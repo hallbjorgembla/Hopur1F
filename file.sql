@@ -49,3 +49,6 @@ CREATE TABLE Passengers(
 	PRIMARY KEY(passengerID, passportNumber),
 	FOREIGN KEY(ticketID) REFERENCES Tickets(ticketID)
 );
+
+INSERT INTO Flights (flightID, flightNumber, flightDeparture, flightDestination, departureTime, arrivalTime, flightTime, priceFirstClass, priceEconomy, numberOfSeats)
+    VALUES (1, "Flug 1", "Reykjavík", "Akureyri", LocalDateTime.of(2021, 6, 10, 10, 30), LocalDateTime.of(2021, 6, 10, 10, 30), 2, 100, 20000, 10000)

@@ -9,7 +9,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class SearchControllerTest {
 
@@ -19,6 +21,7 @@ public class SearchControllerTest {
 
     @Before
     public void setUp() {
+
         this.searchService = new SearchServiceMockObject();
         this.searchController = new SearchController(searchService);
         flights = searchController.findAll();
@@ -47,7 +50,7 @@ public class SearchControllerTest {
         String arrivalCity = "Akureyri";
         flights = searchController.findFlights(flightDate, departureCity, arrivalCity);
         assertNotNull(flights);
-        assertTrue(!flights.isEmpty());
+        Assert.assertTrue(!flights.isEmpty());
     }
 
     // Testing the findFlight method with the empty string, which should throw an IllegalArgumentException

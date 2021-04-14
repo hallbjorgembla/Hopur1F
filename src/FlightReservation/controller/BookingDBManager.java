@@ -4,7 +4,6 @@ import FlightReservation.model.Booking;
 import FlightReservation.model.Ticket;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class BookingDBManager {
 
@@ -44,7 +43,7 @@ public class BookingDBManager {
         return rs;
     }
 
-    public ResultSet getTicketsByBookingID(int bookingID){
+    public ResultSet getTicketByBookingID(int bookingID){
         Connection c;
         ResultSet rs = null;
         try {
@@ -96,36 +95,32 @@ public class BookingDBManager {
             pStmt.setInt(1, bookingID);
             pStmt.execute();
 
-            ArrayList<Ticket> tickets = booking.getTickets();
-            for(Ticket ticket: tickets){
+            Ticket ticket = booking.getTicket();
+            sql = "INSERT INTO Tickets (ticketID, bookingID) VALUES (?,?)";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setInt(1, ticket.getTicketID());
+            pStmt.setInt(2, bookingID);
+            pStmt.execute();
 
-                sql = "INSERT INTO Tickets (ticketID, bookingID) VALUES (?,?)";
-                pStmt = a.prepareStatement(sql);
-                pStmt.setInt(1, ticket.getTicketID());
-                pStmt.setInt(2, bookingID);
-                pStmt.execute();
+            sql = "INSERT INTO Tickets (ticketID, bookingID) VALUES (?,?)";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setInt(1, ticket.getTicketID());
+            pStmt.setInt(2, bookingID);
+            pStmt.execute();
 
-                sql = "INSERT INTO Tickets (ticketID, bookingID) VALUES (?,?)";
-                pStmt = a.prepareStatement(sql);
-                pStmt.setInt(1, ticket.getTicketID());
-                pStmt.setInt(2, bookingID);
-                pStmt.execute();
+            sql = "INSERT INTO Passengers (passengerID, name, passportNumber) VALUES (?,?,?)";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setInt(1, ticket.getPassenger().getPassengerID());
+            pStmt.setString(2, ticket.getPassenger().getName());
+            pStmt.setString(3, ticket.getPassenger().getPassportNumber());
+            pStmt.execute();
 
-                sql = "INSERT INTO Passengers (passengerID, name, passportNumber) VALUES (?,?,?)";
-                pStmt = a.prepareStatement(sql);
-                pStmt.setInt(1, ticket.getPassenger().getPassengerID());
-                pStmt.setString(2, ticket.getPassenger().getName());
-                pStmt.setString(3, ticket.getPassenger().getPassportNumber());
-                pStmt.execute();
-
-                sql = "UPDATE Seats SET seatOccupation = ? AND ticketID = ? WHERE seatID = ?";
-                pStmt = a.prepareStatement(sql);
-                pStmt.setBoolean(1, ticket.getSeat().isSeatOccupation());
-                pStmt.setInt(2, ticket.getTicketID());
-                pStmt.setInt(3, ticket.getSeat().getSeatID());
-                pStmt.execute();
-            }
-
+            sql = "UPDATE Seats SET seatOccupation = ? AND ticketID = ? WHERE seatID = ?";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setBoolean(1, ticket.getSeat().isSeatOccupation());
+            pStmt.setInt(2, ticket.getTicketID());
+            pStmt.setInt(3, ticket.getSeat().getSeatID());
+            pStmt.execute();
 
             a.close();
 
