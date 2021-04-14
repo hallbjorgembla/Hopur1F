@@ -4,6 +4,7 @@ import FlightReservation.model.*;
 
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class BookingService {
     private BookingDBManager bookingDBManager;
@@ -21,9 +22,9 @@ public class BookingService {
         bookingDBManager.deleteFromDB(booking);
     }
 
-    public Ticket getTicket(int bookingID) {
-        ResultSet rs = bookingDBManager.getTicketByBookingID(bookingID);
-        Ticket ticket = null;
+    public ArrayList<Ticket> getTickets(int bookingID) {//Fáum lista af miðum fyrir ákveðna bókun
+        ResultSet rs = bookingDBManager.getTicketsByBookingID(bookingID);
+        ArrayList<Ticket>  ticketList = new ArrayList<>();
         try {
             while(rs.next()) {
                 int ticketID = rs.getInt(1);
@@ -47,12 +48,32 @@ public class BookingService {
                 LocalDateTime arrivalTime = rs.getTimestamp(14).toLocalDateTime();
                 double flightTime = rs.getDouble(15);
 
-                ticket = new Ticket(ticketID, p, s, flightID, flightNumber, flightDeparture, flightDestination, departureTime, arrivalTime, flightTime);
+                Ticket t = new Ticket(ticketID, p, s, flightID, flightNumber, flightDeparture, flightDestination, departureTime, arrivalTime, flightTime);
+                ticketList.add(t);
             }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        return ticket;
+        return ticketList;
+    }
+
+    public ArrayList<Seat> getSeats(int flightID){
+        ResultSet rs = bookingDBManager.getAvailableSeatsFromFlight(flightID);
+        ArrayList<Seat>  seatList = new ArrayList<>();
+        try {
+            while(rs.next()) {
+                int seatID = rs.getInt(1);
+                String seatNumber = rs.getString(2);
+                boolean seatOccupation = rs.getBoolean(3);
+                boolean classEconomy = rs.getBoolean(4);
+                Seat s = new Seat(seatID, seatNumber, seatOccupation, classEconomy);
+                seatList.add(s);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return seatList;
     }
 }

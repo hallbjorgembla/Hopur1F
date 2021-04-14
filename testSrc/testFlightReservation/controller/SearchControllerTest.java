@@ -1,16 +1,16 @@
 package testFlightReservation.controller;
 
-import FlightReservation.controller.*;
-import FlightReservation.model.*;
+import FlightReservation.controller.SearchService;
+import FlightReservation.model.Flight;
+import FlightReservation.controller.SearchController;
+import FlightReservation.controller.SearchServiceInterface;
 import org.junit.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SearchControllerTest {
 
@@ -21,7 +21,6 @@ public class SearchControllerTest {
     @Before
     public void setUp() {
         this.searchService = new SearchService();
-        this.searchService = new SearchServiceMockObject();
         this.searchController = new SearchController(searchService);
         flights = searchController.findAll();
     }
@@ -59,7 +58,7 @@ public class SearchControllerTest {
         String arrivalCity = "Akureyri";
         flights = searchController.findFlights(flightDate, departureCity, arrivalCity);
         assertNotNull(flights);
-        Assert.assertTrue(!flights.isEmpty());
+        assertTrue(!flights.isEmpty());
     }
 
     // Testing the findFlight method with the empty string, which should throw an IllegalArgumentException
@@ -172,15 +171,5 @@ public class SearchControllerTest {
         boolean isFalse = false;
         assertFalse(isFalse);
 
-    }
-
-    @Test
-    public void testCase12() {
-        BookingController bc = new BookingController();
-        Passenger p = new Passenger(1, "Katja", "katja");
-        Seat s = new Seat(1, "20A", true, true);
-        Ticket t = new Ticket(1, p, s, 1, "FL101", "Reykjavík", "Akureyri", LocalDateTime.now(), LocalDateTime.now(), 0.75);
-        bc.book(1, t);
-        bc.cancelBooking(1, t);
     }
 }

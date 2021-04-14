@@ -99,7 +99,7 @@ public class Ticket {
         this.arrivalTime = arrivalTime;
     }
 
-    public double getFlightTime() {
+    public double getFlightTime(double flightTime) {
         return flightTime;
     }
 

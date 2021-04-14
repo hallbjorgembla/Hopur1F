@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Booking {
     private int bookingID;
-    private Ticket ticket;
+    private ArrayList<Ticket> tickets;
 
-    public Booking(int bookingID, Ticket ticket) {
+    public Booking(int bookingID, ArrayList<Ticket> tickets) {
         this.bookingID = bookingID;
-        this.ticket = ticket;
+        this.tickets = tickets;
     }
 
     public int getBookingID() {
@@ -19,12 +19,12 @@ public class Booking {
         this.bookingID = bookingID;
     }
 
-    public Ticket getTicket() {
-        return ticket;
+    public ArrayList<Ticket> getTickets() {
+        return tickets;
     }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
+    public void setTickets(ArrayList<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }
 
