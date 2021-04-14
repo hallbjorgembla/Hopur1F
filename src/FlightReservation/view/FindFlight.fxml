@@ -11,7 +11,7 @@
       <TextField fx:id="fxFindArr" layoutX="222.0" layoutY="76.0" />
       <Label layoutX="51.0" layoutY="118.0" text="Date" />
       <DatePicker fx:id="fxFindDate" layoutX="52.0" layoutY="142.0" prefHeight="27.0" prefWidth="161.0" />
-      <Button fx:id="fxFindEnter" layoutX="472.0" layoutY="76.0" mnemonicParsing="false" onAction="#displayFlights" prefHeight="27.0" prefWidth="80.0" text="Enter" />
+      <Button fx:id="fxFindEnter" layoutX="472.0" layoutY="76.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="80.0" text="Enter" />
       <Button fx:id="fxFindBook" layoutX="472.0" layoutY="142.0" mnemonicParsing="false" onAction="#openBookFlight" prefHeight="27.0" prefWidth="80.0" text="Book Flight" />
       <TreeTableView fx:id="fxFindFlights" layoutX="52.0" layoutY="199.0" prefHeight="240.0" prefWidth="500.0">
         <columns>
