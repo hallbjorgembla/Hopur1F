@@ -45,9 +45,4 @@ public class BookingController {
         booking = new Booking(bookingID, ticket);
         return booking;
     }
-
-    public ArrayList<Seat> showSeatsOnFlight(Flight flight){//sýnir bara laus sæti
-        seats = bookingService.getSeats(flight.getFlightID());
-        return seats;
-    }
 }

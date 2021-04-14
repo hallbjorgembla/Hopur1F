@@ -1,12 +1,14 @@
 package testFlightReservation.controller;
 
-import FlightReservation.model.Flight;
-import FlightReservation.controller.SearchController;
-import FlightReservation.controller.SearchServiceInterface;
+import FlightReservation.controller.*;
+import FlightReservation.model.*;
 import org.junit.*;
 
+import java.sql.ResultSet;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Optional;
 
 import static org.junit.Assert.assertFalse;
@@ -21,7 +23,7 @@ public class SearchControllerTest {
 
     @Before
     public void setUp() {
-
+        this.searchService = new SearchService();
         this.searchService = new SearchServiceMockObject();
         this.searchController = new SearchController(searchService);
         flights = searchController.findAll();
@@ -37,6 +39,16 @@ public class SearchControllerTest {
     @Test
     public void testCaseFindAll(){
         flights = searchController.findAll();
+        for(Flight flight: flights) {
+            System.out.println(flight.toString());
+        }
+    }
+
+    @Test
+    public void testCaseFindFlights(){
+        LocalDateTime time = LocalDateTime.of(2021,6,1,12,0,0);
+        System.out.println(time.toString().substring(0,10).concat("'T'00:00:00"));
+        flights = searchController.findFlights(time, "Reykjavík", "Akureyri");
         for(Flight flight: flights) {
             System.out.println(flight.toString());
         }
@@ -164,4 +176,30 @@ public class SearchControllerTest {
         assertFalse(isFalse);
 
     }
+
+    /*@Test test til að bóka og ná í bókun passa að deleta bókun úr database eftir á.
+    public void testCase12() {
+        BookingController bc = new BookingController();
+        Passenger p = new Passenger(1, "Katja", "katja");
+        Seat s = new Seat(1, "20A", true, true);
+        Ticket t = new Ticket(1, p, s, 1, "FL101", "Reykjavík", "Akureyri", LocalDateTime.now(), LocalDateTime.now(), 0.75);
+        bc.book(1, t);
+        Booking b = bc.showTicketInBooking(1);
+        System.out.println(b.getBookingID());
+        System.out.println(b.getTicket().getTicketID());
+        System.out.println(b.getTicket().getPassenger().getPassengerID());
+        System.out.println(b.getTicket().getPassenger().getPassportNumber());
+        System.out.println(b.getTicket().getPassenger().getName());
+        System.out.println(b.getTicket().getSeat().isClassEconomy());
+        System.out.println(b.getTicket().getSeat().getSeatNumber());
+        System.out.println(b.getTicket().getSeat().isSeatOccupation());
+        System.out.println(b.getTicket().getSeat().getSeatID());
+        System.out.println(b.getTicket().getDepartureTime());
+        System.out.println(b.getTicket().getArrivalTime());
+        System.out.println(b.getTicket().getFlightDeparture());
+        System.out.println(b.getTicket().getFlightDestination());
+        System.out.println(b.getTicket().getFlightID());
+        System.out.println(b.getTicket().getFlightNumber());
+        System.out.println(b.getTicket().getFlightTime());
+    }*/
 }

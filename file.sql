@@ -1,3 +1,5 @@
+CREATE DATABASE flightSearchDB;
+
 DROP TABLE if exists Bookings;
 DROP TABLE if exists Tickets;
 DROP TABLE if exists Flights;

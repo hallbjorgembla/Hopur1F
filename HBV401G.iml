@@ -29,7 +29,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="lib_javafx" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit4">
         <CLASSES>
@@ -40,7 +39,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="mysql-connector-java-8.0.23" level="project" />
     <orderEntry type="module-library" scope="TEST">
       <library name="JUnit4">
         <CLASSES>
@@ -51,5 +49,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="mysql-connector-java-8.0.231" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>
