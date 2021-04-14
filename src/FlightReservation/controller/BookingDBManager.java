@@ -109,8 +109,39 @@ public class BookingDBManager {
         System.out.println("Opened database successfully");
     }
 
-    //sleppa??
     public void deleteFromDB(Booking booking) {
+        Connection a;
+        try {
+            a = getConnection();
+            PreparedStatement pStmt;
+            String sql;
+            int ticketID = booking.getTicket().getTicketID();
+            int bookingID = booking.getBookingID();
 
+            sql = "DELETE FROM Passengers WHERE ticketID = ?";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setInt(1, ticketID);
+            pStmt.execute();
+
+            sql = "DELETE FROM Seats WHERE ticketID = ?";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setInt(1, ticketID);
+            pStmt.execute();
+
+            sql = "DELETE FROM Tickets WHERE ticketID = ?";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setInt(1, ticketID);
+            pStmt.execute();
+
+            sql = "DELETE FROM Bookings WHERE bookingID = ?";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setInt(1, bookingID);
+            pStmt.execute();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            System.exit(0);
+        }
+        System.out.println("Opened database successfully");
     }
 }

@@ -4,11 +4,8 @@ import FlightReservation.controller.*;
 import FlightReservation.model.*;
 import org.junit.*;
 
-import java.sql.ResultSet;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Optional;
 
 import static org.junit.Assert.assertFalse;
@@ -177,29 +174,13 @@ public class SearchControllerTest {
 
     }
 
-    /*@Test test til að bóka og ná í bókun passa að deleta bókun úr database eftir á.
+    @Test
     public void testCase12() {
         BookingController bc = new BookingController();
         Passenger p = new Passenger(1, "Katja", "katja");
         Seat s = new Seat(1, "20A", true, true);
         Ticket t = new Ticket(1, p, s, 1, "FL101", "Reykjavík", "Akureyri", LocalDateTime.now(), LocalDateTime.now(), 0.75);
         bc.book(1, t);
-        Booking b = bc.showTicketInBooking(1);
-        System.out.println(b.getBookingID());
-        System.out.println(b.getTicket().getTicketID());
-        System.out.println(b.getTicket().getPassenger().getPassengerID());
-        System.out.println(b.getTicket().getPassenger().getPassportNumber());
-        System.out.println(b.getTicket().getPassenger().getName());
-        System.out.println(b.getTicket().getSeat().isClassEconomy());
-        System.out.println(b.getTicket().getSeat().getSeatNumber());
-        System.out.println(b.getTicket().getSeat().isSeatOccupation());
-        System.out.println(b.getTicket().getSeat().getSeatID());
-        System.out.println(b.getTicket().getDepartureTime());
-        System.out.println(b.getTicket().getArrivalTime());
-        System.out.println(b.getTicket().getFlightDeparture());
-        System.out.println(b.getTicket().getFlightDestination());
-        System.out.println(b.getTicket().getFlightID());
-        System.out.println(b.getTicket().getFlightNumber());
-        System.out.println(b.getTicket().getFlightTime());
-    }*/
+        bc.cancelBooking(1, t);
+    }
 }

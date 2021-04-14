@@ -36,7 +36,8 @@ public class BookingController {
         bookingService.book(booking);
     }
 
-    public void cancelBooking() {
+    public void cancelBooking(int bookingNO, Ticket ticket) {
+        booking = new Booking(bookingNO, ticket);
         bookingService.cancelBooking(booking);
     }
 
