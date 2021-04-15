@@ -1,8 +1,5 @@
 package FlightReservation.model;
 
-import FlightReservation.model.Passenger;
-import FlightReservation.model.Seat;
-
 import java.time.LocalDateTime;
 
 public class Ticket {

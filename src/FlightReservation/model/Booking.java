@@ -1,7 +1,5 @@
 package FlightReservation.model;
 
-import java.util.ArrayList;
-
 public class Booking {
     private int bookingID;
     private Ticket ticket;
