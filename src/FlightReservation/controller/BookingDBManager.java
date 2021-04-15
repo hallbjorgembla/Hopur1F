@@ -122,7 +122,7 @@ public class BookingDBManager {
             pStmt.setInt(1, ticketID);
             pStmt.execute();
 
-            sql = "DELETE FROM Seats WHERE ticketID = ?";
+            sql = "UPDATE Seats SET seatOccupation = 0 AND ticketID = null WHERE ticketID = ?";
             pStmt = a.prepareStatement(sql);
             pStmt.setInt(1, ticketID);
             pStmt.execute();
