@@ -13,7 +13,6 @@
       <DatePicker fx:id="fxFindDate" layoutX="52.0" layoutY="142.0" prefHeight="27.0" prefWidth="161.0" />
       <Button fx:id="fxFindEnter" layoutX="472.0" layoutY="76.0" mnemonicParsing="false" onAction="#saekjaFlug" prefHeight="27.0" prefWidth="80.0" text="Enter" />
       <Button fx:id="fxFindBook" layoutX="472.0" layoutY="142.0" mnemonicParsing="false" onAction="#openBookFlight" prefHeight="27.0" prefWidth="80.0" text="Book Flight" />
-      <Button fx:id="fxFindBack" layoutX="52.0" layoutY="451.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="80.0" text="Back" />
       <TableView fx:id="fxFlightTable" layoutX="52.0" layoutY="199.0" prefHeight="240.0" prefWidth="650">
         <columns>
             <TableColumn fx:id="fxFlightNumberCol" prefWidth="80" text="Flight No." />
@@ -24,5 +23,6 @@
             <TableColumn fx:id="fxPriceEconomyCol" prefWidth="100" text="Price economy"/>
         </columns>
       </TableView>
+      <Button fx:id="fxFindBack" layoutX="52.0" layoutY="451.0" mnemonicParsing="false" onAction="#openStart" prefHeight="27.0" prefWidth="80.0" text="Back" />
    </children>
 </AnchorPane>
