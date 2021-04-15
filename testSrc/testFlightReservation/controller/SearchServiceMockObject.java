@@ -4,6 +4,7 @@ import FlightReservation.controller.Comparable;
 import FlightReservation.controller.SearchServiceInterface;
 import FlightReservation.model.Flight;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -17,7 +18,7 @@ public class SearchServiceMockObject implements SearchServiceInterface {
     }
 
     // Skilar lista af flugum sem passa við leitarskilyrði
-    public ArrayList<Flight> findFlights(LocalDateTime flightDate, String departureCity, String arrivalCity){
+    public ArrayList<Flight> findFlights(LocalDate flightDate, String departureCity, String arrivalCity){
         if(departureCity.equals("")|arrivalCity.equals("")){
             throw new IllegalArgumentException();
         }
@@ -78,5 +79,10 @@ public class SearchServiceMockObject implements SearchServiceInterface {
         flights.add(new Flight(4, "Flug 4", "Reykjavík", "Egilsstaðir", LocalDateTime.of(2021, 6, 15, 18, 30), 3, 50, 24000, 12000));
         flights.add(new Flight(5, "Flug 5", "Egilsstaðir", "Reykjavík", LocalDateTime.of(2021, 6, 15, 15, 0), 3, 50, 20000, 10000));
         return flights;
+    }
+
+    @Override
+    public ArrayList<Flight> findFlightByDate(LocalDate departureDate) {
+        return null;
     }
 }
