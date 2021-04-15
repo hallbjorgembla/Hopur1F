@@ -66,6 +66,14 @@ public class SearchService implements SearchServiceInterface {
         return flightList;
     }
 
+    @Override
+    public ArrayList<Flight> findByDepartureAndArrival(String departureCity, String arrivalCity) {
+        ResultSet rs = searchDBManager.findDepartureAndArrival(departureCity, arrivalCity);
+        ArrayList<Flight> flightList = new ArrayList<Flight>();
+        resultToList(rs, flightList);
+        return flightList;
+    }
+
     public void resultToList(ResultSet rs, ArrayList<Flight> flightList) {
         try {
             while (rs.next()) {

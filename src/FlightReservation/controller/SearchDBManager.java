@@ -62,4 +62,12 @@ public class SearchDBManager {
         ResultSet rs = executeQuery(searchString);
         return rs;
     }
+
+    public ResultSet findDepartureAndArrival(String departureCity, String arrivalCity) {
+        String searchString = "SELECT * FROM Flights WHERE " +
+                                "flightDeparture = '" + departureCity + "' AND " +
+                                "flightDestination = '" + arrivalCity + "'";
+        ResultSet rs = executeQuery(searchString);
+        return rs;
+    }
 }

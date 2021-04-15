@@ -85,4 +85,9 @@ public class SearchServiceMockObject implements SearchServiceInterface {
     public ArrayList<Flight> findFlightByDate(LocalDate departureDate) {
         return null;
     }
+
+    @Override
+    public ArrayList<Flight> findByDepartureAndArrival(String departureCity, String arrivalCity) {
+        return null;
+    }
 }

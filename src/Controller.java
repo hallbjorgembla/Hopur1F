@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TreeItemPropertyValueFactory;
@@ -103,27 +104,13 @@ public class Controller {
         String arrivalCity = fxFindArr.getCharacters().toString();
         String departureCity = fxFindDep.getCharacters().toString();
         LocalDate departureDate = fxFindDate.getValue();
-        //Boolean b = fxFindDate.
         ArrayList<Flight> resultList = searchController.leitaAdFlugum(departureDate, departureCity, arrivalCity);
         ObservableList<Flight> flightObservableList = FXCollections.observableArrayList(resultList);
         fxFlightTable.setItems(flightObservableList);
-        /*
-
-        if(arrivalCity.isEmpty() && departureCity.isEmpty()) {
-            ArrayList<Flight> allFlights = searchController.findAll();
-            ObservableList<Flight> flightObservableList = FXCollections.observableArrayList(allFlights);
-            fxFlightTable.setItems(flightObservableList);
-        }
-        else {
-            ArrayList<Flight> resultList = searchController.findFlights(departureDate, departureCity, arrivalCity);
-            ObservableList<Flight> flightObservableList = FXCollections.observableArrayList(resultList);
-            fxFlightTable.setItems(flightObservableList);
-        }
-
-         */
     }
 
     public void setjaUppDalka() {
+        fxFlightTable.setPlaceholder(new Label("There are no flight matches for this search criteria"));
         fxFlightNumberCol.setCellValueFactory(new PropertyValueFactory<Flight, String>("flightNumber"));
         fxDepartureCityCol.setCellValueFactory(new PropertyValueFactory<Flight, String>("flightDeparture"));
         fxArrivalCityCol.setCellValueFactory(new PropertyValueFactory<Flight, String>("flightDestination"));

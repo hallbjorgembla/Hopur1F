@@ -16,4 +16,5 @@ public interface SearchServiceInterface {
     ArrayList<Flight> sortByArrivalTime(ArrayList<Flight> flights);
     ArrayList<Flight> makeFlights();
     ArrayList<Flight> findFlightByDate(LocalDate departureDate);
+    ArrayList<Flight> findByDepartureAndArrival(String departureCity, String arrivalCity);
 }

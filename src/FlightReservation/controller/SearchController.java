@@ -52,13 +52,21 @@ public class SearchController {
     }
 
     public ArrayList<Flight> leitaAdFlugum(LocalDate departureDate, String departureCity, String arrivalCity) {
-        if (departureCity.isEmpty() && arrivalCity.isEmpty() && departureDate.isAfter(LocalDate.MIN)) {
+        if (departureCity.isEmpty() && arrivalCity.isEmpty() && departureDate != null) {
             return searchServiceInterface.findFlightByDate(departureDate);
         }
-        if (!departureCity.isEmpty() && !arrivalCity.isEmpty() && departureDate.isAfter(LocalDate.MIN)) {
+        if (!departureCity.isEmpty() && !arrivalCity.isEmpty() && departureDate != null) {
             return searchServiceInterface.findFlights(departureDate, departureCity, arrivalCity);
-        } else {
+        }
+        if(departureCity.isEmpty() && arrivalCity.isEmpty() && departureDate == null) {
             return searchServiceInterface.findAll();
+        }
+        if(!departureCity.isEmpty() && !arrivalCity.isEmpty() && departureDate == null) {
+            return searchServiceInterface.findByDepartureAndArrival(departureCity, arrivalCity);
+        }
+        else {
+            System.out.println("hvað á að gera hér?");
+            return new ArrayList<Flight>();
         }
     }
 }
