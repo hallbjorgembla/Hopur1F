@@ -1,5 +1,8 @@
 package FlightReservation.model;
 
+import FlightReservation.model.Passenger;
+import FlightReservation.model.Seat;
+
 import java.time.LocalDateTime;
 
 public class Ticket {
@@ -99,7 +102,7 @@ public class Ticket {
         this.arrivalTime = arrivalTime;
     }
 
-    public double getFlightTime(double flightTime) {
+    public double getFlightTime() {
         return flightTime;
     }
 
