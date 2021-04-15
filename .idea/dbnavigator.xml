@@ -46,7 +46,6 @@
       <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
       <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
     </connection>
-    <connection id="83cabbc2-125e-4012-aaba-1d904ff2aeff" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0" dataset="flightSearchDB.Flights" active-filter-id="" />
@@ -120,8 +119,6 @@
         </ssl-settings>
         <details>
           <charset value="UTF-8" />
-          <connect-automatically value="true" />
-          <restore-workspace value="true" />
           <session-management value="false" />
           <ddl-file-binding value="true" />
           <database-logging value="false" />
