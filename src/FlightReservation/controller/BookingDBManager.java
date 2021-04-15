@@ -144,4 +144,40 @@ public class BookingDBManager {
         }
         System.out.println("Opened database successfully");
     }
+
+    public ResultSet getFirstClassSeats(int flightID) {
+        Connection c;
+        ResultSet rs = null;
+        try {
+            c = getConnection();
+            PreparedStatement pStmt;
+            String sql = ("SELECT seatNumber FROM Seats WHERE flightID = ? AND seatEconomy = 0");
+            pStmt = c.prepareStatement(sql);
+            pStmt.setInt(1, flightID);
+            rs = pStmt.executeQuery();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        return rs;
+    }
+
+    public ResultSet getEconomySeats(int flightID) {
+        Connection c;
+        ResultSet rs = null;
+        try {
+            c = getConnection();
+            PreparedStatement pStmt;
+            String sql = ("SELECT seatNumber FROM Seats WHERE flightID = ? AND seatEconomy = 1");
+            pStmt = c.prepareStatement(sql);
+            pStmt.setInt(1, flightID);
+            rs = pStmt.executeQuery();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        return rs;
+    }
 }

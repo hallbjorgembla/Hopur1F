@@ -4,6 +4,8 @@ import FlightReservation.model.*;
 
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookingService {
     private BookingDBManager bookingDBManager;
@@ -19,6 +21,38 @@ public class BookingService {
 
     public void cancelBooking(Booking booking) {
         bookingDBManager.deleteFromDB(booking);
+    }
+
+    public String[] getFirstClassSeats(int flightID){
+        ResultSet rs = bookingDBManager.getFirstClassSeats(flightID);
+        String[] first = new String[9];
+        try {
+            int i = 0;
+            while (rs.next()) {
+                String seatNumber = rs.getString(1);
+                first[i] = seatNumber;
+                i += 1;
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return first;
+    }
+
+    public String[] getEconomySeats(int flightID){
+        ResultSet rs = bookingDBManager.getEconomySeats(flightID);
+        String[] economy = new String[22];
+        try {
+            int i = 0;
+            while (rs.next()) {
+                String seatNumber = rs.getString(1);
+                economy[i] = seatNumber;
+                i += 1;
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return economy;
     }
 
     public Ticket getTicket(int bookingID) {

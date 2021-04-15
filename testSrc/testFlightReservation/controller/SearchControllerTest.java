@@ -174,7 +174,7 @@ public class SearchControllerTest {
 
     }
 
-    @Test
+    /*@Test
     public void testCase12() {
         BookingController bc = new BookingController();
         Passenger p = new Passenger(1, "Katja", "katja");
@@ -182,5 +182,5 @@ public class SearchControllerTest {
         Ticket t = new Ticket(1, p, s, 1, "FL101", "Reykjavík", "Akureyri", LocalDateTime.now(), LocalDateTime.now(), 0.75);
         bc.book(1, t);
         bc.cancelBooking(1, t);
-    }
+    }*/
 }

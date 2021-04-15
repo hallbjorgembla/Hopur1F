@@ -3,13 +3,16 @@ package FlightReservation.controller;
 import FlightReservation.model.*;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 public class BookingController {
     private BookingService bookingService;
     private Booking booking;
     private Ticket ticket;
-    private ArrayList<Seat> seats;
+    private Passenger passenger;
+    private Seat seat;
+    private Flight flight;
+    private String[] seatsE;
+    private String[] seatsFC;
 
     public BookingController() {
         this.bookingService = new BookingService();
@@ -39,6 +42,17 @@ public class BookingController {
     public void cancelBooking(int bookingNO, Ticket ticket) {
         booking = new Booking(bookingNO, ticket);
         bookingService.cancelBooking(booking);
+    }
+
+
+    public String[] getSeatsFC(int flightID) {
+        seatsFC = bookingService.getFirstClassSeats(flightID);
+        return seatsFC;
+    }
+
+    public String[] getSeatsE(int flightID) {
+        seatsE = bookingService.getEconomySeats(flightID);
+        return seatsE;
     }
 
     public Booking showTicketInBooking(int bookingID) {
