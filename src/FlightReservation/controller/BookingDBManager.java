@@ -20,13 +20,13 @@ public class BookingDBManager {
         return conn;
     }
 
-    public ResultSet getTicketByBookingID(int bookingID){
+    public ResultSet getTicketByBookingID(int bookingID) {
         Connection c;
         ResultSet rs = null;
         try {
             c = getConnection();
             PreparedStatement pStmt;
-            String sql= (
+            String sql = (
                     "SELECT Tickets.ticketID, " +
                             "passengerID, " +
                             "name, " +
@@ -59,7 +59,7 @@ public class BookingDBManager {
         return rs;
     }
 
-    public void insertToDB(Booking booking){
+    public void insertToDB(Booking booking) {
         Connection a;
         try {
             a = getConnection();
@@ -93,16 +93,16 @@ public class BookingDBManager {
             pStmt.setInt(1, ticket.getSeat().getSeatID());
             pStmt.setString(2, ticket.getSeat().getSeatNumber());
             pStmt.setBoolean(3, ticket.getSeat().isSeatOccupation());
-            pStmt.setBoolean(4,ticket.getSeat().isClassEconomy());
-            pStmt.setInt(5,ticket.getFlightID());
-            pStmt.setString(6,ticket.getFlightNumber());
-            pStmt.setInt(7,ticket.getTicketID());
+            pStmt.setBoolean(4, ticket.getSeat().isClassEconomy());
+            pStmt.setInt(5, ticket.getFlightID());
+            pStmt.setString(6, ticket.getFlightNumber());
+            pStmt.setInt(7, ticket.getTicketID());
             pStmt.execute();
 
             a.close();
 
-        } catch ( Exception e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         System.out.println("Opened database successfully");
@@ -136,8 +136,26 @@ public class BookingDBManager {
             pStmt = a.prepareStatement(sql);
             pStmt.setInt(1, bookingID);
             pStmt.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
         }
-        catch (Exception e){
+        System.out.println("Opened database successfully");
+    }
+
+    public ResultSet getAllSeats(int flightID) {
+        Connection a;
+        try {
+            a = getConnection();
+            PreparedStatement pStmt;
+            String sql;
+
+            sql = "SELECT seatNumber,  FROM Passengers WHERE ticketID = ?";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setInt(1, ticketID);
+            pStmt.execute();
+
+        } catch (Exception e) {
             e.printStackTrace();
             System.exit(0);
         }
