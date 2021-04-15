@@ -65,14 +65,14 @@ public class BookingDBManager {
             a = getConnection();
             PreparedStatement pStmt;
             String sql;
-
             int bookingID = booking.getBookingID();
+            Ticket ticket = booking.getTicket();
+
             sql = "INSERT INTO Bookings (bookingID) VALUES (?)";
             pStmt = a.prepareStatement(sql);
             pStmt.setInt(1, bookingID);
             pStmt.execute();
 
-            Ticket ticket = booking.getTicket();
             sql = "INSERT INTO Tickets (ticketID, bookingID) VALUES (?,?)";
             pStmt = a.prepareStatement(sql);
             pStmt.setInt(1, ticket.getTicketID());
@@ -87,11 +87,13 @@ public class BookingDBManager {
             pStmt.setInt(4, ticket.getTicketID());
             pStmt.execute();
 
-            sql = "UPDATE Seats SET seatOccupation = 1 AND ticketID = ? WHERE ticketID = ?";
+            sql = "UPDATE Seats SET seatOccupation = ?, ticketID = ? WHERE flightID = ? AND seatID = ?";
             pStmt = a.prepareStatement(sql);
-            pStmt.setInt(1, ticket.getTicketID());
+            pStmt.setBoolean(1, true);
             pStmt.setInt(2, ticket.getTicketID());
-            pStmt.execute();
+            pStmt.setInt(3, ticket.getFlightID());
+            pStmt.setInt(4, ticket.getSeat().getSeatID());
+            pStmt.executeUpdate();
 
             a.close();
 
@@ -116,10 +118,12 @@ public class BookingDBManager {
             pStmt.setInt(1, ticketID);
             pStmt.execute();
 
-            sql = "UPDATE Seats SET seatOccupation = 0 AND ticketID = null WHERE ticketID = ?";
+            sql = "UPDATE Seats SET seatOccupation = ?, ticketID = ? WHERE ticketID = ?";
             pStmt = a.prepareStatement(sql);
-            pStmt.setInt(1, ticketID);
-            pStmt.execute();
+            pStmt.setBoolean(1, false);
+            pStmt.setNull(2, Types.NULL);
+            pStmt.setInt(3, ticketID);
+            pStmt.executeUpdate();
 
             sql = "DELETE FROM Tickets WHERE ticketID = ?";
             pStmt = a.prepareStatement(sql);
