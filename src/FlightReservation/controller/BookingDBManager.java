@@ -145,7 +145,7 @@ public class BookingDBManager {
             PreparedStatement pStmt;
             String sql;
 
-            sql = "SELECT seatNumber,  seatEconomy FROM Seats WHERE flightID = ?";
+            sql = "SELECT seatNumber,  seatOccupation, seatEconomy FROM Seats WHERE flightID = ?";
             pStmt = a.prepareStatement(sql);
             pStmt.setInt(1, flightID);
             rs = pStmt.executeQuery();
