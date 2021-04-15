@@ -46,4 +46,12 @@ public class BookingController {
         booking = new Booking(bookingID, ticket);
         return booking;
     }
+
+    public ArrayList<String> getEconomySeats(int flightID) {
+        return bookingService.getEconomySeats(flightID);
+    }
+
+    public ArrayList<String> getFirstClassSeats(int flightID) {
+        return bookingService.getFirstClassSeats(flightID);
+    }
 }
