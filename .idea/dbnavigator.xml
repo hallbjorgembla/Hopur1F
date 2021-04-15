@@ -17,22 +17,18 @@
       <scope value="GLOBAL" />
       <destination value="FILE" />
       <format value="EXCEL" />
-      <charset value="windows-1252" />
+      <charset value="UTF-8" />
     </export-instructions>
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0">
-        <schema name="flightsearchdb" object-types="column, index, table, procedure, constraint, function, view, dataset trigger" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="1e2065fb-4d98-4886-9af3-7d48fc6438c0">
-      <console name="Connection" type="STANDARD" schema="flightsearchdb" session="Main" />
+      <console name="Connection" type="STANDARD" schema="flightSearchDB" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -41,69 +37,7 @@
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="1e2065fb-4d98-4886-9af3-7d48fc6438c0">
       <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
-      <session name="Session 1" id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" />
     </connection>
-  </component>
-  <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0" dataset="flightSearchDB.Flights" active-filter-id="" />
-    <filter-actions connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0" dataset="flightsearchdb.bookings" active-filter-id="" />
-    <filter-actions connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0" dataset="flightsearchdb.flights" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -112,7 +46,7 @@
     <retain-sticky-names value="false" />
   </component>
   <component name="DBNavigator.Project.FileConnectionMappingManager">
-    <mapping file-url="file://$PROJECT_DIR$/file.sql" connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0" session-id="MAIN" current-schema="mysql" />
+    <mapping file-url="file://$PROJECT_DIR$/file.sql" connection-id="1e2065fb-4d98-4886-9af3-7d48fc6438c0" session-id="f4dfaf63-72a9-42b1-b55f-2f7253bc5ca2" current-schema="flightSearchDB" />
   </component>
   <component name="DBNavigator.Project.MethodExecutionManager">
     <method-browser />
@@ -143,16 +77,16 @@
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
           <database-version value="8.0" />
-          <driver-source value="EXTERNAL" />
-          <driver-library value="C:\Program Files\MySQL\mysql-connector-java-8.0.23\mysql-connector-java-8.0.23.jar" />
-          <driver value="com.mysql.cj.jdbc.Driver" />
+          <driver-source value="BUILTIN" />
+          <driver-library value="" />
+          <driver value="" />
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
           <database value="flightSearchDB" />
           <type value="USER_PASSWORD" />
           <user value="root" />
-          <deprecated-pwd value="cGFzc3dvcmQxMjM=" />
+          <deprecated-pwd value="SlJSVDk2bmF3d2Fs" />
         </database>
         <properties>
           <auto-commit value="false" />
@@ -340,6 +274,7 @@
       <qualified-text-editor text-length-threshold="300">
         <content-types>
           <content-type name="Text" enabled="true" />
+          <content-type name="Properties" enabled="true" />
           <content-type name="XML" enabled="true" />
           <content-type name="DTD" enabled="true" />
           <content-type name="HTML" enabled="true" />
@@ -349,6 +284,9 @@
           <content-type name="PL/SQL" enabled="true" />
           <content-type name="JSON" enabled="true" />
           <content-type name="JSON5" enabled="true" />
+          <content-type name="Groovy" enabled="true" />
+          <content-type name="AIDL" enabled="true" />
+          <content-type name="YAML" enabled="true" />
           <content-type name="Manifest" enabled="true" />
         </content-types>
       </qualified-text-editor>
