@@ -145,20 +145,22 @@ public class BookingDBManager {
 
     public ResultSet getAllSeats(int flightID) {
         Connection a;
+        ResultSet rs = null;
         try {
             a = getConnection();
             PreparedStatement pStmt;
             String sql;
 
-            sql = "SELECT seatNumber,  FROM Passengers WHERE ticketID = ?";
+            sql = "SELECT seatNumber,  seatEconomy FROM Seats WHERE flightID = ?";
             pStmt = a.prepareStatement(sql);
-            pStmt.setInt(1, ticketID);
-            pStmt.execute();
+            pStmt.setInt(1, flightID);
+            rs = pStmt.executeQuery();
 
         } catch (Exception e) {
             e.printStackTrace();
             System.exit(0);
         }
         System.out.println("Opened database successfully");
+        return rs;
     }
 }
