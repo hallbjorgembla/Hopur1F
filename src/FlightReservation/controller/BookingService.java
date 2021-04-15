@@ -62,7 +62,7 @@ public class BookingService {
         ArrayList<String> economySeats = new ArrayList<>();
         try {
             while(rs.next()) {
-                if (rs.getBoolean(2) == true) {
+                if (rs.getBoolean(2) == false & rs.getBoolean(3) == true) {
                     economySeats.add(rs.getString(1));
                 }
             }
@@ -78,7 +78,7 @@ public class BookingService {
         ArrayList<String> firstClassSeats = new ArrayList<>();
         try {
             while(rs.next()) {
-                if (rs.getBoolean(2) == false) {
+                if (rs.getBoolean(2) == false & rs.getBoolean(3) == false) {
                     firstClassSeats.add(rs.getString(1));
                 }
             }
