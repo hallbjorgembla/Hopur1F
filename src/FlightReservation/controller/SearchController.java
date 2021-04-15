@@ -2,6 +2,7 @@ package FlightReservation.controller;
 
 import FlightReservation.model.Flight;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -17,7 +18,7 @@ public class SearchController {
         return searchServiceInterface.makeFlights();
     }
 
-    public ArrayList<Flight> findFlights(LocalDateTime flightDate, String departureCity, String arrivalCity){
+    public ArrayList<Flight> findFlights(LocalDate flightDate, String departureCity, String arrivalCity){
         return searchServiceInterface.findFlights(flightDate, departureCity, arrivalCity);
     }
 
@@ -48,6 +49,25 @@ public class SearchController {
 
     public ArrayList<Flight> findAll(){
         return searchServiceInterface.findAll();
+    }
+
+    public ArrayList<Flight> leitaAdFlugum(LocalDate departureDate, String departureCity, String arrivalCity) {
+        if (departureCity.isEmpty() && arrivalCity.isEmpty() && departureDate != null) {
+            return searchServiceInterface.findFlightByDate(departureDate);
+        }
+        if (!departureCity.isEmpty() && !arrivalCity.isEmpty() && departureDate != null) {
+            return searchServiceInterface.findFlights(departureDate, departureCity, arrivalCity);
+        }
+        if(departureCity.isEmpty() && arrivalCity.isEmpty() && departureDate == null) {
+            return searchServiceInterface.findAll();
+        }
+        if(!departureCity.isEmpty() && !arrivalCity.isEmpty() && departureDate == null) {
+            return searchServiceInterface.findByDepartureAndArrival(departureCity, arrivalCity);
+        }
+        else {
+            System.out.println("hvað á að gera hér?");
+            return new ArrayList<Flight>();
+        }
     }
 }
 

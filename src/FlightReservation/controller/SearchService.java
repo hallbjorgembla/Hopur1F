@@ -4,6 +4,7 @@ import FlightReservation.model.Flight;
 
 import java.sql.Array;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -25,7 +26,7 @@ public class SearchService implements SearchServiceInterface {
     }
 
     @Override
-    public ArrayList<Flight> findFlights(LocalDateTime flightDate, String departureCity, String arrivalCity) {
+    public ArrayList<Flight> findFlights(LocalDate flightDate, String departureCity, String arrivalCity) {
         ResultSet rs = searchDBManager.findFlights(flightDate, departureCity, arrivalCity);
         ArrayList<Flight> flightList = new ArrayList<Flight>();
         resultToList(rs, flightList);
@@ -55,6 +56,22 @@ public class SearchService implements SearchServiceInterface {
     @Override
     public ArrayList<Flight> makeFlights() {
         return null;
+    }
+
+    @Override
+    public ArrayList<Flight> findFlightByDate(LocalDate departureDate) {
+        ResultSet rs = searchDBManager.findFlightsByDate(departureDate);
+        ArrayList<Flight> flightList = new ArrayList<Flight>();
+        resultToList(rs, flightList);
+        return flightList;
+    }
+
+    @Override
+    public ArrayList<Flight> findByDepartureAndArrival(String departureCity, String arrivalCity) {
+        ResultSet rs = searchDBManager.findDepartureAndArrival(departureCity, arrivalCity);
+        ArrayList<Flight> flightList = new ArrayList<Flight>();
+        resultToList(rs, flightList);
+        return flightList;
     }
 
     public void resultToList(ResultSet rs, ArrayList<Flight> flightList) {

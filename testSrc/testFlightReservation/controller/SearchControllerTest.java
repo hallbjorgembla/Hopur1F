@@ -6,6 +6,7 @@ import FlightReservation.controller.SearchController;
 import FlightReservation.controller.SearchServiceInterface;
 import org.junit.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -42,9 +43,9 @@ public class SearchControllerTest {
 
     @Test
     public void testCaseFindFlights(){
-        LocalDateTime time = LocalDateTime.of(2021,6,1,12,0,0);
-        System.out.println(time.toString().substring(0,10).concat("'T'00:00:00"));
-        flights = searchController.findFlights(time, "Reykjavík", "Akureyri");
+        LocalDate date = LocalDate.of(2021,6,1);
+        System.out.println(date.toString());
+        flights = searchController.findFlights(date, "Reykjavík", "Akureyri");
         for(Flight flight: flights) {
             System.out.println(flight.toString());
         }
@@ -53,7 +54,7 @@ public class SearchControllerTest {
     // Testing the findFlights method with legal parameters
     @Test
     public void testCase1(){
-        LocalDateTime flightDate = LocalDateTime.of(2021, 6, 10, 10, 0);
+        LocalDate flightDate = LocalDate.of(2021, 6, 10);
         String departureCity = "Reykjavík";
         String arrivalCity = "Akureyri";
         flights = searchController.findFlights(flightDate, departureCity, arrivalCity);
@@ -64,7 +65,7 @@ public class SearchControllerTest {
     // Testing the findFlight method with the empty string, which should throw an IllegalArgumentException
     @Test(expected = IllegalArgumentException.class)
     public void testCase2(){
-        LocalDateTime flightDate = LocalDateTime.of(2021, 6, 10, 10, 0);
+        LocalDate flightDate = LocalDate.of(2021, 6, 10);
         String departureCity = "";
         String arrivalCity = "";
         flights = searchController.findFlights(flightDate, departureCity, arrivalCity);
@@ -73,7 +74,7 @@ public class SearchControllerTest {
     // Testing the findFlight method with nonsense strings, expecting it to return an empty list
     @Test
     public void testCase3(){
-        LocalDateTime flightDate = LocalDateTime.of(2021, 6, 10, 10, 0);
+        LocalDate flightDate = LocalDate.of(2021, 6, 10);
         String departureCity = "blablablabla";
         String arrivalCity = "ahhahahha";
         flights = searchController.findFlights(flightDate, departureCity, arrivalCity);
