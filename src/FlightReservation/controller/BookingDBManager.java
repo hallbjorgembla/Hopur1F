@@ -87,16 +87,10 @@ public class BookingDBManager {
             pStmt.setInt(4, ticket.getTicketID());
             pStmt.execute();
 
-            sql = "INSERT INTO Seats(seatID, seatNumber, seatOccupation, seatEconomy, flightID, flightNumber, ticketID) " +
-                    "VALUES(?,?,?,?,?,?,?)";
+            sql = "UPDATE Seats SET seatOccupation = 1 AND ticketID = ? WHERE ticketID = ?";
             pStmt = a.prepareStatement(sql);
-            pStmt.setInt(1, ticket.getSeat().getSeatID());
-            pStmt.setString(2, ticket.getSeat().getSeatNumber());
-            pStmt.setBoolean(3, ticket.getSeat().isSeatOccupation());
-            pStmt.setBoolean(4, ticket.getSeat().isClassEconomy());
-            pStmt.setInt(5, ticket.getFlightID());
-            pStmt.setString(6, ticket.getFlightNumber());
-            pStmt.setInt(7, ticket.getTicketID());
+            pStmt.setInt(1, ticket.getTicketID());
+            pStmt.setInt(2, ticket.getTicketID());
             pStmt.execute();
 
             a.close();
