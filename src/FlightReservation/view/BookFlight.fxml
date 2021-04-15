@@ -12,7 +12,7 @@
         <Label layoutX="64.0" layoutY="164.0" text="Kt:" />
         <TextField fx:id="fxKennitalaBook" layoutX="86.0" layoutY="159.0" prefHeight="27.0" prefWidth="241.0" />
       <Button fx:id="fxChooseBook" layoutX="145.0" layoutY="215.0" mnemonicParsing="false" onAction="#openChooseSeat" prefWidth="110.0" text="Choose a seat" />
-        <Button fx:id="fxBackBook" layoutX="79.0" layoutY="275.0" mnemonicParsing="false" prefWidth="110.0" text="Back" />
-        <Button fx:id="fxConfirmBook" layoutX="219.0" layoutY="275.0" mnemonicParsing="false" prefWidth="110.0" text="Confirm Booking" />
+        <Button fx:id="fxBackBook" layoutX="79.0" layoutY="275.0" mnemonicParsing="false" onAction="#openFindFlight" prefWidth="110.0" text="Back" />
+        <Button fx:id="fxConfirmBook" layoutX="219.0" layoutY="275.0" mnemonicParsing="false" onAction="#openBookingConfirmed" prefWidth="110.0" text="Confirm Booking" />
     </children>
 </AnchorPane>

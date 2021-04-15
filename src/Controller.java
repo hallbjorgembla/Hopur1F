@@ -36,6 +36,12 @@ public class Controller {
     Button fxFindBook;
     @FXML
     Button fxChooseBook;
+    @FXML
+    Button fxEnterCheck;
+    @FXML
+    Button fxShowAnother;
+    @FXML
+    Button fxConfirmBook;
 
     // Breytur fyrir FindFlight síðu
     @FXML
@@ -69,22 +75,30 @@ public class Controller {
     }
 
     public void openCheckBooking(ActionEvent event) throws Exception {
-        System.out.println("Hello World");
+        Button button = (Button) event.getSource();
         Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/CheckBooking.fxml"));
 
-        Stage window = (Stage) fxCheckBooking.getScene().getWindow();
+        Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root,  430, 400));
+
     }
 
     public void openFindFlight(ActionEvent event) throws Exception {
-        System.out.println("Hello World");
+        Button button = (Button) event.getSource();
         Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/FindFLight.fxml"));
         Stage window = (Stage) fxSearchFlight.getScene().getWindow();
         window.setScene(new Scene(root,  800, 600));
     }
 
+    public void displayFlights(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/FindFlight.fxml"));
+        Stage window = (Stage) fxFindEnter.getScene().getWindow();
+        window.setScene(new Scene(root,  600, 600));
+
+        //birta töflu
+    }
+
     public void openBookFlight(ActionEvent event) throws Exception {
-        System.out.println("Hello World");
         Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/BookFlight.fxml"));
 
         Stage window = (Stage) fxFindBook.getScene().getWindow();
@@ -92,11 +106,32 @@ public class Controller {
     }
 
     public void openChooseSeat(ActionEvent event) throws Exception {
-        System.out.println("Hello World");
         Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/ChooseSeat.fxml"));
 
         Stage window = (Stage) fxChooseBook.getScene().getWindow();
         window.setScene(new Scene(root,  600, 400));
+    }
+    public void openShowBooking(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/ShowBooking.fxml"));
+
+        Stage window = (Stage) fxEnterCheck.getScene().getWindow();
+        window.setScene(new Scene(root,  600, 400));
+    }
+
+    public void openBookingConfirmed(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/BookingConfirmed.fxml"));
+
+        Stage window = (Stage) fxConfirmBook.getScene().getWindow();
+        window.setScene(new Scene(root,  300, 200));
+    }
+
+    public void openStart(ActionEvent event) throws Exception {
+        Button button = (Button) event.getSource();
+        Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
+
+        Stage window = (Stage) button.getScene().getWindow();
+        window.setScene(new Scene(root,  400, 200));
+
     }
 
     public void saekjaFlug(){
@@ -118,5 +153,4 @@ public class Controller {
         fxPriceFirstClassCol.setCellValueFactory(new PropertyValueFactory<Flight, Double>("priceFirstClass"));
         fxPriceEconomyCol.setCellValueFactory(new PropertyValueFactory<Flight, Double>("priceEconomy"));
     }
-
 }
