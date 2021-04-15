@@ -20,13 +20,13 @@ public class BookingDBManager {
         return conn;
     }
 
-    public ResultSet getTicketByBookingID(int bookingID){
+    public ResultSet getTicketByBookingID(int bookingID) {
         Connection c;
         ResultSet rs = null;
         try {
             c = getConnection();
             PreparedStatement pStmt;
-            String sql= (
+            String sql = (
                     "SELECT Tickets.ticketID, " +
                             "passengerID, " +
                             "name, " +
@@ -59,20 +59,20 @@ public class BookingDBManager {
         return rs;
     }
 
-    public void insertToDB(Booking booking){
+    public void insertToDB(Booking booking) {
         Connection a;
         try {
             a = getConnection();
             PreparedStatement pStmt;
             String sql;
-
             int bookingID = booking.getBookingID();
+            Ticket ticket = booking.getTicket();
+
             sql = "INSERT INTO Bookings (bookingID) VALUES (?)";
             pStmt = a.prepareStatement(sql);
             pStmt.setInt(1, bookingID);
             pStmt.execute();
 
-            Ticket ticket = booking.getTicket();
             sql = "INSERT INTO Tickets (ticketID, bookingID) VALUES (?,?)";
             pStmt = a.prepareStatement(sql);
             pStmt.setInt(1, ticket.getTicketID());
@@ -87,22 +87,18 @@ public class BookingDBManager {
             pStmt.setInt(4, ticket.getTicketID());
             pStmt.execute();
 
-            sql = "INSERT INTO Seats(seatID, seatNumber, seatOccupation, seatEconomy, flightID, flightNumber, ticketID) " +
-                    "VALUES(?,?,?,?,?,?,?)";
+            sql = "UPDATE Seats SET seatOccupation = ?, ticketID = ? WHERE flightID = ? AND seatID = ?";
             pStmt = a.prepareStatement(sql);
-            pStmt.setInt(1, ticket.getSeat().getSeatID());
-            pStmt.setString(2, ticket.getSeat().getSeatNumber());
-            pStmt.setBoolean(3, ticket.getSeat().isSeatOccupation());
-            pStmt.setBoolean(4,ticket.getSeat().isClassEconomy());
-            pStmt.setInt(5,ticket.getFlightID());
-            pStmt.setString(6,ticket.getFlightNumber());
-            pStmt.setInt(7,ticket.getTicketID());
-            pStmt.execute();
+            pStmt.setBoolean(1, true);
+            pStmt.setInt(2, ticket.getTicketID());
+            pStmt.setInt(3, ticket.getFlightID());
+            pStmt.setInt(4, ticket.getSeat().getSeatID());
+            pStmt.executeUpdate();
 
             a.close();
 
-        } catch ( Exception e ) {
-            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+        } catch (Exception e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
             System.exit(0);
         }
         System.out.println("Opened database successfully");
@@ -122,10 +118,12 @@ public class BookingDBManager {
             pStmt.setInt(1, ticketID);
             pStmt.execute();
 
-            sql = "DELETE FROM Seats WHERE ticketID = ?";
+            sql = "UPDATE Seats SET seatOccupation = ?, ticketID = ? WHERE ticketID = ?";
             pStmt = a.prepareStatement(sql);
-            pStmt.setInt(1, ticketID);
-            pStmt.execute();
+            pStmt.setBoolean(1, false);
+            pStmt.setNull(2, Types.NULL);
+            pStmt.setInt(3, ticketID);
+            pStmt.executeUpdate();
 
             sql = "DELETE FROM Tickets WHERE ticketID = ?";
             pStmt = a.prepareStatement(sql);
@@ -136,11 +134,31 @@ public class BookingDBManager {
             pStmt = a.prepareStatement(sql);
             pStmt.setInt(1, bookingID);
             pStmt.execute();
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             System.exit(0);
         }
         System.out.println("Opened database successfully");
+    }
+
+    public ResultSet getAllSeats(int flightID) {
+        Connection a;
+        ResultSet rs = null;
+        try {
+            a = getConnection();
+            PreparedStatement pStmt;
+            String sql;
+
+            sql = "SELECT seatNumber,  seatOccupation, seatEconomy FROM Seats WHERE flightID = ?";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setInt(1, flightID);
+            rs = pStmt.executeQuery();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        System.out.println("Opened database successfully");
+        return rs;
     }
 }

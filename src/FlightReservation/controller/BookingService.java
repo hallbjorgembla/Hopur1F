@@ -4,6 +4,7 @@ import FlightReservation.model.*;
 
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class BookingService {
     private BookingDBManager bookingDBManager;
@@ -54,5 +55,38 @@ public class BookingService {
             e.printStackTrace();
         }
         return ticket;
+    }
+
+    public ArrayList<String> getEconomySeats(int flightID) {
+        ResultSet rs = bookingDBManager.getAllSeats(flightID);
+        ArrayList<String> economySeats = new ArrayList<>();
+        try {
+            while(rs.next()) {
+                if (!rs.getBoolean(2) & rs.getBoolean(3)) {
+                    economySeats.add(rs.getString(1));
+                }
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return economySeats;
+    }
+
+    public ArrayList<String> getFirstClassSeats(int flightID) {
+        ResultSet rs = bookingDBManager.getAllSeats(flightID);
+        ArrayList<String> firstClassSeats = new ArrayList<>();
+        try {
+            while(rs.next()) {
+                //if seatOccupation is false & it is first class
+                if (!rs.getBoolean(2) & !rs.getBoolean(3)) {
+                    firstClassSeats.add(rs.getString(1));
+                }
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return firstClassSeats;
     }
 }

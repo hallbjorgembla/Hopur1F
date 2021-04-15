@@ -1,5 +1,6 @@
 package FlightReservation.view;
 
+import FlightReservation.controller.BookingController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,10 +12,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ChooseSeatController implements Initializable {
 
+    private static BookingController bc = new BookingController();
 
     @FXML
     private AnchorPane fxChooseSeatDialog;
@@ -26,9 +29,9 @@ public class ChooseSeatController implements Initializable {
     private Button fxChooseSeatOK;
 
     private static final String[] Class = {"First Class", "Economy Class"};
-    private static final String[] FirstSeat = {"2A", "2D", "2F", "3A", "3D", "3F", "4A", "4D", "4F"};
-    private static final String[] EconomySeat = {"5A", "5D", "5F", "6A", "6D", "6F", "7A", "7D", "7F", "8A",
-            "8D", "8F", "9A", "9D", "9F", "10A", "10D", "10F", "11A", "11D", "11F", "12A", "12C", "12D", "12F"};
+    //fær öll sæti frá flug með flightID = 1
+    private static final ArrayList<String> FirstSeat = bc.getFirstClassSeats(1);
+    private static final ArrayList<String> EconomySeat = bc.getEconomySeats(1);
 
 
     @Override
