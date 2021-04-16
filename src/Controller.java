@@ -3,6 +3,7 @@ import FlightReservation.controller.BookingController;
 import FlightReservation.controller.SearchController;
 import FlightReservation.controller.SearchService;
 import FlightReservation.model.Flight;
+import FlightReservation.model.Passenger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,6 +24,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Controller {
+    public TextField fxNameBook;
+    public TextField fxPassportNoBook;
+    public TextField fxKennitalaBook;
     private SearchController searchController = new SearchController(new SearchService());
     private BookingController bc = new BookingController();
     private Flight f;
@@ -140,6 +144,7 @@ public class Controller {
     }
 
     public void openBookingConfirmed(ActionEvent event) throws Exception {//áfram í BookingConfirmed
+        Passenger p = new Passenger(Integer.parseInt(fxKennitalaBook.getText()), fxNameBook.getText(), fxPassportNoBook.getText());
         Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/BookingConfirmed.fxml"));
 
         Stage window = (Stage) fxConfirmBook.getScene().getWindow();
