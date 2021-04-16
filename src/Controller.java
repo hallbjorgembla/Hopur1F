@@ -1,14 +1,14 @@
 //import java.awt.event.ActionEvent;
+import FlightReservation.controller.BookingController;
 import FlightReservation.controller.SearchController;
 import FlightReservation.controller.SearchService;
 import FlightReservation.model.Flight;
-import javafx.beans.Observable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -16,21 +16,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TreeItemPropertyValueFactory;
 import javafx.stage.Stage;
 
-import java.awt.*;
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class Controller {
+    private SearchController searchController = new SearchController(new SearchService());
+    private BookingController bc = new BookingController();
 
-    public ComboBox fxChooseClass;
-    public ComboBox fxChooseSeat;
-    public Button fxChooseSeatOK;
+    private ObservableList<String> seatClass = FXCollections.observableArrayList("First Class", "Economy Class");
+    private ObservableList<String> firstSeat = FXCollections.observableArrayList(bc.getFirstClassSeats(1));
+    private ObservableList<String> economySeat = FXCollections.observableArrayList(bc.getEconomySeats(1));
+    @FXML
+    ComboBox<String> fxChooseClass;
+    @FXML
+    ComboBox<String> fxChooseSeat;
+    @FXML
+    Button fxChooseSeatOK;
     @FXML
     Button fxCheckBooking;
     @FXML
@@ -52,17 +56,17 @@ public class Controller {
     @FXML
     private TableView<Flight> fxFlightTable;
     @FXML
-    private TableColumn fxFlightNumberCol;
+    private TableColumn<Flight, String> fxFlightNumberCol;
     @FXML
-    private TableColumn fxDepartureCityCol;
+    private TableColumn<Flight, String> fxDepartureCityCol;
     @FXML
-    private TableColumn fxArrivalCityCol;
+    private TableColumn<Flight, String> fxArrivalCityCol;
     @FXML
-    private TableColumn fxFlightDateCol;
+    private TableColumn<Flight, LocalDateTime> fxFlightDateCol;
     @FXML
-    private TableColumn fxPriceFirstClassCol;
+    private TableColumn<Flight, Double> fxPriceFirstClassCol;
     @FXML
-    private TableColumn fxPriceEconomyCol;
+    private TableColumn<Flight, Double> fxPriceEconomyCol;
     @FXML
     private Button fxFindBack;
     @FXML
@@ -71,8 +75,6 @@ public class Controller {
     private TextField fxFindArr;
     @FXML
     private TextField fxFindDep;
-
-    private SearchController searchController = new SearchController(new SearchService());
 
     public Controller() {
     }
@@ -145,7 +147,21 @@ public class Controller {
     //BookFlight
 
     //ChooseSeat
+    public void onSeatInit(Event event) {
+        fxChooseClass.setItems(seatClass);
+    }
+
     public void ClassHandler(ActionEvent actionEvent) {
+        int chosenClass = fxChooseClass.getSelectionModel().getSelectedIndex();
+
+        if(chosenClass == 0){
+            fxChooseSeat.getItems().removeAll();
+            fxChooseSeat.getItems().addAll(firstSeat);
+        }
+        else if(chosenClass == 1){
+            fxChooseSeat.getItems().removeAll();
+            fxChooseSeat.getItems().addAll(economySeat);
+        }
     }
 
     public void SeatHandler(ActionEvent actionEvent) {
