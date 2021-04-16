@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class Controller {
     private SearchController searchController = new SearchController(new SearchService());
     private BookingController bc = new BookingController();
-
+    private Flight f;
     private ObservableList<String> seatClass = FXCollections.observableArrayList("First Class", "Economy Class");
     private ObservableList<String> firstSeat = FXCollections.observableArrayList(bc.getFirstClassSeats(1));
     private ObservableList<String> economySeat = FXCollections.observableArrayList(bc.getEconomySeats(1));
@@ -115,6 +115,7 @@ public class Controller {
     }
 
     public void openBookFlight(ActionEvent event) throws Exception {//áfram í passenger booking
+        f = fxFlightTable.getSelectionModel().getSelectedItem();
         Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/BookFlight.fxml"));
 
         Stage window = (Stage) fxFindBook.getScene().getWindow();
