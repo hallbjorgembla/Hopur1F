@@ -131,6 +131,32 @@ public class Controller {
 
         Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root,  400, 200));
+    }
+
+    public void openFindFlightBack(ActionEvent event) throws Exception {
+        Button button = (Button) event.getSource();
+        Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/FindFlight.fxml"));
+
+        Stage window = (Stage) button.getScene().getWindow();
+        window.setScene(new Scene(root,  800, 600));
+
+    }
+
+   public void openBookFlightCheckBooking(ActionEvent event) throws Exception {
+        Button button = (Button) event.getSource();
+        Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/BookFlight.fxml"));
+
+        Stage window = (Stage) button.getScene().getWindow();
+        window.setScene(new Scene(root, 430, 400));
+
+    }
+
+    public void openStartClose(ActionEvent event) throws Exception {
+        Button button = (Button) event.getSource();
+        Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
+
+        Stage window = (Stage) button.getScene().getWindow();
+        window.setScene(new Scene(root, 400, 200));
 
     }
 
