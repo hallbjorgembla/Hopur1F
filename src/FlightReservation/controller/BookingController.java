@@ -54,4 +54,8 @@ public class BookingController {
     public ArrayList<String> getFirstClassSeats(int flightID) {
         return bookingService.getFirstClassSeats(flightID);
     }
+
+    public Seat getSeat(int flightID, String seatNumber) {
+        return bookingService.getSeat(flightID,seatNumber);
+    }
 }

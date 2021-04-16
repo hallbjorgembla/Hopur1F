@@ -4,6 +4,7 @@ import FlightReservation.controller.SearchController;
 import FlightReservation.controller.SearchService;
 import FlightReservation.model.Flight;
 import FlightReservation.model.Passenger;
+import FlightReservation.model.Seat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,6 +31,7 @@ public class Controller {
     private SearchController searchController = new SearchController(new SearchService());
     private BookingController bc = new BookingController();
     private Flight f;
+    private Seat s;
     private ObservableList<String> seatClass = FXCollections.observableArrayList("First Class", "Economy Class");
     private ObservableList<String> firstSeat = FXCollections.observableArrayList(bc.getFirstClassSeats(1));
     private ObservableList<String> economySeat = FXCollections.observableArrayList(bc.getEconomySeats(1));
@@ -145,6 +147,7 @@ public class Controller {
 
     public void openBookingConfirmed(ActionEvent event) throws Exception {//áfram í BookingConfirmed
         Passenger p = new Passenger(Integer.parseInt(fxKennitalaBook.getText()), fxNameBook.getText(), fxPassportNoBook.getText());
+
         Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/BookingConfirmed.fxml"));
 
         Stage window = (Stage) fxConfirmBook.getScene().getWindow();
@@ -174,6 +177,14 @@ public class Controller {
     }
 
     public void openBookFlightFromSeat(ActionEvent event) throws Exception {
+        //s = bc.getSeat(f.getFlightID(), fxChooseSeat.getSelectionModel().getSelectedItem());
+        System.out.println(f.getFlightID());
+        /*
+        System.out.println(s.getSeatID());
+        System.out.println(s.getSeatNumber());
+        System.out.println(s.isSeatOccupation());
+        System.out.println(s.isClassEconomy());
+        */
         Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/BookFlight.fxml"));
 
         Stage window = (Stage) fxChooseSeatOK.getScene().getWindow();
