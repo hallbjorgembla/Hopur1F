@@ -28,6 +28,9 @@ import java.util.ResourceBundle;
 
 public class Controller {
 
+    public ComboBox fxChooseClass;
+    public ComboBox fxChooseSeat;
+    public Button fxChooseSeatOK;
     @FXML
     Button fxCheckBooking;
     @FXML
@@ -142,7 +145,19 @@ public class Controller {
     //BookFlight
 
     //ChooseSeat
+    public void ClassHandler(ActionEvent actionEvent) {
+    }
 
+    public void SeatHandler(ActionEvent actionEvent) {
+    }
+
+    public void openBookFlightFromSeat(ActionEvent event) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/BookFlight.fxml"));
+
+        Stage window = (Stage) fxChooseSeatOK.getScene().getWindow();
+        window.setScene(new Scene(root,  450, 450));
+    }
+    //ChooseSeat
 
     public void openShowBooking(ActionEvent event) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/ShowBooking.fxml"));
