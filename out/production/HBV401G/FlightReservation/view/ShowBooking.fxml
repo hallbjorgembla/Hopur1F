@@ -16,6 +16,6 @@
         </columns>
       </TreeTableView>
       <Button fx:id="fxShowAnother" layoutX="128.0" layoutY="327.0" mnemonicParsing="false" onAction="#openCheckBooking" text="Check another booking" />
-      <Button layoutX="324.0" layoutY="327.0" mnemonicParsing="false" prefWidth="145.0" text="Edit booking" />
+      <Button layoutX="324.0" layoutY="327.0" mnemonicParsing="false" prefWidth="145.0" text="Cancel booking" />
    </children>
 </AnchorPane>
