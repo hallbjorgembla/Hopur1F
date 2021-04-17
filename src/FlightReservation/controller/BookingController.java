@@ -2,8 +2,6 @@ package FlightReservation.controller;
 
 import FlightReservation.model.*;
 
-import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class BookingController {

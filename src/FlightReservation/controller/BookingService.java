@@ -17,7 +17,6 @@ public class BookingService {
         bookingDBManager.insertToDB(booking);
     }
 
-
     public void cancelBooking(Booking booking) {
         bookingDBManager.deleteFromDB(booking);
     }

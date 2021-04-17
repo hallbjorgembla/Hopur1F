@@ -5,14 +5,12 @@ import FlightReservation.controller.SearchService;
 import FlightReservation.model.Flight;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -54,19 +52,20 @@ public class FindFlightController implements Initializable {
         fxFlightTable.setItems(flightObservableList);
     }
 
-    public void openStart(ActionEvent event) throws Exception {//til baka til start
+    public void openStart() throws Exception {//til baka í start
         Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
         Stage window = (Stage) fxFindBack.getScene().getWindow();
         window.setScene(new Scene(root,  400, 200));
     }
 
-    public void displayFlights(ActionEvent event) throws Exception {
+    /*hvað er þetta fyrir?
+    public void displayFlights() throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FindFlight.fxml"));
         Stage window = (Stage) fxFindEnter.getScene().getWindow();
         window.setScene(new Scene(root,  600, 600));
-    }
+    }*/
 
-    public void openBookFlight(ActionEvent event) throws Exception {//áfram í ChooseSeat
+    public void openBookFlight() throws Exception {//áfram í ChooseSeat
         Flight f = fxFlightTable.getSelectionModel().getSelectedItem();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ChooseSeat.fxml"));
@@ -90,15 +89,15 @@ public class FindFlightController implements Initializable {
 
     private void setjaUppDalka() {
         fxFlightTable.setPlaceholder(new Label("There are no flight matches for this search criteria"));
-        fxFlightNumberCol.setCellValueFactory(new PropertyValueFactory<Flight, String>("flightNumber"));
-        fxDepartureCityCol.setCellValueFactory(new PropertyValueFactory<Flight, String>("flightDeparture"));
-        fxArrivalCityCol.setCellValueFactory(new PropertyValueFactory<Flight, String>("flightDestination"));
-        fxFlightDateCol.setCellValueFactory(new PropertyValueFactory<Flight, LocalDateTime>("departureTime"));
-        fxPriceFirstClassCol.setCellValueFactory(new PropertyValueFactory<Flight, Double>("priceFirstClass"));
-        fxPriceEconomyCol.setCellValueFactory(new PropertyValueFactory<Flight, Double>("priceEconomy"));
+        fxFlightNumberCol.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
+        fxDepartureCityCol.setCellValueFactory(new PropertyValueFactory<>("flightDeparture"));
+        fxArrivalCityCol.setCellValueFactory(new PropertyValueFactory<>("flightDestination"));
+        fxFlightDateCol.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
+        fxPriceFirstClassCol.setCellValueFactory(new PropertyValueFactory<>("priceFirstClass"));
+        fxPriceEconomyCol.setCellValueFactory(new PropertyValueFactory<>("priceEconomy"));
     }
 
-    public void selectFlight(MouseEvent mouseEvent) {
+    public void selectFlight() {
         if (!fxFlightTable.getSelectionModel().isEmpty()){
             fxFindBook.setDisable(false);
         }
