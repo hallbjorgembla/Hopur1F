@@ -8,12 +8,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FlightReservation.view.FindFlightController">
+<AnchorPane prefHeight="512.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FlightReservation.view.FindFlightController">
    <children>
       <Label layoutX="52.0" layoutY="52.0" text="Departure City" />
-      <ComboBox fx:id="fxFindDep" accessibleRole="COMBO_BOX" layoutX="51.0" layoutY="76.0" onAction="#departureHandler" prefHeight="26.0" prefWidth="150.0" />
       <Label layoutX="222.0" layoutY="52.0" text="Arrival City" />
-      <ComboBox fx:id="fxFindArr" accessibleRole="COMBO_BOX" layoutX="222.0" layoutY="76.0" onAction="#arrivalHandler" prefHeight="26.0" prefWidth="150.0" />
       <Label layoutX="51.0" layoutY="118.0" text="Date" />
       <DatePicker fx:id="fxFindDate" layoutX="52.0" layoutY="142.0" prefHeight="27.0" prefWidth="161.0" />
       <Button fx:id="fxFindEnter" layoutX="472.0" layoutY="76.0" mnemonicParsing="false" onAction="#saekjaFlug" prefHeight="27.0" prefWidth="80.0" text="Enter" />
@@ -29,5 +27,7 @@
         </columns>
       </TableView>
       <Button fx:id="fxFindBack" layoutX="52.0" layoutY="451.0" mnemonicParsing="false" onAction="#openStart" prefHeight="27.0" prefWidth="80.0" text="Back" />
+      <ComboBox fx:id="fxFindDep" layoutX="51.0" layoutY="77.0" prefWidth="150.0" />
+      <ComboBox fx:id="fxFindArr" layoutX="222.0" layoutY="77.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

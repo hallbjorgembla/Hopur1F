@@ -24,6 +24,7 @@ public class FindFlightController implements Initializable {
     public DatePicker fxFindDate;
     public Button fxFindEnter;
     public Button fxFindBook;
+    public Button fxFindBack;
     public TableView<Flight> fxFlightTable;
     public TableColumn<Flight, String> fxFlightNumberCol;
     public TableColumn<Flight, String> fxDepartureCityCol;
@@ -31,31 +32,23 @@ public class FindFlightController implements Initializable {
     public TableColumn<Flight, LocalDateTime> fxFlightDateCol;
     public TableColumn<Flight, Double> fxPriceFirstClassCol;
     public TableColumn<Flight, Double> fxPriceEconomyCol;
-    public Button fxFindBack;
 
     private SearchController searchController = new SearchController(new SearchService());
     private BookingController bc = new BookingController();
-    private ArrayList<Flight> resultList;
-    private ObservableList<Flight> flightObservableList;
-    private String arrivalCity;
-    private String departureCity;
-    private LocalDate departureDate;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Taflan
+        ArrayList<String> dep = bc.getFlightCities(true);
+        dep.add(0,"");
+        fxFindDep.setItems(FXCollections.observableArrayList(dep));
+        ArrayList<String> arr = bc.getFlightCities(false);
+        arr.add(0,"");
+        fxFindArr.setItems(FXCollections.observableArrayList(arr));
+
         setjaUppDalka();
-        arrivalCity = fxFindArr.getValue();
-        departureCity = fxFindDep.getValue();
-        departureDate = fxFindDate.getValue();
-        resultList = searchController.leitaAdFlugum(departureDate, departureCity, arrivalCity);
-        flightObservableList = FXCollections.observableArrayList(resultList);
+        ArrayList<Flight> resultList = searchController.leitaAdFlugum(null, "", "");
+        ObservableList<Flight> flightObservableList = FXCollections.observableArrayList(resultList);
         fxFlightTable.setItems(flightObservableList);
-        //Combobox
-        ObservableList<String> depCities = FXCollections.observableArrayList(bc.getFlightCities(true));
-        ObservableList<String> arrCities = FXCollections.observableArrayList(bc.getFlightCities(false));
-        fxFindDep.setItems(depCities);
-        fxFindArr.setItems(arrCities);
     }
 
     public void openStart() throws Exception {//til baka í start
@@ -78,11 +71,11 @@ public class FindFlightController implements Initializable {
 
     public void saekjaFlug(){
         setjaUppDalka();
-        arrivalCity = fxFindArr.getSelectionModel().getSelectedItem();
-        departureCity = fxFindDep.getSelectionModel().getSelectedItem();
-        departureDate = fxFindDate.getValue();
-        resultList = searchController.leitaAdFlugum(departureDate, departureCity, arrivalCity);
-        flightObservableList = FXCollections.observableArrayList(resultList);
+        String arrivalCity = fxFindArr.getSelectionModel().getSelectedItem();
+        String departureCity = fxFindDep.getSelectionModel().getSelectedItem();
+        LocalDate departureDate = fxFindDate.getValue();
+        ArrayList<Flight> resultList = searchController.leitaAdFlugum(departureDate, departureCity, arrivalCity);
+        ObservableList<Flight> flightObservableList = FXCollections.observableArrayList(resultList);
         fxFlightTable.setItems(flightObservableList);
     }
 
