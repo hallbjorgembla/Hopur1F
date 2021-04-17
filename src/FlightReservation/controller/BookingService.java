@@ -2,6 +2,7 @@ package FlightReservation.controller;
 
 import FlightReservation.model.*;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -130,5 +131,56 @@ public class BookingService {
             e.printStackTrace();
         }
         return lastID;
+    }
+
+    public ArrayList<Integer> getTicketsByPassenger(String kennitala) {
+        ResultSet rs = bookingDBManager.getTicketIdByPassenger(kennitala);
+        ArrayList<Integer> ticketIDs = new ArrayList<>();
+        try {
+            while(rs.next()) {
+                ticketIDs.add(rs.getInt(1));
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ticketIDs;
+    }
+
+    public ArrayList<TicketToShow> getAllPassengerTickets(ArrayList<Integer> ticketIds, Passenger passenger) {
+        ArrayList<TicketToShow> ticketToShowList= new ArrayList<>();
+        for(Integer ticketId: ticketIds) {
+            ResultSet rs = bookingDBManager.getSeatAndFlightNumber(ticketId);
+            try {
+                while(rs.next()) {
+                    String seatNumber = rs.getString(2);
+                    String flightNumber = rs.getString(6);
+                    LocalDateTime departureTime = rs.getTimestamp(12).toLocalDateTime();
+                    String destination = rs.getString(10);
+                    ticketToShowList.add(new TicketToShow(flightNumber, departureTime, passenger.getName(), passenger.getPassportNumber(), destination, seatNumber));
+                }
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return ticketToShowList;
+    }
+
+    public ArrayList<Passenger> getPassengersByKennitala(String name, String passportNumber, String kennitala) {
+        ResultSet rs = bookingDBManager.getPassengersByKennitala(name, passportNumber, kennitala);
+        ArrayList<Passenger> passengers = new ArrayList<>();
+        try{
+            while(rs.next()) {
+                String passengerKt = rs.getString(1);
+                String passengerName = rs.getString(2);
+                String passengerPassportNumber = rs.getString(3);
+                passengers.add(new Passenger(passengerKt, passengerName, passengerPassportNumber));
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return passengers;
     }
 }

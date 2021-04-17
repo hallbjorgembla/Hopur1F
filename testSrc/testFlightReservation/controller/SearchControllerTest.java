@@ -2,14 +2,12 @@ package testFlightReservation.controller;
 
 import FlightReservation.controller.BookingController;
 import FlightReservation.controller.SearchService;
-import FlightReservation.model.Flight;
+import FlightReservation.model.*;
 import FlightReservation.controller.SearchController;
 import FlightReservation.controller.SearchServiceInterface;
-import FlightReservation.model.Passenger;
-import FlightReservation.model.Seat;
-import FlightReservation.model.Ticket;
 import org.junit.*;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -175,5 +173,18 @@ public class SearchControllerTest {
 
         boolean isFalse = false;
         assertFalse(isFalse);
+    }
+
+    @Test
+    public void testCase13() throws SQLException {
+        BookingController bc = new BookingController();
+        Passenger p = new Passenger("1105684019", "Tinna", "abc");
+        Seat s = new Seat(1104, "AO4", true, true);
+        Ticket t = new Ticket(106, p, s, 1, "FL101", "Reykjavík", "Akureyri", LocalDateTime.now(), LocalDateTime.now(), 0.75);
+        bc.book(106,t);
+        ArrayList<TicketToShow> tickets = bc.getTicketsByPassenger(p);
+        for(TicketToShow ticket:tickets) {
+            System.out.println(ticket.toString());
+        }
     }
 }

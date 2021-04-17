@@ -58,13 +58,6 @@ public class FindFlightController implements Initializable {
         window.setScene(new Scene(root,  400, 200));
     }
 
-    /*hvað er þetta fyrir?
-    public void displayFlights() throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FindFlight.fxml"));
-        Stage window = (Stage) fxFindEnter.getScene().getWindow();
-        window.setScene(new Scene(root,  600, 600));
-    }*/
-
     public void openBookFlight() throws Exception {//áfram í ChooseSeat
         Flight f = fxFlightTable.getSelectionModel().getSelectedItem();
 
