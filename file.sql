@@ -42,11 +42,10 @@ CREATE TABLE Seats(
 );
 
 CREATE TABLE Passengers(
-	passengerID INT NOT NULL,
+	passengerKT VARCHAR(10) NOT NULL,
 	name VARCHAR(30),
 	passportNumber VARCHAR(30) NOT NULL,
 	ticketID INT,
-	PRIMARY KEY(passengerID, passportNumber),
 	FOREIGN KEY(ticketID) REFERENCES Tickets(ticketID)
 );
 

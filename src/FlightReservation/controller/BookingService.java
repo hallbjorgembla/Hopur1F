@@ -17,7 +17,6 @@ public class BookingService {
         bookingDBManager.insertToDB(booking);
     }
 
-
     public void cancelBooking(Booking booking) {
         bookingDBManager.deleteFromDB(booking);
     }
@@ -29,10 +28,10 @@ public class BookingService {
             while(rs.next()) {
                 int ticketID = rs.getInt(1);
 
-                int passengerID = rs.getInt(2);
+                String passengerKT = rs.getString(2);
                 String name = rs.getString(3);
                 String passportNumber = rs.getString(4);
-                Passenger p = new Passenger(passengerID, name, passportNumber);
+                Passenger p = new Passenger(passengerKT, name, passportNumber);
 
                 int seatID = rs.getInt(5);
                 String seatNumber = rs.getString(6);
@@ -78,7 +77,6 @@ public class BookingService {
         ArrayList<String> firstClassSeats = new ArrayList<>();
         try {
             while(rs.next()) {
-                //if seatOccupation is false & it is first class
                 if (!rs.getBoolean(3) & !rs.getBoolean(4)) {
                     firstClassSeats.add(rs.getString(2));
                 }
@@ -104,5 +102,33 @@ public class BookingService {
             e.printStackTrace();
         }
         return seat;
+    }
+
+    public int getNextBookingID() {
+        ResultSet rs = bookingDBManager.getBookingID();
+        int lastID = 0;
+        try {
+            if (rs.next()) {
+                lastID = rs.getInt(1)+1;
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lastID;
+    }
+
+    public int getNextTicketID() {
+        ResultSet rs = bookingDBManager.getTicketID();
+        int lastID = 0;
+        try {
+            if (rs.next()) {
+                lastID = rs.getInt(1)+1;
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lastID;
     }
 }
