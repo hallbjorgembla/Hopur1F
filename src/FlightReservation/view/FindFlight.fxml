@@ -8,7 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FlightReservation.view.FindFlightController">
    <children>
       <Label layoutX="52.0" layoutY="52.0" text="Departure City" />
       <TextField fx:id="fxFindDep" layoutX="51.0" layoutY="76.0" />
@@ -18,7 +18,7 @@
       <DatePicker fx:id="fxFindDate" layoutX="52.0" layoutY="142.0" prefHeight="27.0" prefWidth="161.0" />
       <Button fx:id="fxFindEnter" layoutX="472.0" layoutY="76.0" mnemonicParsing="false" onAction="#saekjaFlug" prefHeight="27.0" prefWidth="80.0" text="Enter" />
       <Button fx:id="fxFindBook" disable="true" layoutX="472.0" layoutY="142.0" mnemonicParsing="false" onAction="#openBookFlight" prefHeight="27.0" prefWidth="80.0" text="Book Flight" />
-      <TableView fx:id="fxFlightTable" layoutX="52.0" layoutY="199.0" prefHeight="240.0" prefWidth="650">
+      <TableView fx:id="fxFlightTable" layoutX="52.0" layoutY="199.0" onMouseClicked="#selectFlight" prefHeight="240.0" prefWidth="650">
         <columns>
             <TableColumn fx:id="fxFlightNumberCol" prefWidth="80" text="Flight No." />
             <TableColumn fx:id="fxDepartureCityCol" prefWidth="100" text="Departure city" />
