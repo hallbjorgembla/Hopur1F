@@ -4,13 +4,9 @@ import FlightReservation.model.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class BookingController {
     private BookingService bookingService;
-    private Booking booking;
-    private Ticket ticket;
-    private ArrayList<Seat> seats;
 
     public BookingController() {
         this.bookingService = new BookingService();
@@ -25,8 +21,8 @@ public class BookingController {
     }
 
     public Booking showTicketInBooking(int bookingID) {
-        ticket = bookingService.getTicket(bookingID);
-        booking = new Booking(bookingID, ticket);
+        Ticket ticket = bookingService.getTicket(bookingID);
+        Booking booking = new Booking(bookingID, ticket);
         return booking;
     }
 
@@ -71,5 +67,9 @@ public class BookingController {
             System.out.println("Engir miðar fyrir þennan passenger");
             return new ArrayList<TicketToShow>();
         }
+    }
+
+    public ArrayList<String> getFlightCities(Boolean isDeparture){
+        return bookingService.getFlightCitiesByCondition(isDeparture);
     }
 }
