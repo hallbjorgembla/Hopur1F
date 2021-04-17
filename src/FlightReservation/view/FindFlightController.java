@@ -69,7 +69,7 @@ public class FindFlightController implements Initializable {
     }
 
     public void openBookFlight(ActionEvent event) throws Exception {//áfram í BookFlight
-        Flight f = (Flight) fxFlightTable.getSelectionModel().getSelectedItems();
+        Flight f = fxFlightTable.getSelectionModel().getSelectedItem();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("BookFlight.fxml"));
         Parent root = loader.load();
