@@ -192,11 +192,15 @@ public class BookingService {
         try{
             if (isDeparture) {
                 while(rs.next()) {
-                    cities.add(rs.getString(1));
+                    if (!cities.contains(rs.getString(1))) {
+                        cities.add(rs.getString(1));
+                    }
                 }
             } else {
                 while(rs.next()) {
-                    cities.add(rs.getString(2));
+                    if (!cities.contains(rs.getString(2))) {
+                        cities.add(rs.getString(2));
+                    }
                 }
             }
         }
