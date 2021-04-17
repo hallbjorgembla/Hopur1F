@@ -239,4 +239,29 @@ public class BookingDBManager {
         }
         return rs;
     }
+
+    public ResultSet getPassengersByKennitala(String name, String passportNumber, String kennitala) {
+        Connection c;
+        ResultSet rs = null;
+        try {
+            c = getConnection();
+            PreparedStatement pStmt;
+            String sql = (
+                    "SELECT * FROM " +
+                            "Passengers WHERE " +
+                            "passengerKT = ?" +" AND " +
+                            "name = ?" + " AND " +
+                            "passportNumber = ?");
+            pStmt = c.prepareStatement(sql);
+            pStmt.setString(1, kennitala);
+            pStmt.setString(2, name);
+            pStmt.setString(3, passportNumber);
+            rs = pStmt.executeQuery();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        return rs;
+    }
 }

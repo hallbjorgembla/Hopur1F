@@ -2,6 +2,7 @@ package FlightReservation.controller;
 
 import FlightReservation.model.*;
 
+import java.sql.Array;
 import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -164,5 +165,22 @@ public class BookingService {
             }
         }
         return ticketToShowList;
+    }
+
+    public ArrayList<Passenger> getPassengersByKennitala(String name, String passportNumber, String kennitala) {
+        ResultSet rs = bookingDBManager.getPassengersByKennitala(name, passportNumber, kennitala);
+        ArrayList<Passenger> passengers = new ArrayList<>();
+        try{
+            while(rs.next()) {
+                String passengerKt = rs.getString(1);
+                String passengerName = rs.getString(2);
+                String passengerPassportNumber = rs.getString(3);
+                passengers.add(new Passenger(passengerKt, passengerName, passengerPassportNumber));
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return passengers;
     }
 }

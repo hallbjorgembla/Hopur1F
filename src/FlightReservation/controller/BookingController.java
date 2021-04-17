@@ -4,6 +4,7 @@ import FlightReservation.model.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BookingController {
     private BookingService bookingService;
@@ -49,17 +50,26 @@ public class BookingController {
         return bookingService.getNextTicketID();
     }
 
-    public ArrayList<TicketToShow> getTicketsByPassenger(Passenger passenger) throws SQLException {
-        ArrayList<Integer> ticketIds = bookingService.getTicketsByPassenger(passenger.getPassengerKT());
+    public ArrayList<TicketToShow> getTicketsByPassenger(Passenger p) throws SQLException {
+        ArrayList<Integer> ticketIds = bookingService.getTicketsByPassenger(p.getPassengerKT());
         System.out.println(ticketIds);
-        ArrayList<TicketToShow> tickets = bookingService.getAllPassengerTickets(ticketIds, passenger);
+        ArrayList<TicketToShow> tickets = bookingService.getAllPassengerTickets(ticketIds, p);
         return tickets;
     }
 
     public ArrayList<TicketToShow> getTicketsToShow(String name, String passportNumber, String kennitala) throws SQLException {
         System.out.println("Kalla á getTicketsToShow með " + name + passportNumber + kennitala);
-        Passenger p = new Passenger(kennitala, name, passportNumber);
-        ArrayList<TicketToShow> ticketList = getTicketsByPassenger(p);
-        return ticketList;
+        ArrayList<Passenger> passengers = bookingService.getPassengersByKennitala(name, passportNumber,kennitala);
+        /*for(Passenger passenger:passengers) {
+            ArrayList<TicketToShow> ti
+        }*/
+        if(!passengers.isEmpty()) {
+            ArrayList<TicketToShow> ticketList = getTicketsByPassenger(passengers.get(0));
+            return ticketList;
+        }
+        else {
+            System.out.println("Engir miðar fyrir þennan passenger");
+            return new ArrayList<TicketToShow>();
+        }
     }
 }
