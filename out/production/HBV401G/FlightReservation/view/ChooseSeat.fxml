@@ -15,9 +15,10 @@
          </image>
       </ImageView>
       <Label layoutX="87.0" layoutY="259.0" text="Choose a class:" />
-      <ComboBox fx:id="fxChooseClass" layoutX="176.0" layoutY="254.0" onAction="#ClassHandler" onShowing="#onSeatInit" prefWidth="150.0" />
+      <ComboBox fx:id="fxChooseClass" layoutX="176.0" layoutY="254.0" onAction="#ClassHandler" prefWidth="150.0" />
       <Label layoutX="89.0" layoutY="296.0" text="Choose a seat:" />
-      <ComboBox fx:id="fxChooseSeat" layoutX="176.0" layoutY="291.0" onAction="#SeatHandler" prefWidth="150.0" />
-      <Button fx:id="fxChooseSeatOK" layoutX="451.0" layoutY="318.0" mnemonicParsing="false" onAction="#openBookFlightFromSeat" prefHeight="27.0" prefWidth="75.0" text="OK" />
+      <ComboBox fx:id="fxChooseSeat" disable="true" layoutX="176.0" layoutY="291.0" onAction="#SeatHandler" prefWidth="150.0" />
+      <Button fx:id="fxChooseSeatBack" layoutX="451.0" layoutY="291.0" mnemonicParsing="false" onAction="#openFindFlight" prefHeight="27.0" prefWidth="75.0" text="Back" />
+      <Button fx:id="fxChooseSeatConfirm" disable="true" layoutX="451.0" layoutY="254.0" mnemonicParsing="false" onAction="#openBookFlightFromSeat" prefHeight="27.0" prefWidth="75.0" text="Confirm" />
    </children>
 </AnchorPane>

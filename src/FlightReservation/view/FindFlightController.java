@@ -55,10 +55,8 @@ public class FindFlightController implements Initializable {
     }
 
     public void openStart(ActionEvent event) throws Exception {//til baka til start
-        Button button = (Button) event.getSource();
         Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
-
-        Stage window = (Stage) button.getScene().getWindow();
+        Stage window = (Stage) fxFindBack.getScene().getWindow();
         window.setScene(new Scene(root,  400, 200));
     }
 
@@ -68,16 +66,16 @@ public class FindFlightController implements Initializable {
         window.setScene(new Scene(root,  600, 600));
     }
 
-    public void openBookFlight(ActionEvent event) throws Exception {//áfram í BookFlight
+    public void openBookFlight(ActionEvent event) throws Exception {//áfram í ChooseSeat
         Flight f = fxFlightTable.getSelectionModel().getSelectedItem();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("BookFlight.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ChooseSeat.fxml"));
         Parent root = loader.load();
-        BookFlightController infoForNextScene = loader.getController();
+        ChooseSeatController infoForNextScene = loader.getController();
         infoForNextScene.setFlight(f);
 
         Stage window = (Stage) fxFindBook.getScene().getWindow();
-        window.setScene(new Scene(root,  430, 400));
+        window.setScene(new Scene(root,  600, 400));
     }
 
     public void saekjaFlug(){
