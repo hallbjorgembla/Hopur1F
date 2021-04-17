@@ -3,7 +3,6 @@ package FlightReservation.controller;
 import FlightReservation.model.*;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -79,7 +78,6 @@ public class BookingService {
         ArrayList<String> firstClassSeats = new ArrayList<>();
         try {
             while(rs.next()) {
-                //if seatOccupation is false & it is first class
                 if (!rs.getBoolean(3) & !rs.getBoolean(4)) {
                     firstClassSeats.add(rs.getString(2));
                 }
@@ -107,33 +105,31 @@ public class BookingService {
         return seat;
     }
 
-    public int getLastBookingID() {
+    public int getNextBookingID() {
         ResultSet rs = bookingDBManager.getBookingID();
         int lastID = 0;
         try {
-            if (!rs.wasNull()) {
-                lastID = rs.getInt(1);
+            if (rs.next()) {
+                lastID = rs.getInt(1)+1;
             }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        lastID += 1;
         return lastID;
     }
 
-    public int getLastTicketID() {
+    public int getNextTicketID() {
         ResultSet rs = bookingDBManager.getTicketID();
         int lastID = 0;
         try {
-            if (!rs.wasNull()) {
-                lastID = rs.getInt(1);
+            if (rs.next()) {
+                lastID = rs.getInt(1)+1;
             }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        lastID += 1;
         return lastID;
     }
 }

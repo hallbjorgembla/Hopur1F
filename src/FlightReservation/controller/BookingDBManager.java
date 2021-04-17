@@ -168,7 +168,7 @@ public class BookingDBManager {
         try {
             a = getConnection();
             PreparedStatement pStmt;
-            String sql = "SELECT * FROM Bookings ORDER BY bookingID DESC LIMIT 1";//nær í seinustu línu
+            String sql = "SELECT bookingID FROM Bookings ORDER BY bookingID DESC LIMIT 1";//nær í seinustu línu
             pStmt = a.prepareStatement(sql);
             rs = pStmt.executeQuery();
 
@@ -186,7 +186,7 @@ public class BookingDBManager {
         try {
             a = getConnection();
             PreparedStatement pStmt;
-            String sql = "SELECT * FROM Bookings ORDER BY bookingID DESC LIMIT 1";//nær í seinustu línu
+            String sql = "SELECT ticketID FROM Tickets ORDER BY ticketID DESC LIMIT 1";//nær í seinustu línu
             pStmt = a.prepareStatement(sql);
             rs = pStmt.executeQuery();
 

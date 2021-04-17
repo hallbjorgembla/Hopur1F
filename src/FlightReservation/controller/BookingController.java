@@ -43,10 +43,10 @@ public class BookingController {
     }
 
     public int getNextBookingID() {
-        return bookingService.getLastBookingID();
+        return bookingService.getNextBookingID();
     }
 
     public int getNextTicketID() {
-        return bookingService.getLastTicketID();
+        return bookingService.getNextTicketID();
     }
 }
