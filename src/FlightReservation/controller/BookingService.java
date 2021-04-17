@@ -107,8 +107,8 @@ public class BookingService {
         return seat;
     }
 
-    public int getLastBookingID() throws SQLException {
-        ResultSet rs = bookingDBManager.getBooking();
+    public int getLastBookingID() {
+        ResultSet rs = bookingDBManager.getBookingID();
         int lastID = 0;
         try {
             if (!rs.wasNull()) {
@@ -118,6 +118,22 @@ public class BookingService {
         catch (Exception e) {
             e.printStackTrace();
         }
-        return lastID+1;
+        lastID += 1;
+        return lastID;
+    }
+
+    public int getLastTicketID() {
+        ResultSet rs = bookingDBManager.getTicketID();
+        int lastID = 0;
+        try {
+            if (!rs.wasNull()) {
+                lastID = rs.getInt(1);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        lastID += 1;
+        return lastID;
     }
 }

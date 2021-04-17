@@ -88,7 +88,7 @@ public class BookFlightController implements Initializable {
 
     public void openBookingConfirmed(ActionEvent event) throws Exception {//áfram í BookingConfirmed
         Passenger p = new Passenger(fxKennitalaBook.getText(), fxNameBook.getText(), fxPassportNoBook.getText());
-        Ticket t = new Ticket(2, p, s, f.getFlightID(),f.getFlightNumber(), f.getFlightDeparture(), f.getFlightDestination(), f.getDepartureTime(), f.getArrivalTime(), f.getFlightTime());
+        Ticket t = new Ticket(bc.getNextTicketID(), p, s, f.getFlightID(),f.getFlightNumber(), f.getFlightDeparture(), f.getFlightDestination(), f.getDepartureTime(), f.getArrivalTime(), f.getFlightTime());
         bc.book(bc.getNextBookingID(), t);
         Parent root = FXMLLoader.load(getClass().getResource("BookingConfirmed.fxml"));
 

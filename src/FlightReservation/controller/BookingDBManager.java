@@ -162,7 +162,25 @@ public class BookingDBManager {
         return rs;
     }
 
-    public ResultSet getBooking() {
+    public ResultSet getBookingID() {
+        Connection a;
+        ResultSet rs = null;
+        try {
+            a = getConnection();
+            PreparedStatement pStmt;
+            String sql = "SELECT * FROM Bookings ORDER BY bookingID DESC LIMIT 1";//nær í seinustu línu
+            pStmt = a.prepareStatement(sql);
+            rs = pStmt.executeQuery();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        System.out.println("Opened database successfully");
+        return rs;
+    }
+
+    public ResultSet getTicketID() {
         Connection a;
         ResultSet rs = null;
         try {

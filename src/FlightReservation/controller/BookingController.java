@@ -42,7 +42,11 @@ public class BookingController {
         return bookingService.getSeat(flightID, seatNumber);
     }
 
-    public int getNextBookingID() throws SQLException {
+    public int getNextBookingID() {
         return bookingService.getLastBookingID();
+    }
+
+    public int getNextTicketID() {
+        return bookingService.getLastTicketID();
     }
 }
