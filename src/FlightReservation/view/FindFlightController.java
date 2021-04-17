@@ -3,7 +3,6 @@ package FlightReservation.view;
 import FlightReservation.controller.SearchController;
 import FlightReservation.controller.SearchService;
 import FlightReservation.model.Flight;
-import FlightReservation.model.Seat;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
