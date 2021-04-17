@@ -101,9 +101,4 @@ public class FindFlightController implements Initializable {
         }
     }
 
-    public void departureHandler() {
-    }
-
-    public void arrivalHandler() {
-    }
 }
