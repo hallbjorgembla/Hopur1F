@@ -1,5 +1,6 @@
 package FlightReservation.view;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,11 +42,9 @@ public class CheckBookingController implements Initializable {
         // Pass data to Show Booking Scene
         infoForNextScene.setStrings(kennitala, passportNumber, name);
         infoForNextScene.saekjaFlug();
-        // Show scene in new window
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.setTitle("Show Booking");
-        stage.show();
+        // Show scene
+        Stage window = (Stage) fxEnterCheck.getScene().getWindow();
+        window.setScene(new Scene(root, 600, 400));
     }
 
     public void openStart() throws Exception { //til baka í start
