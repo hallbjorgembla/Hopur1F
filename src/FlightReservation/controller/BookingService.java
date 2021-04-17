@@ -62,8 +62,8 @@ public class BookingService {
         ArrayList<String> economySeats = new ArrayList<>();
         try {
             while(rs.next()) {
-                if (!rs.getBoolean(2) & rs.getBoolean(3)) {
-                    economySeats.add(rs.getString(1));
+                if (!rs.getBoolean(3) & rs.getBoolean(4)) {
+                    economySeats.add(rs.getString(2));
                 }
             }
         }
@@ -79,8 +79,8 @@ public class BookingService {
         try {
             while(rs.next()) {
                 //if seatOccupation is false & it is first class
-                if (!rs.getBoolean(2) & !rs.getBoolean(3)) {
-                    firstClassSeats.add(rs.getString(1));
+                if (!rs.getBoolean(3) & !rs.getBoolean(4)) {
+                    firstClassSeats.add(rs.getString(2));
                 }
             }
         }
@@ -88,5 +88,21 @@ public class BookingService {
             e.printStackTrace();
         }
         return firstClassSeats;
+    }
+
+    public Seat getSeat(int flightID, String seatNumber) {
+        ResultSet rs = bookingDBManager.getAllSeats(flightID);
+        Seat seat = null;
+        try {
+            while(rs.next()) {
+                if (seatNumber.equals(rs.getString(2))) {
+                    seat = new Seat(rs.getInt(1), rs.getString(2), rs.getBoolean(3), rs.getBoolean(4));
+                }
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return seat;
     }
 }

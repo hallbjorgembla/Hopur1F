@@ -3,6 +3,9 @@ import FlightReservation.controller.BookingController;
 import FlightReservation.controller.SearchController;
 import FlightReservation.controller.SearchService;
 import FlightReservation.model.Flight;
+import FlightReservation.model.Passenger;
+import FlightReservation.model.Seat;
+import FlightReservation.model.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -23,12 +26,16 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Controller {
+    public TextField fxNameBook;
+    public TextField fxPassportNoBook;
+    public TextField fxKennitalaBook;
     private SearchController searchController = new SearchController(new SearchService());
     private BookingController bc = new BookingController();
     private Flight f;
-    private ObservableList<String> seatClass = FXCollections.observableArrayList("First Class", "Economy Class");
-    private ObservableList<String> firstSeat = FXCollections.observableArrayList(bc.getFirstClassSeats(1));
-    private ObservableList<String> economySeat = FXCollections.observableArrayList(bc.getEconomySeats(1));
+    private Seat s;
+    private ObservableList<String> firstSeat;
+    private ObservableList<String> economySeat;
+
     @FXML
     ComboBox<String> fxChooseClass;
     @FXML
@@ -79,6 +86,16 @@ public class Controller {
     public Controller() {
     }
 
+    //transfer data
+    public void setFlight(Flight flight){
+        f = flight;
+    }
+
+    public  void setSeat(Seat seat){
+        s = seat;
+    }
+    //transfer data
+
     //Start
     public void openCheckBooking(ActionEvent event) throws Exception {
         Button button = (Button) event.getSource();
@@ -115,8 +132,10 @@ public class Controller {
     }
 
     public void openBookFlight(ActionEvent event) throws Exception {//áfram í passenger booking
-        f = fxFlightTable.getSelectionModel().getSelectedItem();
-        Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/BookFlight.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FlightReservation/view/BookFlight.fxml"));
+        Parent root = loader.load();
+        Controller infoForNextScene = loader.getController();
+        infoForNextScene.setFlight(fxFlightTable.getSelectionModel().getSelectedItem());
 
         Stage window = (Stage) fxFindBook.getScene().getWindow();
         window.setScene(new Scene(root,  430, 400));
@@ -133,13 +152,19 @@ public class Controller {
     }
 
     public void openChooseSeat(ActionEvent event) throws Exception {//áfram í ChooseSeat
-        Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/ChooseSeat.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FlightReservation/view/ChooseSeat.fxml"));
+        Parent root = loader.load();
+        Controller infoForNextScene = loader.getController();
+        infoForNextScene.setFlight(f);
 
         Stage window = (Stage) fxChooseBook.getScene().getWindow();
         window.setScene(new Scene(root,  600, 400));
     }
 
     public void openBookingConfirmed(ActionEvent event) throws Exception {//áfram í BookingConfirmed
+        Passenger p = new Passenger(Integer.parseInt(fxKennitalaBook.getText()), fxNameBook.getText(), fxPassportNoBook.getText());
+        Ticket t = new Ticket(2, p, s, f.getFlightID(),f.getFlightNumber(), f.getFlightDeparture(), f.getFlightDestination(), f.getDepartureTime(), f.getArrivalTime(), f.getFlightTime());
+        bc.book(2, t);
         Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/BookingConfirmed.fxml"));
 
         Stage window = (Stage) fxConfirmBook.getScene().getWindow();
@@ -149,7 +174,11 @@ public class Controller {
 
     //ChooseSeat
     public void onSeatInit(Event event) {
+        ObservableList<String> seatClass = FXCollections.observableArrayList("First Class", "Economy Class");
+        firstSeat = FXCollections.observableArrayList(bc.getFirstClassSeats(f.getFlightID()));
+        economySeat = FXCollections.observableArrayList(bc.getEconomySeats(f.getFlightID()));
         fxChooseClass.setItems(seatClass);
+
     }
 
     public void ClassHandler(ActionEvent actionEvent) {
@@ -168,8 +197,14 @@ public class Controller {
     public void SeatHandler(ActionEvent actionEvent) {
     }
 
-    public void openBookFlightFromSeat(ActionEvent event) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FlightReservation/view/BookFlight.fxml"));
+    public void openBookFlightFromSeat(ActionEvent event) throws Exception {//áfram í BookFlight
+        s = bc.getSeat(f.getFlightID(), fxChooseSeat.getSelectionModel().getSelectedItem());
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FlightReservation/view/BookFlight.fxml"));
+        Parent root = loader.load();
+        Controller infoForNextScene = loader.getController();
+        infoForNextScene.setFlight(f);
+        infoForNextScene.setSeat(s);
 
         Stage window = (Stage) fxChooseSeatOK.getScene().getWindow();
         window.setScene(new Scene(root,  450, 450));
@@ -207,6 +242,12 @@ public class Controller {
         String departureCity = fxFindDep.getCharacters().toString();
         LocalDate departureDate = fxFindDate.getValue();
         ArrayList<Flight> resultList = searchController.leitaAdFlugum(departureDate, departureCity, arrivalCity);
+        if (resultList.isEmpty() == false){
+            fxFindBook.setDisable(false);
+        }
+        else {
+            fxFindBook.setDisable(true);
+        }
         ObservableList<Flight> flightObservableList = FXCollections.observableArrayList(resultList);
         fxFlightTable.setItems(flightObservableList);
     }
