@@ -1,22 +1,22 @@
 package FlightReservation.model;
 
 public class Passenger {
-    private int passengerID;
+    private String passengerKT;
     private String name;
     private String passportNumber;
 
-    public Passenger(int passengerID, String name, String passportNumber) {
-        this.passengerID = passengerID;
+    public Passenger(String passengerKT, String name, String passportNumber) {
+        this.passengerKT = passengerKT;
         this.name = name;
         this.passportNumber = passportNumber;
     }
 
-    public int getPassengerID() {
-        return passengerID;
+    public String getPassengerKT() {
+        return passengerKT;
     }
 
-    public void setPassengerID(int passengerID) {
-        this.passengerID = passengerID;
+    public void setPassengerKT(String passengerKT) {
+        this.passengerKT = passengerKT;
     }
 
     public String getName() {

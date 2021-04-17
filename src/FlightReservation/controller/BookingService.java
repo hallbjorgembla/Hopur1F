@@ -3,6 +3,7 @@ package FlightReservation.controller;
 import FlightReservation.model.*;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -29,10 +30,10 @@ public class BookingService {
             while(rs.next()) {
                 int ticketID = rs.getInt(1);
 
-                int passengerID = rs.getInt(2);
+                String passengerKT = rs.getString(2);
                 String name = rs.getString(3);
                 String passportNumber = rs.getString(4);
-                Passenger p = new Passenger(passengerID, name, passportNumber);
+                Passenger p = new Passenger(passengerKT, name, passportNumber);
 
                 int seatID = rs.getInt(5);
                 String seatNumber = rs.getString(6);
@@ -104,5 +105,19 @@ public class BookingService {
             e.printStackTrace();
         }
         return seat;
+    }
+
+    public int getLastBookingID() throws SQLException {
+        ResultSet rs = bookingDBManager.getBooking();
+        int lastID = 0;
+        try {
+            if (!rs.wasNull()) {
+                lastID = rs.getInt(1);
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lastID+1;
     }
 }

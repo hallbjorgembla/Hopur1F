@@ -28,7 +28,7 @@ public class BookingDBManager {
             PreparedStatement pStmt;
             String sql = (
                     "SELECT Tickets.ticketID, " +
-                            "passengerID, " +
+                            "passengerKT, " +
                             "name, " +
                             "passportNumber, " +
                             "seatID, " +
@@ -79,9 +79,9 @@ public class BookingDBManager {
             pStmt.setInt(2, bookingID);
             pStmt.execute();
 
-            sql = "INSERT INTO Passengers (passengerID, name, passportNumber, ticketID) VALUES (?,?,?,?)";
+            sql = "INSERT INTO Passengers (passengerKT, name, passportNumber, ticketID) VALUES (?,?,?,?)";
             pStmt = a.prepareStatement(sql);
-            pStmt.setInt(1, ticket.getPassenger().getPassengerID());
+            pStmt.setString(1, ticket.getPassenger().getPassengerKT());
             pStmt.setString(2, ticket.getPassenger().getName());
             pStmt.setString(3, ticket.getPassenger().getPassportNumber());
             pStmt.setInt(4, ticket.getTicketID());
@@ -152,6 +152,24 @@ public class BookingDBManager {
             sql = "SELECT * FROM Seats WHERE flightID = ?";
             pStmt = a.prepareStatement(sql);
             pStmt.setInt(1, flightID);
+            rs = pStmt.executeQuery();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        System.out.println("Opened database successfully");
+        return rs;
+    }
+
+    public ResultSet getBooking() {
+        Connection a;
+        ResultSet rs = null;
+        try {
+            a = getConnection();
+            PreparedStatement pStmt;
+            String sql = "SELECT * FROM Bookings ORDER BY bookingID DESC LIMIT 1";//nær í seinustu línu
+            pStmt = a.prepareStatement(sql);
             rs = pStmt.executeQuery();
 
         } catch (Exception e) {

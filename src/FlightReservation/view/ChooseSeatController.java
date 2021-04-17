@@ -26,7 +26,6 @@ public class ChooseSeatController implements Initializable {
 
     private BookingController bc = new BookingController();
     private Flight f;
-    private Seat s;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -36,10 +35,6 @@ public class ChooseSeatController implements Initializable {
 
     public void setFlight(Flight flight){
         f = flight;
-    }
-
-    public  void setSeat(Seat seat){
-        s = seat;
     }
 
     public void ClassHandler(ActionEvent actionEvent) {
@@ -65,13 +60,12 @@ public class ChooseSeatController implements Initializable {
     }
 
     public void openBookFlightFromSeat(ActionEvent event) throws Exception {//áfram í BookFlight
-        s = bc.getSeat(f.getFlightID(), fxChooseSeat.getSelectionModel().getSelectedItem());
+        Seat s = bc.getSeat(f.getFlightID(), fxChooseSeat.getSelectionModel().getSelectedItem());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("BookFlight.fxml"));
         Parent root = loader.load();
         BookFlightController infoForNextScene = loader.getController();
-        infoForNextScene.setFlight(f);
-        infoForNextScene.setSeat(s);
+        infoForNextScene.setFlightAndSeat(f, s);
 
         Stage window = (Stage) fxChooseSeatConfirm.getScene().getWindow();
         window.setScene(new Scene(root,  450, 450));
