@@ -47,23 +47,20 @@ public class SearchDBManager {
                                 "departureTime LIKE '" + departureDate.toString() + "%' AND " +
                                 "flightDeparture = '" + departureCity + "' AND " +
                                 "flightDestination = '" + arrivalCity + "'";
-        ResultSet rs = executeQuery(searchString);
-        return rs;
+        return executeQuery(searchString);
     }
 
     public ResultSet findFlightsByDate(LocalDate departureDate) {
         String searchString = "SELECT * FROM Flights WHERE " +
                                 "departureTime LIKE '" + departureDate.toString() + "%'";
-        ResultSet rs = executeQuery(searchString);
-        return rs;
+        return executeQuery(searchString);
     }
 
     public ResultSet findDepartureAndArrival(String departureCity, String arrivalCity) {
         String searchString = "SELECT * FROM Flights WHERE " +
                                 "flightDeparture = '" + departureCity + "' AND " +
                                 "flightDestination = '" + arrivalCity + "'";
-        ResultSet rs = executeQuery(searchString);
-        return rs;
+        return executeQuery(searchString);
     }
 
     public ResultSet findFlightByDeparture(String departureCity) {

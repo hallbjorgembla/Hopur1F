@@ -51,16 +51,16 @@ public class SearchController {
     }
 
     public ArrayList<Flight> leitaAdFlugum(LocalDate departureDate, String departureCity, String arrivalCity) {
-        if (departureCity.isEmpty() && arrivalCity.isEmpty() && departureDate == null){
+        if (departureCity.equals("") && arrivalCity.equals("") && departureDate == null){
             return searchServiceInterface.findAll();
         }
-        else if (!departureCity.isEmpty() && !arrivalCity.isEmpty() && departureDate == null) {
+        else if (!departureCity.equals("") && !arrivalCity.equals("") && departureDate == null) {
             return searchServiceInterface.findByDepartureAndArrival(departureCity, arrivalCity);
         }
-        else if (departureCity.isEmpty() && arrivalCity.isEmpty()) {
+        else if (departureCity.equals("") && arrivalCity.equals("")) {
             return searchServiceInterface.findFlightByDate(departureDate);
         }
-        else if (!departureCity.isEmpty() && !arrivalCity.isEmpty()) {
+        else if (!departureCity.equals("") && !arrivalCity.equals("")) {
             return searchServiceInterface.findFlights(departureDate, departureCity, arrivalCity);
         }
         else {

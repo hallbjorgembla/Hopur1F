@@ -76,11 +76,11 @@ public class SearchService implements SearchServiceInterface {
     public ArrayList<Flight> findFlightByArrOrDep(String departureCity, String arrivalCity) {
         ResultSet rs;
         ArrayList<Flight> flightList = new ArrayList<>();
-        if (departureCity.isEmpty()){
-            rs = searchDBManager.findFlightByDeparture(departureCity);
+        if (departureCity.equals("") && !arrivalCity.equals("")){
+            rs = searchDBManager.findFlightByArrival(arrivalCity);
         }
         else {
-            rs = searchDBManager.findFlightByArrival(arrivalCity);
+            rs = searchDBManager.findFlightByDeparture(departureCity);
         }
         resultToList(rs, flightList);
         return flightList;

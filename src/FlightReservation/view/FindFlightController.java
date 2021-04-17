@@ -74,6 +74,12 @@ public class FindFlightController implements Initializable {
         String arrivalCity = fxFindArr.getSelectionModel().getSelectedItem();
         String departureCity = fxFindDep.getSelectionModel().getSelectedItem();
         LocalDate departureDate = fxFindDate.getValue();
+        if (arrivalCity == null) {
+            arrivalCity = "";
+        }
+        if (departureCity == null) {
+            departureCity = "";
+        }
         ArrayList<Flight> resultList = searchController.leitaAdFlugum(departureDate, departureCity, arrivalCity);
         ObservableList<Flight> flightObservableList = FXCollections.observableArrayList(resultList);
         fxFlightTable.setItems(flightObservableList);
