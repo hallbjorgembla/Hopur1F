@@ -264,4 +264,21 @@ public class BookingDBManager {
         }
         return rs;
     }
+
+    public ResultSet getAllFlightCities() {
+        Connection c;
+        ResultSet rs = null;
+        try {
+            c = getConnection();
+            PreparedStatement pStmt;
+            String sql = ("SELECT flightDeparture, flightDestination FROM Flights");
+            pStmt = c.prepareStatement(sql);
+            rs = pStmt.executeQuery();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        return rs;
+    }
 }

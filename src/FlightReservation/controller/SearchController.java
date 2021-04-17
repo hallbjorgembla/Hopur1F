@@ -39,10 +39,9 @@ public class SearchController {
     }
 
     public ArrayList showAllAvailableSeats(ArrayList<Flight> flights) {
-        ArrayList<Integer> availableSeats = new ArrayList<Integer>();
-
-        for(int i = 0; i < flights.size(); i++){
-            availableSeats.add(flights.get(i).getAvailableSeats().size());
+        ArrayList<Integer> availableSeats = new ArrayList<>();
+        for (Flight flight : flights) {
+            availableSeats.add(flight.getAvailableSeats().size());
         }
         return availableSeats;
     }
@@ -52,21 +51,20 @@ public class SearchController {
     }
 
     public ArrayList<Flight> leitaAdFlugum(LocalDate departureDate, String departureCity, String arrivalCity) {
-        if (departureCity.isEmpty() && arrivalCity.isEmpty() && departureDate != null) {
-            return searchServiceInterface.findFlightByDate(departureDate);
-        }
-        if (!departureCity.isEmpty() && !arrivalCity.isEmpty() && departureDate != null) {
-            return searchServiceInterface.findFlights(departureDate, departureCity, arrivalCity);
-        }
-        if(departureCity.isEmpty() && arrivalCity.isEmpty() && departureDate == null) {
+        if (departureCity.equals("") && arrivalCity.equals("") && departureDate == null){
             return searchServiceInterface.findAll();
         }
-        if(!departureCity.isEmpty() && !arrivalCity.isEmpty() && departureDate == null) {
+        else if (!departureCity.equals("") && !arrivalCity.equals("") && departureDate == null) {
             return searchServiceInterface.findByDepartureAndArrival(departureCity, arrivalCity);
         }
+        else if (departureCity.equals("") && arrivalCity.equals("")) {
+            return searchServiceInterface.findFlightByDate(departureDate);
+        }
+        else if (!departureCity.equals("") && !arrivalCity.equals("")) {
+            return searchServiceInterface.findFlights(departureDate, departureCity, arrivalCity);
+        }
         else {
-            System.out.println("hvað á að gera hér?");
-            return new ArrayList<Flight>();
+            return searchServiceInterface.findFlightByArrOrDep(departureCity, arrivalCity);
         }
     }
 }

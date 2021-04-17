@@ -2,7 +2,6 @@ package FlightReservation.controller;
 
 import FlightReservation.model.Flight;
 
-import java.sql.Array;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class SearchService implements SearchServiceInterface {
-    BookingDBManager bookingDBManager;
     SearchDBManager searchDBManager;
 
     public SearchService() {
@@ -20,7 +18,7 @@ public class SearchService implements SearchServiceInterface {
     @Override
     public ArrayList<Flight> findAll() {
         ResultSet rs = searchDBManager.findAll();
-        ArrayList<Flight> flightList = new ArrayList<Flight>();
+        ArrayList<Flight> flightList = new ArrayList<>();
         resultToList(rs, flightList);
         return flightList;
     }
@@ -28,7 +26,7 @@ public class SearchService implements SearchServiceInterface {
     @Override
     public ArrayList<Flight> findFlights(LocalDate flightDate, String departureCity, String arrivalCity) {
         ResultSet rs = searchDBManager.findFlights(flightDate, departureCity, arrivalCity);
-        ArrayList<Flight> flightList = new ArrayList<Flight>();
+        ArrayList<Flight> flightList = new ArrayList<>();
         resultToList(rs, flightList);
         return flightList;
     }
@@ -69,7 +67,21 @@ public class SearchService implements SearchServiceInterface {
     @Override
     public ArrayList<Flight> findByDepartureAndArrival(String departureCity, String arrivalCity) {
         ResultSet rs = searchDBManager.findDepartureAndArrival(departureCity, arrivalCity);
-        ArrayList<Flight> flightList = new ArrayList<Flight>();
+        ArrayList<Flight> flightList = new ArrayList<>();
+        resultToList(rs, flightList);
+        return flightList;
+    }
+
+    @Override
+    public ArrayList<Flight> findFlightByArrOrDep(String departureCity, String arrivalCity) {
+        ResultSet rs;
+        ArrayList<Flight> flightList = new ArrayList<>();
+        if (departureCity.equals("") && !arrivalCity.equals("")){
+            rs = searchDBManager.findFlightByArrival(arrivalCity);
+        }
+        else {
+            rs = searchDBManager.findFlightByDeparture(departureCity);
+        }
         resultToList(rs, flightList);
         return flightList;
     }
@@ -94,3 +106,4 @@ public class SearchService implements SearchServiceInterface {
         }
     }
 }
+
