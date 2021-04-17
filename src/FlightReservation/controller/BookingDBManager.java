@@ -3,7 +3,6 @@ package FlightReservation.controller;
 import FlightReservation.model.*;
 
 import java.sql.*;
-import java.util.ArrayList;
 
 public class BookingDBManager {
 
