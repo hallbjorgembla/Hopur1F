@@ -197,4 +197,46 @@ public class BookingDBManager {
         System.out.println("Opened database successfully");
         return rs;
     }
+    public ResultSet getTicketIdByPassenger(String kennitala) {
+        Connection a;
+        ResultSet rs = null;
+        try{
+            a = getConnection();
+            PreparedStatement pStmt;
+            String sql;
+
+            sql = "SELECT ticketID from Passengers WHERE passengerKT = ?";
+            pStmt = a.prepareStatement(sql);
+            pStmt.setString(1, kennitala);
+            rs = pStmt.executeQuery();
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            System.exit(0);
+        }
+        return rs;
+    }
+
+    public ResultSet getSeatAndFlightNumber(int ticketID) {
+        Connection c;
+        ResultSet rs = null;
+        try {
+            c = getConnection();
+            PreparedStatement pStmt;
+            String sql = (
+                    "SELECT * FROM " +
+                            "Seats, Flights WHERE " +
+                            "ticketID = ? AND " +
+                            "Seats.flightID = Flights.flightID");
+            pStmt = c.prepareStatement(sql);
+            pStmt.setInt(1, ticketID);
+            rs = pStmt.executeQuery();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        return rs;
+    }
 }

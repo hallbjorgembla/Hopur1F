@@ -2,6 +2,7 @@ package FlightReservation.controller;
 
 import FlightReservation.model.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BookingController {
@@ -46,5 +47,19 @@ public class BookingController {
 
     public int getNextTicketID() {
         return bookingService.getNextTicketID();
+    }
+
+    public ArrayList<TicketToShow> getTicketsByPassenger(Passenger passenger) throws SQLException {
+        ArrayList<Integer> ticketIds = bookingService.getTicketsByPassenger(passenger.getPassengerKT());
+        System.out.println(ticketIds);
+        ArrayList<TicketToShow> tickets = bookingService.getAllPassengerTickets(ticketIds, passenger);
+        return tickets;
+    }
+
+    public ArrayList<TicketToShow> getTicketsToShow(String name, String passportNumber, String kennitala) throws SQLException {
+        System.out.println("Kalla á getTicketsToShow með " + name + passportNumber + kennitala);
+        Passenger p = new Passenger(kennitala, name, passportNumber);
+        ArrayList<TicketToShow> ticketList = getTicketsByPassenger(p);
+        return ticketList;
     }
 }

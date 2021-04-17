@@ -131,4 +131,38 @@ public class BookingService {
         }
         return lastID;
     }
+
+    public ArrayList<Integer> getTicketsByPassenger(String kennitala) {
+        ResultSet rs = bookingDBManager.getTicketIdByPassenger(kennitala);
+        ArrayList<Integer> ticketIDs = new ArrayList<>();
+        try {
+            while(rs.next()) {
+                ticketIDs.add(rs.getInt(1));
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ticketIDs;
+    }
+
+    public ArrayList<TicketToShow> getAllPassengerTickets(ArrayList<Integer> ticketIds, Passenger passenger) {
+        ArrayList<TicketToShow> ticketToShowList= new ArrayList<>();
+        for(Integer ticketId: ticketIds) {
+            ResultSet rs = bookingDBManager.getSeatAndFlightNumber(ticketId);
+            try {
+                while(rs.next()) {
+                    String seatNumber = rs.getString(2);
+                    String flightNumber = rs.getString(6);
+                    LocalDateTime departureTime = rs.getTimestamp(12).toLocalDateTime();
+                    String destination = rs.getString(10);
+                    ticketToShowList.add(new TicketToShow(flightNumber, departureTime, passenger.getName(), passenger.getPassportNumber(), destination, seatNumber));
+                }
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return ticketToShowList;
+    }
 }

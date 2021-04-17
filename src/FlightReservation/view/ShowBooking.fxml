@@ -3,19 +3,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="fxShowEdit" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FlightReservation.view.Controller">
+<AnchorPane fx:id="fxShowEdit" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FlightReservation.view.ShowBookingController">
    <children>
-      <TreeTableView fx:id="fxShowTickets" layoutX="50.0" layoutY="59.0" prefHeight="225.0" prefWidth="500.0">
+      <TableView fx:id="fxShowTickets" layoutX="50.0" layoutY="59.0" prefHeight="225.0" prefWidth="500.0">
         <columns>
-          <TreeTableColumn prefWidth="83.0" text="Flight No." />
-            <TreeTableColumn prefWidth="83.0" text="Date" />
-            <TreeTableColumn prefWidth="83.0" text="Name" />
-            <TreeTableColumn prefWidth="83.0" text="Passport No." />
-            <TreeTableColumn prefWidth="83.0" text="Destination" />
-            <TreeTableColumn prefWidth="83.0" text="Seat Number" />
+            <TableColumn fx:id="fxFlightNumberColTicket" prefWidth="83.0" text="Flight No." />
+            <TableColumn fx:id="fxDateColTicket" prefWidth="83.0" text="Date" />
+            <TableColumn fx:id="fxNameColTicket" prefWidth="83.0" text="Name" />
+            <TableColumn fx:id="fxPassportColTicket" prefWidth="83.0" text="Passport No." />
+            <TableColumn fx:id="fxDestinationColTicket" prefWidth="83.0" text="Destination" />
+            <TableColumn fx:id="fxSeatColTicket" prefWidth="83.0" text="Seat Number" />
         </columns>
-      </TreeTableView>
+      </TableView>
       <Button fx:id="fxShowAnother" layoutX="128.0" layoutY="327.0" mnemonicParsing="false" onAction="#openCheckBooking" text="Check another booking" />
-      <Button layoutX="324.0" layoutY="327.0" mnemonicParsing="false" prefWidth="145.0" text="Cancel booking" />
+      <Button fx:id="fxCancelButton" layoutX="324.0" layoutY="327.0" mnemonicParsing="false" onAction="#printStrings" prefWidth="145.0" text="Cancel booking" />
    </children>
 </AnchorPane>
