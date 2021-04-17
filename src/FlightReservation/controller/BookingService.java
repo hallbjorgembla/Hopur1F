@@ -183,4 +183,24 @@ public class BookingService {
         }
         return passengers;
     }
+
+    public ArrayList<String> getFlightCitiesByCondition(Boolean isDeparture){
+        ResultSet rs =  bookingDBManager.getAllFlightCities();
+        ArrayList<String> cities = new ArrayList<>();
+        try{
+            if (isDeparture) {
+                while(rs.next()) {
+                    cities.add(rs.getString(1));
+                }
+            } else {
+                while(rs.next()) {
+                    cities.add(rs.getString(2));
+                }
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cities;
+    }
 }

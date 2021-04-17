@@ -72,4 +72,8 @@ public class BookingController {
             return new ArrayList<TicketToShow>();
         }
     }
+
+    public ArrayList<String> getFlightCities(Boolean isDeparture){
+        return bookingService.getFlightCitiesByCondition(isDeparture);
+    }
 }

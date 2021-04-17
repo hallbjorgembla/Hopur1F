@@ -1,7 +1,6 @@
 package FlightReservation.view;
 
-import FlightReservation.controller.SearchController;
-import FlightReservation.controller.SearchService;
+import FlightReservation.controller.*;
 import FlightReservation.model.Flight;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,8 +19,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class FindFlightController implements Initializable {
-    public TextField fxFindDep;
-    public TextField fxFindArr;
+    public ComboBox<String> fxFindDep;
+    public ComboBox<String> fxFindArr;
     public DatePicker fxFindDate;
     public Button fxFindEnter;
     public Button fxFindBook;
@@ -35,6 +34,7 @@ public class FindFlightController implements Initializable {
     public Button fxFindBack;
 
     private SearchController searchController = new SearchController(new SearchService());
+    private BookingController bc = new BookingController();
     private ArrayList<Flight> resultList;
     private ObservableList<Flight> flightObservableList;
     private String arrivalCity;
@@ -43,13 +43,19 @@ public class FindFlightController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //Taflan
         setjaUppDalka();
-        arrivalCity = fxFindArr.getCharacters().toString();
-        departureCity = fxFindDep.getCharacters().toString();
+        arrivalCity = fxFindArr.getValue();
+        departureCity = fxFindDep.getValue();
         departureDate = fxFindDate.getValue();
         resultList = searchController.leitaAdFlugum(departureDate, departureCity, arrivalCity);
         flightObservableList = FXCollections.observableArrayList(resultList);
         fxFlightTable.setItems(flightObservableList);
+        //Combobox
+        ObservableList<String> depCities = FXCollections.observableArrayList(bc.getFlightCities(true));
+        ObservableList<String> arrCities = FXCollections.observableArrayList(bc.getFlightCities(false));
+        fxFindDep.setItems(depCities);
+        fxFindArr.setItems(arrCities);
     }
 
     public void openStart() throws Exception {//til baka í start
@@ -72,8 +78,8 @@ public class FindFlightController implements Initializable {
 
     public void saekjaFlug(){
         setjaUppDalka();
-        arrivalCity = fxFindArr.getCharacters().toString();
-        departureCity = fxFindDep.getCharacters().toString();
+        arrivalCity = fxFindArr.getSelectionModel().getSelectedItem();
+        departureCity = fxFindDep.getSelectionModel().getSelectedItem();
         departureDate = fxFindDate.getValue();
         resultList = searchController.leitaAdFlugum(departureDate, departureCity, arrivalCity);
         flightObservableList = FXCollections.observableArrayList(resultList);
@@ -94,5 +100,11 @@ public class FindFlightController implements Initializable {
         if (!fxFlightTable.getSelectionModel().isEmpty()){
             fxFindBook.setDisable(false);
         }
+    }
+
+    public void departureHandler() {
+    }
+
+    public void arrivalHandler() {
     }
 }

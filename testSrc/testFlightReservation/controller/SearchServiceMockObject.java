@@ -90,4 +90,9 @@ public class SearchServiceMockObject implements SearchServiceInterface {
     public ArrayList<Flight> findByDepartureAndArrival(String departureCity, String arrivalCity) {
         return null;
     }
+
+    @Override
+    public ArrayList<Flight> findFlightByArrOrDep(String departureCity, String arrivalCity) {
+        return null;
+    }
 }

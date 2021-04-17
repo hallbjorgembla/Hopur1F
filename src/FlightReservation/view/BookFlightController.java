@@ -62,7 +62,7 @@ public class BookFlightController implements Initializable {
         }
     }
 
-    public void openFindFlightBack() throws Exception {//til baka í ChooseSeat
+    public void openFindFlightBack() throws Exception {//tilbaka í ChooseSeat
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ChooseSeat.fxml"));
         Parent root = loader.load();
         ChooseSeatController infoForNextScene = loader.getController();
