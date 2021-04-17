@@ -16,7 +16,6 @@ public class BookFlightController {
     public TextField fxNameBook;
     public TextField fxPassportNoBook;
     public TextField fxKennitalaBook;
-    public Button fxChooseBook;
     public Button fxBackBook;
     public Button fxConfirmBook;
 
@@ -35,22 +34,13 @@ public class BookFlightController {
         this.s = seat;
     }
 
-    //BookFlight
-    public void openFindFlightBack(ActionEvent event) throws Exception {//til baka í FindFlight
-        Button button = (Button) event.getSource();
-        Parent root = FXMLLoader.load(getClass().getResource("FindFlight.fxml"));
-
-        Stage window = (Stage) button.getScene().getWindow();
-        window.setScene(new Scene(root,  800, 600));
-    }
-
-    public void openChooseSeat(ActionEvent event) throws Exception {//áfram í ChooseSeat
+    public void openFindFlightBack(ActionEvent event) throws Exception {//til baka í ChooseSeat
         FXMLLoader loader = new FXMLLoader(getClass().getResource("ChooseSeat.fxml"));
         Parent root = loader.load();
         ChooseSeatController infoForNextScene = loader.getController();
         infoForNextScene.setFlight(f);
 
-        Stage window = (Stage) fxChooseBook.getScene().getWindow();
+        Stage window = (Stage) fxBackBook.getScene().getWindow();
         window.setScene(new Scene(root,  600, 400));
     }
 
@@ -63,5 +53,4 @@ public class BookFlightController {
         Stage window = (Stage) fxConfirmBook.getScene().getWindow();
         window.setScene(new Scene(root,  300, 200));
     }
-    //BookFlight
 }

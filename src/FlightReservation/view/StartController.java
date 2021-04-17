@@ -105,20 +105,4 @@ public class StartController {
         Stage window = (Stage) fxEnterCheck.getScene().getWindow();
         window.setScene(new Scene(root,  600, 400));
     }
-
-   public void openBookFlightCheckBooking(ActionEvent event) throws Exception {
-        Button button = (Button) event.getSource();
-        Parent root = FXMLLoader.load(getClass().getResource("BookFlight.fxml"));
-
-        Stage window = (Stage) button.getScene().getWindow();
-        window.setScene(new Scene(root, 430, 400));
-    }
-
-    public void openStartClose(ActionEvent event) throws Exception {
-        Button button = (Button) event.getSource();
-        Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
-
-        Stage window = (Stage) button.getScene().getWindow();
-        window.setScene(new Scene(root, 400, 200));
-    }
 }
