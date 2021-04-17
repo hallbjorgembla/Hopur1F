@@ -95,7 +95,7 @@ public class BookingService {
         Seat seat = null;
         try {
             while(rs.next()) {
-                if (seatNumber.equals(rs.getBoolean(2))) {
+                if (seatNumber.equals(rs.getString(2))) {
                     seat = new Seat(rs.getInt(1), rs.getString(2), rs.getBoolean(3), rs.getBoolean(4));
                 }
             }
