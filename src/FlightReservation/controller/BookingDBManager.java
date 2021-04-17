@@ -3,6 +3,7 @@ package FlightReservation.controller;
 import FlightReservation.model.*;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class BookingDBManager {
 
@@ -256,6 +257,23 @@ public class BookingDBManager {
             pStmt.setString(1, kennitala);
             pStmt.setString(2, name);
             pStmt.setString(3, passportNumber);
+            rs = pStmt.executeQuery();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(0);
+        }
+        return rs;
+    }
+
+    public ResultSet getAllFlightCities() {
+        Connection c;
+        ResultSet rs = null;
+        try {
+            c = getConnection();
+            PreparedStatement pStmt;
+            String sql = ("SELECT flightDeparture, flightDestination FROM Flights");
+            pStmt = c.prepareStatement(sql);
             rs = pStmt.executeQuery();
 
         } catch (Exception e) {
