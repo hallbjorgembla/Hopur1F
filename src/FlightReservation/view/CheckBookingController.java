@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -41,10 +42,17 @@ public class CheckBookingController implements Initializable {
         ShowBookingController infoForNextScene = loader.getController();
         // Pass data to Show Booking Scene
         infoForNextScene.setStrings(kennitala, passportNumber, name);
-        infoForNextScene.saekjaFlug();
+        boolean b = infoForNextScene.saekjaFlug();
+        if(b){
+            Alert a  = new Alert(Alert.AlertType.INFORMATION);
+            a.setContentText("Illegal search conditions / No results");
+            a.show();
+        }
         // Show scene
-        Stage window = (Stage) fxEnterCheck.getScene().getWindow();
-        window.setScene(new Scene(root, 600, 400));
+        else {
+            Stage window = (Stage) fxEnterCheck.getScene().getWindow();
+            window.setScene(new Scene(root, 600, 400));
+        }
     }
 
     public void openStart() throws Exception { //til baka í start
