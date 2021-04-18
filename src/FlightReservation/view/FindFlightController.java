@@ -83,6 +83,7 @@ public class FindFlightController implements Initializable {
         ArrayList<Flight> resultList = searchController.leitaAdFlugum(departureDate, departureCity, arrivalCity);
         ObservableList<Flight> flightObservableList = FXCollections.observableArrayList(resultList);
         fxFlightTable.setItems(flightObservableList);
+        fxFindBook.setDisable(true);
     }
 
     private void setjaUppDalka() {
