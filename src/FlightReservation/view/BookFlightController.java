@@ -55,15 +55,7 @@ public class BookFlightController {
 
     public void openBookingConfirmed() throws Exception {//áfram í BookingConfirmed
         boolean b = isKennitala(fxKennitalaBook.getText(), fxKennitalaBook.getText().length());
-        if(b) {
-            System.out.println("ututt");
-            if ( fxNameBook.toString().length() == 0&&fxPassportNoBook.toString().length() == 0){
-            Alert a = new Alert(Alert.AlertType.INFORMATION);
-            a.setContentText("Illegal booking input.");
-            a.show();
-        }
-        }
-        else {
+        if (b && fxNameBook.getText().length() > 0 && fxPassportNoBook.getText().length() > 0){
             FXMLLoader loader = new FXMLLoader((getClass().getResource("BookingConfirmed.fxml")));
             Parent root = loader.load();
             Passenger p = new Passenger(fxKennitalaBook.getText(), fxNameBook.getText(), fxPassportNoBook.getText());
@@ -71,6 +63,11 @@ public class BookFlightController {
             bc.book(bc.getNextBookingID(), t);
             Stage window = (Stage) fxConfirmBook.getScene().getWindow();
             window.setScene(new Scene(root,  300, 200));
+        }
+        else {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setContentText("Illegal booking input\nEnter valid information");
+                a.show();
         }
     }
 }
