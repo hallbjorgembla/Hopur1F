@@ -49,7 +49,7 @@ public class BookFlightController implements Initializable {
         });
 
         fxKennitalaBook.textProperty().addListener((observable, oldValue, newValue) -> {
-            isValidKt = newValue.length() == 10;
+            isValidKt = !newValue.equals("");
             enableConfirmButton();
         });
     }
@@ -72,13 +72,30 @@ public class BookFlightController implements Initializable {
         window.setScene(new Scene(root,  600, 400));
     }
 
-    public void openBookingConfirmed() throws Exception {//áfram í BookingConfirmed
-        Passenger p = new Passenger(fxKennitalaBook.getText(), fxNameBook.getText(), fxPassportNoBook.getText());
-        Ticket t = new Ticket(bc.getNextTicketID(), p, s, f.getFlightID(),f.getFlightNumber(), f.getFlightDeparture(), f.getFlightDestination(), f.getDepartureTime(), f.getArrivalTime(), f.getFlightTime());
-        bc.book(bc.getNextBookingID(), t);
-        Parent root = FXMLLoader.load(getClass().getResource("BookingConfirmed.fxml"));
+    private Boolean isKennitala(String str, int length){
+        if (length == 10) {
+            for (int i = 0; i < length; i++) {
+                if (!(str.charAt(i) >= '0' && str.charAt(i) <= '9')) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        return false;
+    }
 
-        Stage window = (Stage) fxConfirmBook.getScene().getWindow();
-        window.setScene(new Scene(root,  300, 200));
+    public void openBookingConfirmed() throws Exception {//áfram í BookingConfirmed
+        if (isKennitala(fxKennitalaBook.getText(),fxKennitalaBook.getText().length())) {
+            Passenger p = new Passenger(fxKennitalaBook.getText(), fxNameBook.getText(), fxPassportNoBook.getText());
+            Ticket t = new Ticket(bc.getNextTicketID(), p, s, f.getFlightID(),f.getFlightNumber(), f.getFlightDeparture(), f.getFlightDestination(), f.getDepartureTime(), f.getArrivalTime(), f.getFlightTime());
+            bc.book(bc.getNextBookingID(), t);
+            Parent root = FXMLLoader.load(getClass().getResource("BookingConfirmed.fxml"));
+
+            Stage window = (Stage) fxConfirmBook.getScene().getWindow();
+            window.setScene(new Scene(root,  300, 200));
+        }
+        else {//setja alarm
+            System.out.println("Sláðu inn kennitölu");
+        }
     }
 }
