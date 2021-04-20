@@ -70,7 +70,7 @@ public class ShowBookingController {
     }
 
     public void openStart() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("CheckBooking.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
 
         Stage window = (Stage) fxBackToMain.getScene().getWindow();
         window.setScene(new Scene(root,  430, 400));
