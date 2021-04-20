@@ -158,8 +158,9 @@ public class BookingService {
                     String seatNumber = rs.getString(2);
                     String flightNumber = rs.getString(6);
                     LocalDateTime departureTime = rs.getTimestamp(12).toLocalDateTime();
-                    String destination = rs.getString(10);
-                    ticketToShowList.add(new TicketToShow(flightNumber, departureTime, passenger.getName(), passenger.getPassportNumber(), destination, seatNumber));
+                    String departure = rs.getString(10);
+                    String destination = rs.getString(11);
+                    ticketToShowList.add(new TicketToShow(flightNumber, departureTime, passenger.getName(), passenger.getPassportNumber(), departure, destination, seatNumber));
                 }
             }
             catch (Exception e){

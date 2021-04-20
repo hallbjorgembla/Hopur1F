@@ -29,8 +29,10 @@ public class ShowBookingController {
     public TableColumn<TicketToShow, String> fxPassportColTicket;
     public TableColumn<TicketToShow, String> fxDestinationColTicket;
     public TableColumn<TicketToShow, String> fxSeatColTicket;
+    public TableColumn<TicketToShow, String> fxDepartureColTicket;
     public Button fxShowAnother;
     public Button fxBackToMain;
+
 
     private String kennitala;
     private String passportNumber;
@@ -56,12 +58,14 @@ public class ShowBookingController {
         setjaUppDalka();
         ArrayList<TicketToShow> tickets = bookingController.getTicketsToShow(this.name, this.passportNumber, this.kennitala);
         ObservableList<TicketToShow> ticketToShows = FXCollections.observableArrayList(tickets);
+        System.out.println(tickets.get(0).getDeparture());
         fxShowTickets.setItems(ticketToShows);
         return tickets.isEmpty();
     }
 
     private void setjaUppDalka() {
         fxDateColTicket.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
+        fxDepartureColTicket.setCellValueFactory(new PropertyValueFactory<>("departure"));
         fxDestinationColTicket.setCellValueFactory(new PropertyValueFactory<>("destination"));
         fxNameColTicket.setCellValueFactory(new PropertyValueFactory<>("passengerName"));
         fxPassportColTicket.setCellValueFactory(new PropertyValueFactory<>("passportNumber"));
@@ -73,6 +77,6 @@ public class ShowBookingController {
         Parent root = FXMLLoader.load(getClass().getResource("Start.fxml"));
 
         Stage window = (Stage) fxBackToMain.getScene().getWindow();
-        window.setScene(new Scene(root,  430, 400));
+        window.setScene(new Scene(root,  400, 200));
     }
 }

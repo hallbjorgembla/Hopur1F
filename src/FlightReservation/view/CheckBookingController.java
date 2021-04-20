@@ -51,7 +51,7 @@ public class CheckBookingController implements Initializable {
         // Show scene
         else {
             Stage window = (Stage) fxEnterCheck.getScene().getWindow();
-            window.setScene(new Scene(root, 600, 400));
+            window.setScene(new Scene(root, 800, 500));
         }
     }
 

@@ -9,15 +9,21 @@ public class TicketToShow {
     String passengerName;
     String passportNumber;
     String destination;
+    String departure;
     String seatNumber;
 
-    public TicketToShow(String flightNumber, LocalDateTime departureTime, String passengerName, String passportNumber, String destination, String seatNumber) {
+    public TicketToShow(String flightNumber, LocalDateTime departureTime, String passengerName, String passportNumber, String departure, String destination, String seatNumber) {
         this.flightNumber = flightNumber;
         this.departureTime = departureTime;
         this.passengerName = passengerName;
         this.passportNumber = passportNumber;
+        this.departure = departure;
         this.destination = destination;
         this.seatNumber = seatNumber;
+    }
+
+    public String getDeparture() {
+        return departure;
     }
 
     public String getFlightNumber() {
