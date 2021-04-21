@@ -2,7 +2,7 @@
 
 Lokaverkefni í áfangangum Þróun hugbúnaðar vorið 2021
 
-##Hópur 1F
+## Hópur 1F
 
 - Alexandra Sigfúsdóttir
 - Hallbjörg Embla Sigtryggsdóttir
