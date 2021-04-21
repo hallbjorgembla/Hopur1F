@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="fxShowEdit" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #3C99AB;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FlightReservation.view.ShowBookingController">
+   <children>
+      <TableView fx:id="fxShowTickets" layoutX="50.0" layoutY="59.0" prefHeight="225.0" prefWidth="700.0" style="-fx-background-color: #ABD3DB;">
+        <columns>
+            <TableColumn fx:id="fxFlightNumberColTicket" prefWidth="74.0" text="Flight No." />
+            <TableColumn fx:id="fxDateColTicket" prefWidth="150.0" text="Date" />
+            <TableColumn fx:id="fxNameColTicket" prefWidth="100.0" text="Name" />
+            <TableColumn fx:id="fxPassportColTicket" prefWidth="100.0" text="Passport No." />
+            <TableColumn fx:id="fxDepartureColTicket" prefWidth="100.0" text="Departure City" />
+            <TableColumn fx:id="fxDestinationColTicket" prefWidth="100.0" text="Destination City" />
+            <TableColumn fx:id="fxSeatColTicket" prefWidth="74.0" text="Seat No." />
+        </columns>
+      </TableView>
+      <Button fx:id="fxShowAnother" layoutX="201.0" layoutY="349.0" mnemonicParsing="false" onAction="#openCheckBooking" style="-fx-background-color: #ABD3DB;" text="Check another booking" />
+      <Button fx:id="fxBackToMain" layoutX="459.0" layoutY="348.0" mnemonicParsing="false" onAction="#openStart" prefWidth="145.0" style="-fx-background-color: #ABD3DB;" text="Back to main" />
+   </children>
+</AnchorPane>

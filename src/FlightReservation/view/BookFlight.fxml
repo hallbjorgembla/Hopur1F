@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="400.0" style="-fx-background-color: #3C99AB;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FlightReservation.view.BookFlightController">
+    <children>
+        <Label layoutX="61.0" layoutY="78.0" text="Name:" />
+        <TextField fx:id="fxNameBook" layoutX="112.0" layoutY="73.0" prefHeight="27.0" prefWidth="214.0" style="-fx-background-color: #ABD3DB;" />
+        <Label layoutX="64.0" layoutY="121.0" text="Passport number:" />
+        <TextField fx:id="fxPassportNoBook" layoutX="166.0" layoutY="116.0" prefHeight="26.0" prefWidth="161.0" style="-fx-background-color: #ABD3DB;" />
+        <Label layoutX="64.0" layoutY="164.0" text="Kt:" />
+        <TextField fx:id="fxKennitalaBook" layoutX="86.0" layoutY="159.0" prefHeight="27.0" prefWidth="241.0" style="-fx-background-color: #ABD3DB;" />
+        <Button fx:id="fxBackBook" layoutX="64.0" layoutY="229.0" mnemonicParsing="false" onAction="#openFindFlightBack" prefWidth="110.0" style="-fx-background-color: #ABD3DB;" text="Back" />
+        <Button fx:id="fxConfirmBook" layoutX="219.0" layoutY="229.0" mnemonicParsing="false" onAction="#openBookingConfirmed" prefWidth="110.0" style="-fx-background-color: #ABD3DB;" text="Confirm Booking" />
+    </children>
+</AnchorPane>

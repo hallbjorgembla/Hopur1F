@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="512.0" prefWidth="763.0" style="-fx-background-color: #3C99AB;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FlightReservation.view.FindFlightController">
+    <children>
+        <Label layoutX="52.0" layoutY="52.0" text="Departure City" />
+        <Label layoutX="222.0" layoutY="52.0" text="Arrival City" />
+        <Label layoutX="51.0" layoutY="118.0" text="Date" />
+        <DatePicker fx:id="fxFindDate" layoutX="52.0" layoutY="142.0" prefHeight="27.0" prefWidth="161.0" style="-fx-background-color: #ABD3DB;" />
+        <Button fx:id="fxFindEnter" layoutX="472.0" layoutY="76.0" mnemonicParsing="false" onAction="#saekjaFlug" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #ABD3DB;" text="Enter" />
+        <Button fx:id="fxFindBook" disable="true" layoutX="472.0" layoutY="142.0" mnemonicParsing="false" onAction="#openBookFlight" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #ABD3DB;" text="Book Flight" />
+        <TableView fx:id="fxFlightTable" layoutX="52.0" layoutY="199.0" onMouseClicked="#selectFlight" prefHeight="240.0" prefWidth="650" style="-fx-background-color: #ABD3DB;">
+            <columns>
+                <TableColumn fx:id="fxFlightNumberCol" prefWidth="80" text="Flight No." />
+                <TableColumn fx:id="fxDepartureCityCol" prefWidth="100" text="Departure city" />
+                <TableColumn fx:id="fxArrivalCityCol" prefWidth="100" text="Arrival City" />
+                <TableColumn fx:id="fxFlightDateCol" prefWidth="150" text="Flight Date" />
+                <TableColumn fx:id="fxPriceFirstClassCol" prefWidth="100" text="Price first class" />
+                <TableColumn fx:id="fxPriceEconomyCol" prefWidth="100" text="Price economy" />
+            </columns>
+        </TableView>
+        <Button fx:id="fxFindBack" layoutX="52.0" layoutY="451.0" mnemonicParsing="false" onAction="#openStart" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #ABD3DB;" text="Back" />
+        <ComboBox fx:id="fxFindDep" layoutX="51.0" layoutY="77.0" prefWidth="150.0" style="-fx-background-color: #ABD3DB;" />
+        <ComboBox fx:id="fxFindArr" layoutX="222.0" layoutY="77.0" prefWidth="150.0" style="-fx-background-color: #ABD3DB;" />
+    </children>
+</AnchorPane>
